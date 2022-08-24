@@ -1,7 +1,14 @@
-# RoboticLawnMower
+= RoboticLawnMower
+:TOC:
+
+
+== Projektbeschreibung
 Rasenmähroboter in Eigenbau
 
-
-## Konzept
+== Konzept
 
 image::docs/Konzept_1.drawio.svg[static, 600]
+
+== Projektübersicht
+
+
