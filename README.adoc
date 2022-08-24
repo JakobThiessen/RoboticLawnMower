@@ -4,4 +4,4 @@ Rasenmähroboter in Eigenbau
 
 ## Konzept
 
-![](docs/Konzept_1.drawio.svg)
+image::docs/Konzept_1.drawio.svg[static, 600]
