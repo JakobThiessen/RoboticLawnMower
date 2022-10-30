@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "Vishay")(type "KiCad")(uri "${KIPRJMOD}/lib/Vishay.pretty")(options "")(descr ""))
+)
