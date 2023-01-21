@@ -11,4 +11,5 @@ image::docs/Konzept_1.drawio.svg[static, 600]
 
 == Projektübersicht
 
-
+== Hardware
+image::Hardware/KiCad/RoboticLawnMower/3D_TOP.png[static, 600]
