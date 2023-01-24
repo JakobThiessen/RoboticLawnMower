@@ -9,6 +9,7 @@ Rasenmähroboter in Eigenbau
 
 image::docs/Konzept_1.drawio.svg[static, 600]
 
+
 == Projektübersicht
 
 == Hardware
