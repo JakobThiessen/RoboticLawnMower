@@ -490,8 +490,20 @@
       "Motor_M5"
     ],
     [
+      "52778c95-4b94-44ff-b148-4144ecb1a9e7",
+      "WLAN"
+    ],
+    [
       "611b545d-604c-4bc1-9e50-b1bbed73205e",
       "i2c_smb_mux"
+    ],
+    [
+      "4e1a0144-23de-477f-b305-d7a3da6be6b3",
+      "Comfort"
+    ],
+    [
+      "ac10b8b4-edd4-4347-9c8f-b78608e2513f",
+      "Sensor"
     ]
   ],
   "text_variables": {}

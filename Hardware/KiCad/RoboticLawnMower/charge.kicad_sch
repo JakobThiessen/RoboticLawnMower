@@ -7,4 +7,13 @@
   (lib_symbols
   )
 
+
+  (hierarchical_label "POWER_IN" (shape input) (at 44.45 36.83 180)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 7a8f6a2a-333e-4296-a54e-5386528d97a6)
+  )
+  (hierarchical_label "POWER_OUT" (shape output) (at 83.82 36.83 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid e3ec5b44-c224-4618-9b15-758b51047b20)
+  )
 )
