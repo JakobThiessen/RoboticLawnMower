@@ -401,8 +401,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "RoboticLawnMower.step",
+      "vrml": "RoboticLawnMower.wrl"
     },
     "page_layout_descr_file": ""
   },
