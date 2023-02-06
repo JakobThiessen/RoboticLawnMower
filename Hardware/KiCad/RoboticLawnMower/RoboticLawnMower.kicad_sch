@@ -787,11 +787,11 @@
   )
   (bus_entry (at 278.13 181.61) (size 2.54 -2.54)
     (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid 0db56cc9-76b9-4e8e-ac71-2096285f22ef)
+    (uuid 0db56cc9-76b9-4e8e-ac71-2096285f22f0)
   )
   (bus_entry (at 278.13 185.42) (size 2.54 -2.54)
     (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid 0db56cc9-76b9-4e8e-ac71-2096285f22ef)
+    (uuid 0db56cc9-76b9-4e8e-ac71-2096285f22f1)
   )
   (bus_entry (at 280.67 143.51) (size 2.54 2.54)
     (stroke (width 0) (type default) (color 0 0 0 0))
@@ -3228,19 +3228,19 @@
       (reference "H5") (unit 1) (value "MountingHole") (footprint "MountingHole:MountingHole_3.2mm_M3")
     )
     (path "/39f2b0f3-d323-43fa-8206-419714f3fe7e/e8486541-195f-4627-8fe4-5f1a7b429187"
-      (reference "J1") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1-A_1x08_P2.50mm_Vertical")
+      (reference "J1") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1_1x08_P2.50mm_Vertical")
     )
     (path "/47e04ee7-2015-4bd0-a20e-406c6d5cef09/e8486541-195f-4627-8fe4-5f1a7b429187"
-      (reference "J2") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1-A_1x08_P2.50mm_Vertical")
+      (reference "J2") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1_1x08_P2.50mm_Vertical")
     )
     (path "/e11ea681-498e-4438-bf5e-83e5e8a7b0af/e8486541-195f-4627-8fe4-5f1a7b429187"
-      (reference "J3") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1-A_1x08_P2.50mm_Vertical")
+      (reference "J3") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1_1x08_P2.50mm_Vertical")
     )
     (path "/ce0069d3-3b25-4196-ac13-cd9fb46e4df2/e8486541-195f-4627-8fe4-5f1a7b429187"
-      (reference "J4") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1-A_1x08_P2.50mm_Vertical")
+      (reference "J4") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1_1x08_P2.50mm_Vertical")
     )
     (path "/0a26300e-b861-4272-8af8-e99b2db82548/e8486541-195f-4627-8fe4-5f1a7b429187"
-      (reference "J5") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1-A_1x08_P2.50mm_Vertical")
+      (reference "J5") (unit 1) (value "Conn_01x08") (footprint "Connector_JST:JST_XA_B08B-XASK-1_1x08_P2.50mm_Vertical")
     )
     (path "/ac3fb6f4-5099-4280-8edd-19d63049bdd3"
       (reference "J10") (unit 1) (value "Conn_01x02") (footprint "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_2-GF-3.81_1x02_P3.81mm_Vertical_ThreadedFlange_MountHole")
@@ -3252,13 +3252,13 @@
       (reference "J12") (unit 1) (value "Conn_02x05_Row_Letter_Last") (footprint "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical_SMD")
     )
     (path "/611b545d-604c-4bc1-9e50-b1bbed73205e/d3a51425-376c-4cfb-8882-f16b8a6162b7"
-      (reference "J13") (unit 1) (value "Conn_01x04") (footprint "Connector_JST:JST_XA_B04B-XASK-1-A_1x04_P2.50mm_Vertical")
+      (reference "J13") (unit 1) (value "Conn_01x04") (footprint "Connector_JST:JST_XA_B04B-XASK-1_1x04_P2.50mm_Vertical")
     )
     (path "/7d4f1578-e150-45a9-b155-df7501eda005/db367de3-03a8-4f83-9de3-f82622772e64"
-      (reference "J14") (unit 1) (value "Conn_01x06") (footprint "Connector_JST:JST_XA_B06B-XASK-1-A_1x06_P2.50mm_Vertical")
+      (reference "J14") (unit 1) (value "Conn_01x06") (footprint "Connector_JST:JST_XA_B06B-XASK-1_1x06_P2.50mm_Vertical")
     )
     (path "/7d4f1578-e150-45a9-b155-df7501eda005/61ce6b5c-1da6-40ec-ab4f-f0fedf6e6a12"
-      (reference "J15") (unit 1) (value "Conn_01x06") (footprint "Connector_JST:JST_XA_B06B-XASK-1-A_1x06_P2.50mm_Vertical")
+      (reference "J15") (unit 1) (value "Conn_01x06") (footprint "Connector_JST:JST_XA_B06B-XASK-1_1x06_P2.50mm_Vertical")
     )
     (path "/4e1a0144-23de-477f-b305-d7a3da6be6b3/7989b92f-7438-43f0-99a3-e7f00af08756"
       (reference "J16") (unit 1) (value "Conn_01x03") (footprint "Connector_JST:JST_XA_B03B-XASK-1_1x03_P2.50mm_Vertical")
@@ -3416,8 +3416,8 @@
     (path "/6306c3d8-4421-4900-a194-54ab6eebd899/f6e7e181-ad67-4525-9ce1-e11523aebb67"
       (reference "U2") (unit 1) (value "AVR128DB48x-xPT") (footprint "Package_QFP:TQFP-48_7x7mm_P0.5mm")
     )
-    (path "/52778c95-4b94-44ff-b148-4144ecb1a9e7/e51543c3-a98c-46b8-96a7-5da5f3ca7ffb"
-      (reference "U3") (unit 1) (value "ESP32_NODEMCU") (footprint "MODULE_ESP32_NODEMCU")
+    (path "/52778c95-4b94-44ff-b148-4144ecb1a9e7/37b1fb16-b6a1-4123-aefb-9d96e8ddb5b6"
+      (reference "U3") (unit 1) (value "mini_esp32") (footprint "ESP32_mini:ESP32_mini")
     )
     (path "/c51ce224-459c-418d-88ab-50d44d591f80/a3f9ee11-3183-4081-9074-cf7949730446"
       (reference "U4") (unit 1) (value "PCA9685PW") (footprint "Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm")
