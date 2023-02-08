@@ -504,6 +504,10 @@
     [
       "ac10b8b4-edd4-4347-9c8f-b78608e2513f",
       "Sensor"
+    ],
+    [
+      "fba64a43-111b-4f92-8a7a-046f4a6378f7",
+      "GPS"
     ]
   ],
   "text_variables": {}
