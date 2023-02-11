@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.508
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -67,7 +67,9 @@
         "drill_out_of_range|162642500|55135000|2c3b06e3-d2ff-4b95-b398-a7e47ff261bc|00000000-0000-0000-0000-000000000000",
         "drill_out_of_range|162642500|56660000|e7bfd5a5-0de7-4882-b213-c0c44b441ef9|00000000-0000-0000-0000-000000000000",
         "drill_out_of_range|163405000|54372500|6855112a-3ca8-4fd6-b12c-f6b931bac912|00000000-0000-0000-0000-000000000000",
-        "drill_out_of_range|163405000|55897500|bfbd1d24-56a7-42fe-9ef8-70bc183e4bfc|00000000-0000-0000-0000-000000000000"
+        "drill_out_of_range|163405000|55897500|bfbd1d24-56a7-42fe-9ef8-70bc183e4bfc|00000000-0000-0000-0000-000000000000",
+        "silk_over_copper|88900000|58547000|b89c9c5d-d1e0-4919-bc5c-cd030417b0eb|05d6efe1-7092-477f-992e-1fa96a5309fc",
+        "silk_over_copper|88900000|68707000|b89c9c5d-d1e0-4919-bc5c-cd030417b0eb|1c5f6ccc-7529-467f-afce-c47527871397"
       ],
       "meta": {
         "version": 2
@@ -460,10 +462,6 @@
     [
       "c51ce224-459c-418d-88ab-50d44d591f80",
       "i2c_io_pwm"
-    ],
-    [
-      "fec20cbe-76fd-4098-8741-8dad629000c2",
-      "charge"
     ],
     [
       "54a322d0-ab97-4a45-813d-d10fe21d6c42",
