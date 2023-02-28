@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>{0cc8991c-fd07-4afb-9ca6-90bd0a8e39c9}</ProjectGuid>
+    <avrdevice>AVR128DB48</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>AVR128DB48_C_Example</AssemblyName>
+    <Name>Mainboard</Name>
+    <RootNamespace>AVR128DB48_C_Example</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.49.1" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.nedbg</avrtool>
+    <avrtoolserialnumber>MCHP3372021800000345</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E970C</avrdeviceexpectedsignature>
+    <avrtoolinterface>UPDI</avrtoolinterface>
+    <com_atmel_avrdbg_tool_nedbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <UpdiClock>750000</UpdiClock>
+        </InterfaceProperties>
+        <InterfaceName>UPDI</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.nedbg</ToolType>
+      <ToolNumber>MCHP3372021800000345</ToolNumber>
+      <ToolName>nEDBG</ToolName>
+    </com_atmel_avrdbg_tool_nedbg>
+    <avrtoolinterfaceclock>750000</avrtoolinterfaceclock>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.Device>-mmcu=avr128db48 -B "%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\gcc\dev\avr128db48"</avrgcc.common.Device>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\include\</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\include\</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.Device>-mmcu=avr128db48 -B "%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\gcc\dev\avr128db48"</avrgcc.common.Device>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+            <Value>F_CPU=(16000000UL)</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\include\</Value>
+            <Value>../OS/freeRTOS</Value>
+            <Value>../OS/freeRTOS/include</Value>
+            <Value>../OS/freeRTOS/portable</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,-u,vfprintf -lprintf_flt -lm</avrgcc.linker.miscellaneous.LinkerFlags>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\AVR-Dx_DFP\1.6.76\include\</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="driver\hdc1080\hdc1080.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\hdc1080\hdc1080.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\OLED_SSD1306\glcdfont.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\OLED_SSD1306\Icons_16x16.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\OLED_SSD1306\ssd1306.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\OLED_SSD1306\ssd1306.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\ws2812\ws2812.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\ws2812\ws2812.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\ws2812\ws2812_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\clock.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\clock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\i2c.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\i2c.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\port.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\spi_basic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\spi_basic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\timer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\croutine.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\event_groups.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\deprecated_definitions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\event_groups.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\message_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\mpu_prototypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\stack_macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\stream_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\include\timers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\list.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_4.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_5.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\port.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\portable\portmacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\stream_buffer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\tasks.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="OS\freeRTOS\timers.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="driver\" />
+    <Folder Include="driver\hdc1080\" />
+    <Folder Include="driver\OLED_SSD1306\" />
+    <Folder Include="driver\ws2812\" />
+    <Folder Include="hal\" />
+    <Folder Include="OS\" />
+    <Folder Include="OS\freeRTOS\" />
+    <Folder Include="OS\freeRTOS\include\" />
+    <Folder Include="OS\freeRTOS\portable\" />
+    <Folder Include="OS\freeRTOS\portable\MemMang\" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
