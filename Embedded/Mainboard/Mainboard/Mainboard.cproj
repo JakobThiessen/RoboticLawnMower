@@ -141,22 +141,37 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="driver\hdc1080\hdc1080.c">
+    <Compile Include="driver\BME280\bme280.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\hdc1080\hdc1080.h">
+    <Compile Include="driver\BME280\bme280.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\OLED_SSD1306\glcdfont.c">
+    <Compile Include="driver\BME280\bme280_defs.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\OLED_SSD1306\Icons_16x16.h">
+    <Compile Include="driver\BMI160\bmi160.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\OLED_SSD1306\ssd1306.c">
+    <Compile Include="driver\BMI160\bmi160.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\OLED_SSD1306\ssd1306.h">
+    <Compile Include="driver\BMI160\bmi160_defs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\BMM150\bmm150.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\BMM150\bmm150.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\BMM150\bmm150_defs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\INA228\ina228.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\INA228\ina228.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\ws2812\ws2812.c">
@@ -312,8 +327,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="driver\" />
-    <Folder Include="driver\hdc1080\" />
-    <Folder Include="driver\OLED_SSD1306\" />
+    <Folder Include="driver\BME280\" />
+    <Folder Include="driver\BMI160\" />
+    <Folder Include="driver\BMM150\" />
+    <Folder Include="driver\INA228\" />
     <Folder Include="driver\ws2812\" />
     <Folder Include="hal\" />
     <Folder Include="OS\" />
