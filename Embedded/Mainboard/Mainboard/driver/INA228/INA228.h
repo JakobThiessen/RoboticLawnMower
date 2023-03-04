@@ -78,18 +78,19 @@ struct ina228_dev
 	uint8_t devID;
 	
 	uint8_t shunt_ADCRange;
-	float currentShuntLsb;
+	
+	bool isConfigured;
 };
 
 int8_t null_ptr_check(const struct ina228_dev *dev);
 
-void ina228_init(struct ina228_dev *dev);
-float ina228_voltage(struct ina228_dev *dev);
-float ina228_dietemp(struct ina228_dev *dev);
-float ina228_shuntvoltage(struct ina228_dev *dev);
-float ina228_current(struct ina228_dev *dev);
-float ina228_power(struct ina228_dev *dev);
-float ina228_energy(struct ina228_dev *dev);
-float ina228_charge(struct ina228_dev *dev);
+int8_t ina228_init(float *value, struct ina228_dev *dev);
+int8_t ina228_voltage(float *value, struct ina228_dev *dev);
+int8_t ina228_dietemp(float *value, struct ina228_dev *dev);
+int8_t ina228_shuntvoltage(float *value, struct ina228_dev *dev);
+int8_t ina228_current(float *value, struct ina228_dev *dev);
+int8_t ina228_power(float *value, struct ina228_dev *dev);
+int8_t ina228_energy(float *value, struct ina228_dev *dev);
+int8_t ina228_charge(float *value, struct ina228_dev *dev);
 
 #endif

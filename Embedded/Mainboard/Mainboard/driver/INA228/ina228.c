@@ -38,27 +38,33 @@
 
 #define CURRENT_LSB 	0.0000190735
 #define SHUNT_CAL		2500
-//typedef int8_t (*ina228_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, uint8_t devAddr);
-//typedef int8_t (*ina228_write_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, uint8_t devAddr);
 
-void ina228_init(struct ina228_dev *dev)
+static volatile float currentShuntLsb = 0;
+
+
+int8_t ina228_init(struct ina228_dev *dev)
 {
+	dev->isConfigured = false;
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_CONFIG, 0x8000);	// Reset
-	dev->write(INA228_CONFIG, 0x8000, 2,  dev->dev_address);
-	dev->read(INA228_MANUFACTURER_ID, &dev->manID, 1, dev->dev_address);
-	dev->read(INA228_DEVICE_ID, &dev->devID, 1, dev->dev_address);
-	
-	printf("Manufacturer ID:    0x%04X\r\n", dev->manID);
-	printf("Device ID:          0x%04X\r\n", dev->devID);
+	dev->intf_rslt = dev->write(INA228_CONFIG, 0x8000, 2,  dev->dev_address);
+	dev->intf_rslt += dev->read(INA228_MANUFACTURER_ID, &dev->manID, 1, dev->dev_address);
+	dev->intf_rslt += dev->read(INA228_DEVICE_ID, &dev->devID, 1, dev->dev_address);
 
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_SHUNT_CAL, SHUNT_CAL);
-	dev->write(INA228_SHUNT_CAL, SHUNT_CAL, 2,  dev->dev_address);
+	dev->intf_rslt += dev->write(INA228_SHUNT_CAL, SHUNT_CAL, 2,  dev->dev_address);
 	
-	if(dev->shunt_ADCRange == 0)	dev->currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_0;
-	if(dev->shunt_ADCRange == 1)	dev->currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_1;
+	if(dev->shunt_ADCRange == 0)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_0;
+	if(dev->shunt_ADCRange == 1)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_1;
+	
+	if(dev->intf_rslt == 0)
+	{
+		dev->isConfigured = true;
+	}
+	
+	return dev->intf_rslt;
 }
 
-float ina228_voltage(struct ina228_dev *dev)
+int8_t ina228_voltage(float *value, struct ina228_dev *dev, )
 {
 	uint8_t data[3];
 	int32_t iBusVoltage;
@@ -82,7 +88,7 @@ float ina228_voltage(struct ina228_dev *dev)
 	return (fBusVoltage);
 }
 
-float ina228_dietemp(struct ina228_dev *dev)
+int8_t ina228_dietemp(float *value, float *value, struct ina228_dev *dev)
 {
 	uint16_t iDieTemp;
 	float fDieTemp;
@@ -95,7 +101,7 @@ float ina228_dietemp(struct ina228_dev *dev)
 	return (fDieTemp);
 }
 
-float ina228_shuntvoltage(struct ina228_dev *dev)
+int8_t ina228_shuntvoltage(struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	int32_t iShuntVoltage;
@@ -114,12 +120,12 @@ float ina228_shuntvoltage(struct ina228_dev *dev)
 		iShuntVoltage += 0xFFF00000;
 	}
 	
-	fShuntVoltage = (float)(iShuntVoltage) * dev->currentShuntLsb;		// Output in mV
+	fShuntVoltage = (float)(iShuntVoltage) * currentShuntLsb;		// Output in mV
 
 	return (fShuntVoltage);
 }
 
-float ina228_current(struct ina228_dev *dev)
+int8_t ina228_current(float *value, struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	int32_t iCurrent;
@@ -141,7 +147,7 @@ float ina228_current(struct ina228_dev *dev)
 	return (fCurrent);
 }
 
-float ina228_power(struct ina228_dev *dev)
+int8_t ina228_power(float *value, struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	uint32_t iPower;
@@ -164,7 +170,7 @@ float ina228_power(struct ina228_dev *dev)
  * 1 W/hr = Joules / 3600
  */
 
-float ina228_energy(struct ina228_dev *dev)
+int8_t ina228_energy(float *value, struct ina228_dev *dev)
 {
 	uint64_t iEnergy;
 	float fEnergy;
@@ -185,7 +191,7 @@ float ina228_energy(struct ina228_dev *dev)
  * Hence Amp-Hours (Ah) = Coulombs / 3600
  */
 
-float ina228_charge(struct ina228_dev *dev)
+int8_t ina228_charge(float *value, struct ina228_dev *dev)
 {
 	int64_t iCharge;
 	float fCharge;

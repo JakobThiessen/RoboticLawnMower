@@ -79,8 +79,21 @@ void drawAkku(uint8_t stat);
 // Global Variables
 // ********************************************************************************
 
+struct bme280_dev	sensorEnv;
+struct bmi160_dev	sensorGyro;
+struct bmm150_dev	sensorCompass;
+
+struct ina228_dev	monitroMotor_0;
+struct ina228_dev	monitroMotor_1;
+
+//ads1115_dev	analogSensor_0
+//ads1115_dev	analogSensor_1
+
+//pca9685_dev	pwmControl
+
 void PORT_init(void)
 {
+	/*
 	PORTB.DIR |= LED0;
 	PORTB.OUT |= LED0;
 
@@ -89,25 +102,26 @@ void PORT_init(void)
 	
 	PORTD.DIR |= DIO;
 	PORTD.OUT |= DIO;
+	*/
 }
 
-void BUTTON_releaseCallback(void)
-{
-	PORTB.OUTSET |= LED0;
-}
+typedef BME280_INTF_RET_TYPE (*bme280_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
+typedef BME280_INTF_RET_TYPE (*bme280_write_fptr_t)(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr);
+typedef void (*bme280_delay_us_fptr_t)(uint32_t period, void *intf_ptr);
+typedef int8_t (*bmi160_com_fptr_t)(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, uint16_t len);
+typedef void (*bmi160_delay_fptr_t)(uint32_t period);
+typedef BMM150_INTF_RET_TYPE (*bmm150_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t length, void *intf_ptr);
+typedef BMM150_INTF_RET_TYPE (*bmm150_write_fptr_t)(uint8_t reg_addr, const uint8_t *reg_data, uint32_t length, void *intf_ptr);
+typedef void (*bmm150_delay_us_fptr_t)(uint32_t period, void *intf_ptr);
 
-void BUTTON_pressCallback(void)
-{
-	PORTB.OUTCLR |= LED0;
-}
 
-int8_t user_i2c_read_HDC1080(uint8_t reg_addr, uint8_t *data, uint32_t len, uint16_t devAddr)
+int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
 	int8_t rslt = 0;
+	uint8_t dev_addr = *(uint8_t*)intf_ptr;
 	
-	rslt = I2C_0_sendData(devAddr, &reg_addr, 1);
-	_delay_ms(20);
-	rslt += I2C_0_getData(devAddr, data, len);
+	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_0_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
 	
 	return rslt;
 }
@@ -115,32 +129,39 @@ int8_t user_i2c_read_HDC1080(uint8_t reg_addr, uint8_t *data, uint32_t len, uint
 /*!
  * @brief This function for writing the sensor's registers through I2C bus.
  */
-int8_t user_i2c_write(uint8_t reg_addr, uint8_t *data, uint32_t len, uint16_t devAddr)
-{
-	uint8_t tmp [20];
-	int8_t rslt = 0;
-	
-	tmp[0] = reg_addr;
-	memcpy(&tmp[1], data, len);
-	
-	rslt = I2C_0_sendData(devAddr, tmp, len+1);
-    return rslt;
-}
-
-int8_t user_i2c_write_ssd1306(uint8_t dev_addr, uint8_t *data, uint16_t len, bool stop);
-int8_t user_i2c_write_ssd1306(uint8_t dev_addr, uint8_t *data, uint16_t len, bool stop)
+int8_t user_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
 	int8_t rslt = 0;
-	rslt = I2C_0_sendData(dev_addr, data, len);
+	uint8_t dev_addr = *(uint8_t*)intf_ptr;
 	
- 	if(stop == true)
- 	{
- 		//i2c_master_send_stop(&i2c_master_instance);
- 	}
-	    
+	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_0_sendData(dev_addr, reg_data, (uint8_t)len);
+	
 	return rslt;
 }
 
+int8_t user_i2c_read_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, uint16_t len)
+{
+	int8_t rslt = 0;
+	
+	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_0_getData(dev_addr, data, (uint8_t)len);
+	
+	return rslt;
+}
+
+/*!
+ * @brief This function for writing the sensor's registers through I2C bus.
+ */
+int8_t user_i2c_write_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, uint16_t len)
+{
+	int8_t rslt = 0;
+	
+	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_0_sendData(dev_addr, data, (uint8_t)len);
+	
+	return rslt;
+}
 
 /*!
  * @brief This function provides the delay for required time (Microseconds) as per the input provided in some of the
@@ -198,40 +219,92 @@ int main(void)
 {
 	// setup our stdio stream
 	stdout = &mystdout;
-	CLOCK_OSCHF_crystal_PLL_16M_init();
-	
-	PORT_init();
+
+	CLOCK_OSCHF_crystal_PLL_init(CLKCTRL_FREQSEL_24M_gc);
+
+	//PORT_init();
 	//TCA1_init();
 	
-	USART3_init();
+	USART0_init(PIN4_bm, PIN5_bm, 1, 115200);
 	
-	VREF0_init();
-	ADC0_init();
-	ADC0_start();
+//	VREF0_init();
+//	ADC0_init();
+//	ADC0_start();
 	
-	I2C_0_init();
-	
-	configuration_spi();
+	I2C_0_init(PORTMUX_TWI0_DEFAULT_gc, I2C_SCL_FREQ);
+	I2C_1_init(PORTMUX_TWI1_ALT2_gc, I2C_SCL_FREQ);	
+				
+	I2C_0_scan(0x01, 0x7F);
+	I2C_1_scan(0x01, 0x7F);
+			
+	printf("I2C_0:												\n\r	\
+			BMM150_I2C_ADDRESS_CSB_HIGH_SDO_HIGH		0x13	\n\r	\
+			ADS1115_IIC_ADDRESS_0						0x48	\n\r	\
+			ADS1115_IIC_ADDRESS_1						0x49	\n\r	\
+			BMI160_I2C_ADDR_SEC							0x69	\n\r	\
+			BME280_I2C_ADDR_SEC							0x77	\n\r	\
+			I2C_1:												\n\r	\
+			INA228										0x40	\n\r	\
+			INA228										0x41	\n\r	\
+			PCA9685_A0_A1								0x43	\n\r");
 	
 	sei();
-/*	
-	dev_Sensor.dev_address = HDC1080_IIC_ADDRESS;
-	dev_Sensor.settings = 0x3000;
-	dev_Sensor.read = user_i2c_read_HDC1080;
-	dev_Sensor.write = user_i2c_write;
-	dev_Sensor.delay_us = user_delay_us;
-*/	
-	uint16_t ManufacID = 0;
-	uint16_t DeviceId = 0;
+
+	/************************************************************************/
+	/* I2C Sensor - Driver Config											*/
+	/************************************************************************/
 	
-/*	printf("\n***************************************************\n\r");
-	hdc1080_init(&dev_Sensor);
-	hdc1080_readManufacturerId(&ManufacID, &dev_Sensor);
-	hdc1080_readDeviceId(&DeviceId, &dev_Sensor);
-	printf("HDC Manufacturer ID:	%04X\n\r", ManufacID);
-	printf("HDC Device ID:			%04X\n\r", DeviceId);
+	uint8_t dev_addr_sensorEnv = BME280_I2C_ADDR_SEC;
+	sensorEnv.intf_ptr = &dev_addr_sensorEnv;
+	sensorEnv.intf = BME280_I2C_INTF;
+	sensorEnv.read = user_i2c_read;
+	sensorEnv.write = user_i2c_write;
+	sensorEnv.delay_us = user_delay_us;
+
+	sensorGyro.id = BMI160_I2C_ADDR + 1;
+	sensorGyro.interface = 0;
+	sensorGyro.read = user_i2c_read_bmi160;
+	sensorGyro.write = user_i2c_write_bmi160;
+	sensorGyro.delay_ms = user_delay_ms;
+	
+	uint8_t dev_addr_sensorCompass = BMM150_I2C_ADDRESS_CSB_HIGH_SDO_HIGH;
+	sensorCompass.intf_ptr = &dev_addr_sensorCompass;
+	sensorCompass.intf = BMM150_I2C_INTF;
+	sensorCompass.read = user_i2c_read;
+	sensorCompass.write = user_i2c_write;
+	sensorCompass.delay_us = user_delay_us;
+
+	monitroMotor_0.dev_address = INA228_SLAVE_ADDRESS;
+	monitroMotor_0.shunt_ADCRange = 0;
+	monitroMotor_0.read = user_i2c_read;
+	monitroMotor_0.write = user_i2c_write;
+	monitroMotor_0.delay_us = user_delay_us;
+	
+	monitroMotor_1.dev_address = INA228_SLAVE_ADDRESS + 1;
+	monitroMotor_1.shunt_ADCRange = 0;
+	monitroMotor_1.read = user_i2c_read;
+	monitroMotor_1.write = user_i2c_write;
+	monitroMotor_1.delay_us = user_delay_us;
+
+	printf("\n***************************************************\n\r");
+	
+	int8_t result = 0;
+	result = bme280_init(&sensorEnv);
+	printf("BOSCH BME280 INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, sensorEnv.chip_id);
+	
+	result = bmi160_init(&sensorGyro);
+	printf("BOSCH BMI160 INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, sensorGyro.chip_id);
+	
+	result = bmm150_init(&sensorCompass);
+	printf("BOSCH BMM150 INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, sensorCompass.chip_id);
+	
+	ina228_init(&monitroMotor_0);
+	printf("TI INA228 [0] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitroMotor_0.devID);
+	ina228_init(&monitroMotor_1);
+	printf("TI INA228 [1] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitroMotor_1.devID);
+
 	printf("***************************************************\n\r");
-*/
+
 
 	#ifdef USE_FREE_RTOS
 		// Create task.
@@ -255,25 +328,12 @@ int main(void)
 	
 		while (1)
 		{
-			//if (PORTB.IN & SW0)
-			//{
-				//BUTTON_releaseCallback();
-			//}
-
-			/*
-			BUTTON_pressCallback();
-			_delay_ms(50);
-			BUTTON_releaseCallback();
-			_delay_ms(50);
-			*/
-
-			adcVal = ADC0_read();
+//			adcVal = ADC0_read();
 			temp_C = temperatureConvert(adcVal);
-		
-			//USART3_sendString("Hello World!\n\r");
-			printf("Temp (ADC): %d HDC1080 T: %.02f H: %.02f\n\r", temp_C, hdc1080_Temp, hdc1080_Humidity);
-		
-			I2C_0_scan(0x00, 0x7F);
+
+			printf("Temp (ADC): %d\n\r", temp_C);
+
+			_delay_ms(500);
 		
 		}
 		
