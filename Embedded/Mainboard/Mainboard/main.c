@@ -37,7 +37,7 @@
 #include "driver/BME280/bme280_defs.h"
 #include "driver/BMI160/bmi160_defs.h"
 #include "driver/BMM150/bmm150_defs.h"
-#include "driver/INA228/INA228.h"
+#include "driver/INA228/ina228.h"
 
 
 // ********************************************************************************
@@ -46,6 +46,9 @@
 #define LED0	PIN3_bm
 #define SW0		PIN2_bm
 #define DIO		PIN7_bm
+
+#define MOTOR_EN_M1	PIN3_bm
+#define MOTOR_EN_M5	PIN2_bm
 
 #define MAXPIX 8
 #define COLORLENGTH MAXPIX/2
@@ -83,8 +86,8 @@ struct bme280_dev	sensorEnv;
 struct bmi160_dev	sensorGyro;
 struct bmm150_dev	sensorCompass;
 
-struct ina228_dev	monitroMotor_0;
-struct ina228_dev	monitroMotor_1;
+struct ina228_dev	monitorMotor_0;
+struct ina228_dev	monitorMotor_1;
 
 //ads1115_dev	analogSensor_0
 //ads1115_dev	analogSensor_1
@@ -103,16 +106,12 @@ void PORT_init(void)
 	PORTD.DIR |= DIO;
 	PORTD.OUT |= DIO;
 	*/
+	PORTC.DIR |= MOTOR_EN_M1;
+	PORTC.OUT |= MOTOR_EN_M1;
+	
+	PORTC.DIR |= MOTOR_EN_M5;
+	PORTC.OUT |= MOTOR_EN_M5;
 }
-
-typedef BME280_INTF_RET_TYPE (*bme280_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
-typedef BME280_INTF_RET_TYPE (*bme280_write_fptr_t)(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr);
-typedef void (*bme280_delay_us_fptr_t)(uint32_t period, void *intf_ptr);
-typedef int8_t (*bmi160_com_fptr_t)(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, uint16_t len);
-typedef void (*bmi160_delay_fptr_t)(uint32_t period);
-typedef BMM150_INTF_RET_TYPE (*bmm150_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t length, void *intf_ptr);
-typedef BMM150_INTF_RET_TYPE (*bmm150_write_fptr_t)(uint8_t reg_addr, const uint8_t *reg_data, uint32_t length, void *intf_ptr);
-typedef void (*bmm150_delay_us_fptr_t)(uint32_t period, void *intf_ptr);
 
 
 int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr)
@@ -136,6 +135,31 @@ int8_t user_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, v
 	
 	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
 	rslt += I2C_0_sendData(dev_addr, reg_data, (uint8_t)len);
+	
+	return rslt;
+}
+
+int8_t user_i2c_1_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr)
+{
+	int8_t rslt = 0;
+	uint8_t dev_addr = *(uint8_t*)intf_ptr;
+	
+	rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_1_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
+	
+	return rslt;
+}
+
+/*!
+ * @brief This function for writing the sensor's registers through I2C bus.
+ */
+int8_t user_i2c_1_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr)
+{
+	int8_t rslt = 0;
+	uint8_t dev_addr = *(uint8_t*)intf_ptr;
+	
+	rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
+	rslt += I2C_1_sendData(dev_addr, reg_data, (uint8_t)len);
 	
 	return rslt;
 }
@@ -215,6 +239,124 @@ uint8_t write_spi_buffer(uint8_t *buffer, uint8_t len)
 	return ret;
 }
 
+int8_t configure_bme280(struct bme280_dev *dev)
+{
+	int8_t rslt;
+	uint8_t settings_sel;
+	struct bme280_data comp_data;
+
+	/* Recommended mode of operation: Indoor navigation */
+	dev->settings.osr_h = BME280_OVERSAMPLING_1X;
+	dev->settings.osr_p = BME280_OVERSAMPLING_16X;
+	dev->settings.osr_t = BME280_OVERSAMPLING_2X;
+	dev->settings.filter = BME280_FILTER_COEFF_16;
+
+	settings_sel = BME280_OSR_PRESS_SEL | BME280_OSR_TEMP_SEL | BME280_OSR_HUM_SEL | BME280_FILTER_SEL;
+
+	rslt = bme280_set_sensor_settings(settings_sel, dev);
+	if (rslt != BME280_OK)
+	{
+		fprintf(stderr, "Failed to set sensor settings (code %+d).", rslt);
+	}
+	return rslt;
+}
+
+void print_bme280_sensor_data(struct bme280_data *comp_data)
+{
+	float temp, press, hum;
+
+	#ifdef BME280_FLOAT_ENABLE
+	temp = comp_data->temperature;
+	press = 0.01 * comp_data->pressure;
+	hum = comp_data->humidity;
+	#else
+	#ifdef BME280_64BIT_ENABLE
+	temp = 0.01f * comp_data->temperature;
+	press = 0.0001f * comp_data->pressure;
+	hum = 1.0f / 1024.0f * comp_data->humidity;
+	#else
+	temp = 0.01f * comp_data->temperature;
+	press = 0.01f * comp_data->pressure;
+	hum = 1.0f / 1024.0f * comp_data->humidity;
+	#endif
+	#endif
+	printf("%0.2lf deg C, %0.2lf hPa, %0.2lf%%\n\r", temp, press, hum);
+}
+
+int8_t configure_bmi160(struct bmi160_dev *dev)
+{
+	int8_t rslt;
+	bmi160_soft_reset(dev);
+	/* Select the Output data rate, range of accelerometer sensor */
+	dev->accel_cfg.odr = BMI160_ACCEL_ODR_400HZ;
+	dev->accel_cfg.range = BMI160_ACCEL_RANGE_2G;
+	dev->accel_cfg.bw = BMI160_ACCEL_BW_NORMAL_AVG4;
+
+	/* Select the power mode of accelerometer sensor */
+	dev->accel_cfg.power = BMI160_ACCEL_NORMAL_MODE;
+
+	/* Select the Output data rate, range of Gyroscope sensor */
+	dev->gyro_cfg.odr = BMI160_GYRO_ODR_400HZ;
+	dev->gyro_cfg.range = BMI160_GYRO_RANGE_250_DPS;
+	dev->gyro_cfg.bw = BMI160_GYRO_BW_NORMAL_MODE;
+
+	/* Select the power mode of Gyroscope sensor */
+	dev->gyro_cfg.power = BMI160_GYRO_NORMAL_MODE;
+
+	/* Set the sensor configuration */
+	rslt = bmi160_set_sens_conf(dev);
+	
+	if (rslt != BMI160_OK)
+	{
+		fprintf(stderr, "Failed to set sensor settings (code %+d).", rslt);
+	}
+	return rslt;
+}
+
+static int8_t configure_bmm150(struct bmm150_dev *dev)
+{
+	/* Status of api are returned to this variable. */
+	int8_t rslt;
+
+	struct bmm150_settings settings;
+
+	/* Read the default configuration from the sensor */
+	settings.pwr_mode = BMM150_POWERMODE_FORCED; //BMM150_POWERMODE_NORMAL;
+	settings.preset_mode = 0x00;
+	settings.xyz_axes_control = 0x3F;
+	
+	rslt = bmm150_set_op_mode(&settings, dev);
+
+	if (rslt == BMM150_OK)
+	{
+		/* Set any threshold level below which low threshold interrupt occurs */
+		settings.int_settings.low_threshold = 0x0A;
+		rslt = bmm150_set_sensor_settings(BMM150_SEL_LOW_THRESHOLD_SETTING, &settings, dev);
+	}
+
+	return rslt;
+}
+
+static int8_t get_compass_data(struct bmm150_dev *dev)
+{
+	/* Status of api are returned to this variable. */
+	int8_t rslt;
+
+	struct bmm150_mag_data mag_data;
+
+	/* Get the interrupt status */
+	rslt = bmm150_get_interrupt_status(dev);
+
+	/* Read mag data */
+	rslt = bmm150_read_mag_data(&mag_data, dev);
+
+	/* Unit for magnetometer data is microtesla(uT) */
+	printf("MAG DATA  X : %d uT   Y : %d uT   Z : %d uT\n\r", mag_data.x, mag_data.y, mag_data.z);
+
+	return rslt;
+}
+
+
 int main(void)
 {
 	// setup our stdio stream
@@ -222,7 +364,7 @@ int main(void)
 
 	CLOCK_OSCHF_crystal_PLL_init(CLKCTRL_FREQSEL_24M_gc);
 
-	//PORT_init();
+	PORT_init();
 	//TCA1_init();
 	
 	USART0_init(PIN4_bm, PIN5_bm, 1, 115200);
@@ -261,8 +403,8 @@ int main(void)
 	sensorEnv.write = user_i2c_write;
 	sensorEnv.delay_us = user_delay_us;
 
-	sensorGyro.id = BMI160_I2C_ADDR + 1;
-	sensorGyro.interface = 0;
+	sensorGyro.id = (BMI160_I2C_ADDR + 1);
+	sensorGyro.intf = BMI160_I2C_INTF;
 	sensorGyro.read = user_i2c_read_bmi160;
 	sensorGyro.write = user_i2c_write_bmi160;
 	sensorGyro.delay_ms = user_delay_ms;
@@ -272,19 +414,21 @@ int main(void)
 	sensorCompass.intf = BMM150_I2C_INTF;
 	sensorCompass.read = user_i2c_read;
 	sensorCompass.write = user_i2c_write;
-	sensorCompass.delay_us = user_delay_us;
+//	sensorCompass.delay_us = user_delay_us;
 
-	monitroMotor_0.dev_address = INA228_SLAVE_ADDRESS;
-	monitroMotor_0.shunt_ADCRange = 0;
-	monitroMotor_0.read = user_i2c_read;
-	monitroMotor_0.write = user_i2c_write;
-	monitroMotor_0.delay_us = user_delay_us;
+	uint8_t dev_addr_monitroMotor_0 = INA228_SLAVE_ADDRESS;
+	monitorMotor_0.intf_ptr = &dev_addr_monitroMotor_0;
+	monitorMotor_0.shunt_ADCRange = 0;
+	monitorMotor_0.read = user_i2c_1_read;
+	monitorMotor_0.write = user_i2c_1_write;
+	monitorMotor_0.delay_us = user_delay_us;
 	
-	monitroMotor_1.dev_address = INA228_SLAVE_ADDRESS + 1;
-	monitroMotor_1.shunt_ADCRange = 0;
-	monitroMotor_1.read = user_i2c_read;
-	monitroMotor_1.write = user_i2c_write;
-	monitroMotor_1.delay_us = user_delay_us;
+	uint8_t dev_addr_monitroMotor_1 = INA228_SLAVE_ADDRESS + 1;
+	monitorMotor_1.intf_ptr = &dev_addr_monitroMotor_1;
+	monitorMotor_1.shunt_ADCRange = 0;
+	monitorMotor_1.read = user_i2c_1_read;
+	monitorMotor_1.write = user_i2c_1_write;
+	monitorMotor_1.delay_us = user_delay_us;
 
 	printf("\n***************************************************\n\r");
 	
@@ -298,14 +442,24 @@ int main(void)
 	result = bmm150_init(&sensorCompass);
 	printf("BOSCH BMM150 INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, sensorCompass.chip_id);
 	
-	ina228_init(&monitroMotor_0);
-	printf("TI INA228 [0] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitroMotor_0.devID);
-	ina228_init(&monitroMotor_1);
-	printf("TI INA228 [1] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitroMotor_1.devID);
+	result = ina228_init(&monitorMotor_0);
+	printf("TI INA228 [0] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitorMotor_0.devID);
+	result = ina228_init(&monitorMotor_1);
+	printf("TI INA228 [1] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitorMotor_1.devID);
 
 	printf("***************************************************\n\r");
 
+	/************************************************************************/
+	/* Sensorsettings                                                       */
+	/************************************************************************/
 
+	result = configure_bme280(&sensorEnv);
+	result = configure_bmi160(&sensorGyro);
+	result = configure_bmm150(&sensorCompass);
+	
+	PORTC_set_pin_level(MOTOR_EN_M1, true);
+	PORTC_set_pin_level(MOTOR_EN_M5, true);
+	
 	#ifdef USE_FREE_RTOS
 		// Create task.
 		xTaskCreate(vBlinkLed,	"blink",	configMINIMAL_STACK_SIZE, NULL, mainLED_TASK_PRIORITY,		NULL);
@@ -320,19 +474,47 @@ int main(void)
 	
 	#else
 	
+		int8_t rslt;
 		int16_t temp_C;
 		uint16_t adcVal;
 		float hdc1080_Temp = 0;
 		float hdc1080_Humidity = 0;
 		uint16_t dutyCycle = 0;
 	
+		struct bme280_data sensEnvData;
+		
+		/*! @brief variable to hold the bmi160 accel data */
+		struct bmi160_sensor_data bmi160_accel;
+
+		/*! @brief variable to hold the bmi160 gyro data */
+		struct bmi160_sensor_data bmi160_gyro;
+
 		while (1)
 		{
+			rslt = bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
+			
 //			adcVal = ADC0_read();
 			temp_C = temperatureConvert(adcVal);
+			float voltage_0, voltage_1;
+			float dieTemp_0, dieTemp_1;
+			ina228_voltage(&voltage_0, &monitorMotor_0);
+			ina228_voltage(&voltage_1, &monitorMotor_1);
+			ina228_dietemp(&dieTemp_0, &monitorMotor_0);
+			ina228_dietemp(&dieTemp_1, &monitorMotor_1);
+			
+			printf("M0: V: %05dmV T: %04d M1: V: %05dmV  T: %04d\t", (uint16_t)(voltage_0*1000), (uint16_t)(dieTemp_0 * 10), (uint16_t)(voltage_1 * 1000), (uint16_t)(dieTemp_1 * 10) );
+			
+			bme280_get_sensor_data(BME280_ALL, &sensEnvData, &sensorEnv);
+			print_bme280_sensor_data(&sensEnvData);
+			
+			/* To read both Accel and Gyro data */
+			bmi160_get_sensor_data((BMI160_ACCEL_SEL | BMI160_GYRO_SEL | BMI160_TIME_SEL), &bmi160_accel, &bmi160_gyro, &sensorGyro);
 
-			printf("Temp (ADC): %d\n\r", temp_C);
-
+			printf("ax:%d\tay:%d\taz:%d\t", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
+			printf("gx:%d\tgy:%d\tgz:%d\n\r", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
+			
+			get_compass_data(&sensorCompass);
+			
 			_delay_ms(500);
 		
 		}

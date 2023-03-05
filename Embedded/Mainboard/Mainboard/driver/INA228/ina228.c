@@ -46,12 +46,12 @@ int8_t ina228_init(struct ina228_dev *dev)
 {
 	dev->isConfigured = false;
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_CONFIG, 0x8000);	// Reset
-	dev->intf_rslt = dev->write(INA228_CONFIG, 0x8000, 2,  dev->dev_address);
-	dev->intf_rslt += dev->read(INA228_MANUFACTURER_ID, &dev->manID, 1, dev->dev_address);
-	dev->intf_rslt += dev->read(INA228_DEVICE_ID, &dev->devID, 1, dev->dev_address);
+	dev->intf_rslt = dev->write(INA228_CONFIG, 0x8000, 2, dev->intf_ptr);
+	dev->intf_rslt += dev->read(INA228_MANUFACTURER_ID, &dev->manID, 1, dev->intf_ptr);
+	dev->intf_rslt += dev->read(INA228_DEVICE_ID, &dev->devID, 1, dev->intf_ptr);
 
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_SHUNT_CAL, SHUNT_CAL);
-	dev->intf_rslt += dev->write(INA228_SHUNT_CAL, SHUNT_CAL, 2,  dev->dev_address);
+	dev->intf_rslt += dev->write(INA228_SHUNT_CAL, SHUNT_CAL, 2, dev->intf_ptr);
 	
 	if(dev->shunt_ADCRange == 0)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_0;
 	if(dev->shunt_ADCRange == 1)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_1;
@@ -64,7 +64,7 @@ int8_t ina228_init(struct ina228_dev *dev)
 	return dev->intf_rslt;
 }
 
-int8_t ina228_voltage(float *value, struct ina228_dev *dev, )
+int8_t ina228_voltage(float *value, struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	int32_t iBusVoltage;
@@ -72,7 +72,7 @@ int8_t ina228_voltage(float *value, struct ina228_dev *dev, )
 	bool sign;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_VBUS, (uint8_t *)&iBusVoltage, 3);
-	dev->read(INA228_VBUS, (uint8_t *)&iBusVoltage, 3, dev->dev_address);
+	dev->read(INA228_VBUS, (uint8_t *)&data, 3, dev->intf_ptr);
 	sign = (data[0] & 0x80) == 0x80;
 	
 	iBusVoltage = (int32_t)(((int32_t)data[0] << 16 | (int32_t)data[1] << 8 | (int32_t)data[2]) >> 4 );
@@ -85,23 +85,26 @@ int8_t ina228_voltage(float *value, struct ina228_dev *dev, )
 	
 	fBusVoltage = (float)(iBusVoltage) * BUS_VOLTAGE_LSB;		// Output in mV
 
-	return (fBusVoltage);
+	*value = fBusVoltage;
+		
+	return dev->intf_rslt;
 }
 
-int8_t ina228_dietemp(float *value, float *value, struct ina228_dev *dev)
+int8_t ina228_dietemp(float *value, struct ina228_dev *dev)
 {
 	uint16_t iDieTemp;
 	float fDieTemp;
 
 	//iDieTemp = i2c_read_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_DIETEMP);
-	dev->read(INA228_DIETEMP, (uint8_t *)&iDieTemp, 2, dev->dev_address);
+	dev->read(INA228_DIETEMP, (uint8_t *)&iDieTemp, 2, dev->intf_ptr);
 	
 	fDieTemp = (iDieTemp) * DIE_TEMPERATURE_LSB;
-
-	return (fDieTemp);
+	*value = fDieTemp;
+	
+	return dev->intf_rslt;
 }
 
-int8_t ina228_shuntvoltage(struct ina228_dev *dev)
+int8_t ina228_shuntvoltage(float *value, struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	int32_t iShuntVoltage;
@@ -109,7 +112,7 @@ int8_t ina228_shuntvoltage(struct ina228_dev *dev)
 	bool sign;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_VSHUNT, (uint8_t *)&iShuntVoltage, 3);
-	dev->read(INA228_VSHUNT, &data, 3, dev->dev_address);
+	dev->read(INA228_VSHUNT, &data, 3, dev->intf_ptr);
 	sign = (data[0] & 0x80) == 0x80;
 	
 	iShuntVoltage = (int32_t)(((int32_t)data[0] << 16 | (int32_t)data[1] << 8 | (int32_t)data[2]) >> 4 );
@@ -121,19 +124,19 @@ int8_t ina228_shuntvoltage(struct ina228_dev *dev)
 	}
 	
 	fShuntVoltage = (float)(iShuntVoltage) * currentShuntLsb;		// Output in mV
-
-	return (fShuntVoltage);
+	*value = fShuntVoltage;
+	
+	return dev->intf_rslt;
 }
 
 int8_t ina228_current(float *value, struct ina228_dev *dev)
 {
 	uint8_t data[3];
 	int32_t iCurrent;
-	float fCurrent;
 	bool sign;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_CURRENT, (uint8_t *)&iCurrent, 3);
-	dev->read(INA228_CURRENT, &data, 3, dev->dev_address);	
+	dev->read(INA228_CURRENT, &data, 3, dev->intf_ptr);	
 	sign = (data[0] & 0x80) == 0x80;
 	
 	iCurrent = (int32_t)(((int32_t)data[0] << 16 | (int32_t)data[1] << 8 | (int32_t)data[2]) >> 4 );
@@ -143,8 +146,9 @@ int8_t ina228_current(float *value, struct ina228_dev *dev)
 	{
 		iCurrent += 0xFFF00000;
 	}
-
-	return (fCurrent);
+	*value = (float)iCurrent;
+	
+	return dev->intf_rslt;
 }
 
 int8_t ina228_power(float *value, struct ina228_dev *dev)
@@ -154,14 +158,16 @@ int8_t ina228_power(float *value, struct ina228_dev *dev)
 	float fPower;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_POWER, (uint8_t *)&iPower, 3);
-	dev->read(INA228_POWER, (uint8_t *)&iPower, 3, dev->dev_address);
+	dev->read(INA228_POWER, (uint8_t *)&iPower, 3, dev->intf_ptr);
 		
 	iPower = (int32_t)(((int32_t)data[0] << 16 | (int32_t)data[1] << 8 | (int32_t)data[2]) >> 4 );
 	iPower = iPower & 0xFFFFFF;
 
 	fPower = 3.2 * CURRENT_LSB * iPower;
-
-	return (fPower);
+	
+	*value = fPower;
+	
+	return dev->intf_rslt;
 }
 
 /*
@@ -176,13 +182,15 @@ int8_t ina228_energy(float *value, struct ina228_dev *dev)
 	float fEnergy;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_ENERGY, (uint8_t *)&iEnergy, 5);
-	dev->read(INA228_ENERGY, (uint8_t *)&iEnergy, 5, dev->dev_address);
+	dev->read(INA228_ENERGY, (uint8_t *)&iEnergy, 5, dev->intf_ptr);
 	
 	//iEnergy = __bswap64(iEnergy & 0xFFFFFFFFFF) >> 24;
 
 	fEnergy = 16 * 3.2 * CURRENT_LSB * iEnergy;
 
-	return (fEnergy);
+	*value = fEnergy;
+	
+	return dev->intf_rslt;
 }
 
 /*
@@ -198,13 +206,14 @@ int8_t ina228_charge(float *value, struct ina228_dev *dev)
 	bool sign;
 
 	//i2c_read_buf(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_CHARGE, (uint8_t *)&iCharge, 5);
-	dev->read(INA228_CHARGE, (uint8_t *)&iCharge, 5, dev->dev_address);
+	dev->read(INA228_CHARGE, (uint8_t *)&iCharge, 5, dev->intf_ptr);
 	
 	sign = iCharge & 0x80;
 	//iCharge = __bswap64(iCharge & 0xFFFFFFFFFF) >> 24;
 	if (sign) iCharge += 0xFFFFFF0000000000;
 
 	fCharge = CURRENT_LSB * iCharge;
-
-	return (fCharge);
+	*value = fCharge;
+	
+	return dev->intf_rslt;
 }

@@ -50,14 +50,17 @@
 #define DIE_TEMPERATURE_LSB				0.0078125f;
 
 /* type definitions */
-typedef int8_t (*ina228_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, uint8_t devAddr);
-typedef int8_t (*ina228_write_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, uint8_t devAddr);
+typedef int8_t (*ina228_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
+typedef int8_t (*ina228_write_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
 typedef void (*ina228_delay_us_fptr_t)(uint32_t period);
 
 struct ina228_dev
 {
 	/*! Device Address */
 	uint8_t dev_address;
+
+	/*< Interface function pointer used to enable the device address for I2C */
+	void *intf_ptr;
 
 	/*< Read function pointer */
 	ina228_read_fptr_t read;
@@ -84,7 +87,7 @@ struct ina228_dev
 
 int8_t null_ptr_check(const struct ina228_dev *dev);
 
-int8_t ina228_init(float *value, struct ina228_dev *dev);
+int8_t ina228_init(struct ina228_dev *dev);
 int8_t ina228_voltage(float *value, struct ina228_dev *dev);
 int8_t ina228_dietemp(float *value, struct ina228_dev *dev);
 int8_t ina228_shuntvoltage(float *value, struct ina228_dev *dev);
