@@ -192,8 +192,9 @@ int8_t user_i2c_write_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, 
 	buffer[0] = reg_addr;
 	memcpy(&buffer[1], data, len);
 	
-	rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
-	rslt = I2C_1_sendData(dev_addr, data, len);
+	rslt = I2C_0_sendData(dev_addr, &buffer, len + 1);
+	//rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
+	//rslt = I2C_1_sendData(dev_addr, data, len);
 	
 	return rslt;
 }
@@ -301,22 +302,20 @@ void print_bme280_sensor_data(struct bme280_data *comp_data)
 int8_t configure_bmi160(struct bmi160_dev *dev)
 {
 	int8_t rslt;
-	bmi160_soft_reset(dev);
-	/* Select the Output data rate, range of accelerometer sensor */
-	dev->accel_cfg.odr = BMI160_ACCEL_ODR_400HZ;
-	dev->accel_cfg.range = BMI160_ACCEL_RANGE_2G;
-	dev->accel_cfg.bw = BMI160_ACCEL_BW_NORMAL_AVG4;
 
 	/* Select the power mode of accelerometer sensor */
 	dev->accel_cfg.power = BMI160_ACCEL_NORMAL_MODE;
-
-	/* Select the Output data rate, range of Gyroscope sensor */
-	dev->gyro_cfg.odr = BMI160_GYRO_ODR_400HZ;
-	dev->gyro_cfg.range = BMI160_GYRO_RANGE_250_DPS;
-	dev->gyro_cfg.bw = BMI160_GYRO_BW_NORMAL_MODE;
+	/* Select the Output data rate, range of accelerometer sensor */
+	dev->accel_cfg.odr = BMI160_ACCEL_ODR_100HZ;
+	dev->accel_cfg.range = BMI160_ACCEL_RANGE_2G;
+	dev->accel_cfg.bw = BMI160_ACCEL_BW_NORMAL_AVG4;
 
 	/* Select the power mode of Gyroscope sensor */
 	dev->gyro_cfg.power = BMI160_GYRO_NORMAL_MODE;
+	/* Select the Output data rate, range of Gyroscope sensor */
+	dev->gyro_cfg.odr = BMI160_GYRO_ODR_100HZ;
+	dev->gyro_cfg.range = BMI160_GYRO_RANGE_2000_DPS;
+	dev->gyro_cfg.bw = BMI160_GYRO_BW_NORMAL_MODE;
 
 	/* Set the sensor configuration */
 	rslt = bmi160_set_sens_conf(dev);
@@ -371,6 +370,13 @@ static int8_t get_compass_data(struct bmm150_dev *dev)
 	return rslt;
 }
 
+int8_t readAnalog(enum ADC_MUXPOS_enum channel, uint16_t *value)
+{
+	ADC0_selectChannel(channel);
+	
+	*value = ADC0_read();
+	return 0;
+}
 
 int main(void)
 {
@@ -462,6 +468,9 @@ int main(void)
 	result = ina228_init(&monitorMotor_1);
 	printf("TI INA228 [1] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitorMotor_1.devID);
 
+	ADC0_init(VREF_REFSEL_2V500_gc);
+	ADC0_start();
+	printf("ADC init \n\r");
 	printf("***************************************************\n\r");
 
 	/************************************************************************/
@@ -507,17 +516,21 @@ int main(void)
 		while (1)
 		{
 			rslt = bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
+			configure_bmm150(&sensorCompass);
 			
-//			adcVal = ADC0_read();
-			temp_C = temperatureConvert(adcVal);
+			readAnalog(ADC_MUXPOS_AIN19_gc, &adcVal);
+			uint32_t adcVoltage = ( (uint32_t)adcVal * 2500 ) / 4096;
+			
 			float voltage_0, voltage_1;
 			float dieTemp_0, dieTemp_1;
 			ina228_voltage(&voltage_0, &monitorMotor_0);
 			ina228_voltage(&voltage_1, &monitorMotor_1);
 			ina228_dietemp(&dieTemp_0, &monitorMotor_0);
 			ina228_dietemp(&dieTemp_1, &monitorMotor_1);
+			printf("************************************************************\n\r", adcVal);
+			printf("ADC0: [19] = %04u mV\n\r", adcVoltage);
 			
-			printf("M0: V: %05dmV T: %04d M1: V: %05dmV  T: %04d\t", (uint16_t)(voltage_0*1000), (uint16_t)(dieTemp_0 * 10), (uint16_t)(voltage_1 * 1000), (uint16_t)(dieTemp_1 * 10) );
+			printf("M0: V: %05dmV T: %04d M1: V: %05dmV  T: %04d\n\r", (uint16_t)(voltage_0*1000), (uint16_t)(dieTemp_0 * 10), (uint16_t)(voltage_1 * 1000), (uint16_t)(dieTemp_1 * 10) );
 			
 			bme280_get_sensor_data(BME280_ALL, &sensEnvData, &sensorEnv);
 			print_bme280_sensor_data(&sensEnvData);
@@ -530,6 +543,7 @@ int main(void)
 			
 			get_compass_data(&sensorCompass);
 			
+			printf("\n\r", adcVal);
 			_delay_ms(500);
 		
 		}

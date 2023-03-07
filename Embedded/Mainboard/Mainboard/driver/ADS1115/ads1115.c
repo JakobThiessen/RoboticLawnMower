@@ -37,17 +37,13 @@ int8_t ads115_init(struct ads115_dev *dev)
 
 	uint16_t val = 0;
 	
-    rslt = hdc1080_readManufacturerId(&val, dev);
+    rslt = ads115_readManufacturerId(&val, dev);
 	if(val == 0x5449)
 	{
-		rslt = hdc1080_readDeviceId(&val, dev);
+		rslt = ads115_readDeviceId(&val, dev);
 		if (val == 0x1050)
 		{
-			rslt = hdc1080_set_sensor_settings(dev->settings, dev);
-			if (rslt != HDC1080_OK)
-			{
-				rslt = HDC1080_E_COMM_FAIL;
-			} 
+
 		}
 		else
 		{

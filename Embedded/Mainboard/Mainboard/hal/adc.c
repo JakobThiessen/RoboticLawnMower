@@ -8,19 +8,26 @@
 #include "adc.h"
 
 /* This function initializes the VREF module */
-void VREF0_init(void)
+void VREF0_init(enum VREF_REFSEL_enum vref)
 {
-    VREF.ADC0REF = VREF_REFSEL_2V048_gc;  /* Internal 2.048V reference */
+    VREF.ADC0REF = vref;  /* Internal 2.048V reference */
 }
 
 /* This function initializes the ADC module */
-void ADC0_init(void)
+void ADC0_init(enum VREF_REFSEL_enum vref)
 {
     ADC0.CTRLC = ADC_PRESC_DIV4_gc;         /* CLK_PER divided by 4 */
     ADC0.CTRLA = ADC_ENABLE_bm              /* ADC Enable: enabled */
                 | ADC_RESSEL_12BIT_gc       /* 12-bit mode */
                 | ADC_FREERUN_bm;           /* Free-run mode */
     ADC0.MUXPOS = ADC_MUXPOS_TEMPSENSE_gc;  /* Select ADC channel, Temp. */
+	
+	VREF0_init(vref);
+}
+
+void ADC0_selectChannel(enum ADC_MUXPOS_enum mux)
+{
+	ADC0.MUXPOS = mux;
 }
 
 /* This function returns the ADC conversion result */

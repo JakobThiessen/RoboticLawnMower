@@ -15,8 +15,9 @@ extern "C" {
 //#include "compiler.h"
 #include <avr/io.h>
 
-void VREF0_init(void);
-void ADC0_init(void);
+void VREF0_init(enum VREF_REFSEL_enum vref);
+void ADC0_init(enum VREF_REFSEL_enum vref);
+void ADC0_selectChannel(enum ADC_MUXPOS_enum mux);
 void ADC0_start(void);
 uint16_t ADC0_read(void);
 int16_t temperatureConvert(uint16_t data);

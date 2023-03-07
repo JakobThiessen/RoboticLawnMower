@@ -138,7 +138,7 @@ int8_t ads115_init(struct ads115_dev *dev);
 int8_t ads115_set_regs(uint8_t reg_addr, uint8_t *reg_data, uint8_t len, struct ads115_dev *dev);
 int8_t ads115_get_regs(uint8_t reg_addr, uint8_t *reg_data, uint16_t len, struct ads115_dev *dev);
 
-int8_t ads115_readManufacturerId(uint16_t *value, struct ads115_dev *dev);	// 0x5449 ID of Texas Instruments
+int8_t ads115_readManufacturerId(uint16_t *value, struct ads115_dev *dev);		// 0x5449 ID of Texas Instruments
 int8_t ads115_readDeviceId(uint16_t *value, struct ads115_dev *dev);			// 0x1050 ID of the device
 
 int8_t ads115_triggerMeasurement( struct ads115_dev *dev);
