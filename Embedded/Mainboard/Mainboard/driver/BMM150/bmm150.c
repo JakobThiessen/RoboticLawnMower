@@ -571,10 +571,12 @@ int8_t bmm150_init(struct bmm150_dev *dev)
 {
     int8_t rslt;
     uint8_t chip_id = 0;
-
+	uint8_t reg_data = BMM150_POWER_CNTRL_ENABLE;
     /* Power up the sensor from suspend to sleep mode */
     rslt = set_power_control_bit(BMM150_POWER_CNTRL_ENABLE, dev);
-
+	//rslt = dev->write(BMM150_REG_POWER_CONTROL, &reg_data, 1, dev->intf_ptr );
+	//rslt = dev->read(BMM150_REG_POWER_CONTROL, &reg_data, 1, dev->intf_ptr );
+	
     if (rslt == BMM150_OK)
     {
         /* Start-up time delay of 3ms */
@@ -1179,7 +1181,10 @@ static int8_t set_power_control_bit(uint8_t pwrcntrl_bit, struct bmm150_dev *dev
         /* Sets the value of power control bit */
         reg_data = BMM150_SET_BITS_POS_0(reg_data, BMM150_PWR_CNTRL, pwrcntrl_bit);
         rslt = bmm150_set_regs(BMM150_REG_POWER_CONTROL, &reg_data, 1, dev);
-
+		
+		/* Power control register 0x4B is read */
+		rslt = bmm150_get_regs(BMM150_REG_POWER_CONTROL, &reg_data, 1, dev);
+	
         if (rslt == BMM150_OK)
         {
             /* Store the power control bit

@@ -165,10 +165,10 @@
 #define BMM150_I2C_ADDRESS_CSB_HIGH_SDO_HIGH      UINT8_C(0x13)
 
 /*! @name Sensor delay time settings  */
-#define BMM150_DELAY_SOFT_RESET                   UINT8_C(1000)
-#define BMM150_DELAY_NORMAL_SELF_TEST             UINT8_C(2000)
-#define BMM150_START_UP_TIME                      UINT8_C(3000)
-#define BMM150_DELAY_ADV_SELF_TEST                UINT8_C(4000)
+#define BMM150_DELAY_SOFT_RESET                   (1000)
+#define BMM150_DELAY_NORMAL_SELF_TEST             (2000)
+#define BMM150_START_UP_TIME                      (3000)
+#define BMM150_DELAY_ADV_SELF_TEST                (4000)
 
 /*! @name ENABLE/DISABLE DEFINITIONS  */
 #define BMM150_XYZ_CHANNEL_ENABLE                 UINT8_C(0x00)

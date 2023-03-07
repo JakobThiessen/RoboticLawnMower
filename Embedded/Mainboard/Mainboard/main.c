@@ -116,13 +116,14 @@ void PORT_init(void)
 
 int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
-	int8_t rslt = 0;
+	int8_t rslt_0 = 0;
+	int8_t rslt_1 = 0;
 	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	
-	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
-	rslt += I2C_0_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
-	
-	return rslt;
+
+	rslt_0 = I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt_1 = I2C_0_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
+
+	return rslt_1;
 }
 
 /*!
@@ -130,12 +131,15 @@ int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *in
  */
 int8_t user_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
+	uint8_t data[100];
 	int8_t rslt = 0;
 	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	
-	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
-	rslt += I2C_0_sendData(dev_addr, reg_data, (uint8_t)len);
-	
+
+	data[0] = reg_addr;
+	memcpy(&data[1], reg_data, len);
+
+	rslt = I2C_0_sendData(dev_addr, &data, len + 1);
+
 	return rslt;
 }
 
@@ -155,11 +159,14 @@ int8_t user_i2c_1_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *
  */
 int8_t user_i2c_1_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
+	uint8_t data[100];
 	int8_t rslt = 0;
 	uint8_t dev_addr = *(uint8_t*)intf_ptr;
 	
-	rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
-	rslt += I2C_1_sendData(dev_addr, reg_data, (uint8_t)len);
+	data[0] = reg_addr;
+	memcpy(&data[1], reg_data, len);
+	
+	rslt = I2C_1_sendData(dev_addr, &data, len + 1);
 	
 	return rslt;
 }
@@ -170,7 +177,7 @@ int8_t user_i2c_read_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, u
 	
 	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
 	rslt += I2C_0_getData(dev_addr, data, (uint8_t)len);
-	
+
 	return rslt;
 }
 
@@ -179,10 +186,14 @@ int8_t user_i2c_read_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, u
  */
 int8_t user_i2c_write_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, uint16_t len)
 {
+	uint8_t buffer[250];
 	int8_t rslt = 0;
+
+	buffer[0] = reg_addr;
+	memcpy(&buffer[1], data, len);
 	
-	rslt = I2C_0_sendData(dev_addr, &reg_addr, 1);
-	rslt += I2C_0_sendData(dev_addr, data, (uint8_t)len);
+	rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
+	rslt = I2C_1_sendData(dev_addr, data, len);
 	
 	return rslt;
 }
@@ -194,13 +205,17 @@ int8_t user_i2c_write_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, 
 void user_delay_us(uint32_t period_us, void *intf_ptr)
 {
 	for(int p = 0; p < period_us; p++)
+	{
 		_delay_us(1);
+	}
 }
 
 void user_delay_ms(uint32_t period_ms)
 {
 	for(int p = 0; p < period_ms; p++)
+	{
 		_delay_ms(1);
+	}
 }
 
 void configuration_spi(void)
@@ -414,7 +429,7 @@ int main(void)
 	sensorCompass.intf = BMM150_I2C_INTF;
 	sensorCompass.read = user_i2c_read;
 	sensorCompass.write = user_i2c_write;
-//	sensorCompass.delay_us = user_delay_us;
+	sensorCompass.delay_us = user_delay_us;
 
 	uint8_t dev_addr_monitroMotor_0 = INA228_SLAVE_ADDRESS;
 	monitorMotor_0.intf_ptr = &dev_addr_monitroMotor_0;
