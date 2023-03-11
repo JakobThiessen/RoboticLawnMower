@@ -39,6 +39,9 @@
 #include "driver/BMM150/bmm150_defs.h"
 #include "driver/INA228/ina228.h"
 
+#include "driver/PCA9685/pca9685.h"
+#include "driver/ADS1115/ads1115.h"
+
 
 // ********************************************************************************
 // Macros and Defines
@@ -89,10 +92,10 @@ struct bmm150_dev	sensorCompass;
 struct ina228_dev	monitorMotor_0;
 struct ina228_dev	monitorMotor_1;
 
-//ads1115_dev	analogSensor_0
-//ads1115_dev	analogSensor_1
+ads1115_t	analogSensor_0;
+ads1115_t	analogSensor_1;
 
-//pca9685_dev	pwmControl
+struct pca9685_dev	pwmControl;
 
 void PORT_init(void)
 {
@@ -116,14 +119,13 @@ void PORT_init(void)
 
 int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr)
 {
-	int8_t rslt_0 = 0;
-	int8_t rslt_1 = 0;
+	int8_t rslt = 0;
 	uint8_t dev_addr = *(uint8_t*)intf_ptr;
 
-	rslt_0 = I2C_0_sendData(dev_addr, &reg_addr, 1);
-	rslt_1 = I2C_0_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
+	I2C_0_sendData(dev_addr, &reg_addr, 1);
+	rslt = I2C_0_getData(dev_addr, (uint8_t *)reg_data, (uint8_t)len);
 
-	return rslt_1;
+	return rslt;
 }
 
 /*!
@@ -138,7 +140,7 @@ int8_t user_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, v
 	data[0] = reg_addr;
 	memcpy(&data[1], reg_data, len);
 
-	rslt = I2C_0_sendData(dev_addr, &data, len + 1);
+	rslt = I2C_0_sendData(dev_addr, (uint8_t*)&data, len + 1);
 
 	return rslt;
 }
@@ -166,7 +168,7 @@ int8_t user_i2c_1_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len,
 	data[0] = reg_addr;
 	memcpy(&data[1], reg_data, len);
 	
-	rslt = I2C_1_sendData(dev_addr, &data, len + 1);
+	rslt = I2C_1_sendData(dev_addr, (uint8_t*)&data, len + 1);
 	
 	return rslt;
 }
@@ -192,10 +194,31 @@ int8_t user_i2c_write_bmi160(uint8_t dev_addr, uint8_t reg_addr, uint8_t *data, 
 	buffer[0] = reg_addr;
 	memcpy(&buffer[1], data, len);
 	
-	rslt = I2C_0_sendData(dev_addr, &buffer, len + 1);
+	rslt = I2C_0_sendData(dev_addr, (uint8_t*)&buffer, len + 1);
 	//rslt = I2C_1_sendData(dev_addr, &reg_addr, 1);
 	//rslt = I2C_1_sendData(dev_addr, data, len);
 	
+	return rslt;
+}
+
+
+int8_t user_i2c_read_ads1115(uint8_t dev_addr, uint8_t *data, uint8_t len)
+{
+	int8_t rslt = 0;
+
+	rslt = I2C_0_getData(dev_addr, data, len);
+
+	return rslt;
+}
+
+/*!
+ * @brief This function for writing the sensor's registers through I2C bus.
+ */
+int8_t user_i2c_write_ads1115(uint8_t dev_addr, uint8_t *data, uint8_t len)
+{
+	int8_t rslt = 0;
+	rslt = I2C_0_sendData(dev_addr, data, len);
+
 	return rslt;
 }
 
@@ -296,7 +319,7 @@ void print_bme280_sensor_data(struct bme280_data *comp_data)
 	hum = 1.0f / 1024.0f * comp_data->humidity;
 	#endif
 	#endif
-	printf("%0.2lf deg C, %0.2lf hPa, %0.2lf%%\n\r", temp, press, hum);
+	printf("%0.2lf degC, %0.2lf hPa, %0.2lf%%   ", temp, press, hum);
 }
 
 int8_t configure_bmi160(struct bmi160_dev *dev)
@@ -365,7 +388,7 @@ static int8_t get_compass_data(struct bmm150_dev *dev)
 	rslt = bmm150_read_mag_data(&mag_data, dev);
 
 	/* Unit for magnetometer data is microtesla(uT) */
-	printf("MAG DATA  X : %d uT   Y : %d uT   Z : %d uT\n\r", mag_data.x, mag_data.y, mag_data.z);
+	printf("MAG X : %04duT Y : %04duT Z : %04d uT  ", mag_data.x, mag_data.y, mag_data.z);
 
 	return rslt;
 }
@@ -447,10 +470,23 @@ int main(void)
 	uint8_t dev_addr_monitroMotor_1 = INA228_SLAVE_ADDRESS + 1;
 	monitorMotor_1.intf_ptr = &dev_addr_monitroMotor_1;
 	monitorMotor_1.shunt_ADCRange = 0;
-	monitorMotor_1.read = user_i2c_1_read;
-	monitorMotor_1.write = user_i2c_1_write;
+	monitorMotor_1.read = user_i2c_read_bmi160;
+	monitorMotor_1.write = user_i2c_write;
 	monitorMotor_1.delay_us = user_delay_us;
 
+	pwmControl.i2c_addr = PCA9685_I2C_ADDRESS_3;
+	pwmControl.read = user_i2c_read_bmi160;
+	pwmControl.write = user_i2c_write_bmi160;
+	pwmControl.delay_ms = user_delay_ms;
+
+	analogSensor_0.DevAddr = 0x48;
+	analogSensor_0.Read = user_i2c_read_ads1115;
+	analogSensor_0.Write = user_i2c_write_ads1115;
+	
+	analogSensor_1.DevAddr = 0x49;
+	analogSensor_1.Read = user_i2c_read_ads1115;
+	analogSensor_1.Write = user_i2c_write_ads1115;
+	
 	printf("\n***************************************************\n\r");
 	
 	int8_t result = 0;
@@ -467,6 +503,15 @@ int main(void)
 	printf("TI INA228 [0] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitorMotor_0.devID);
 	result = ina228_init(&monitorMotor_1);
 	printf("TI INA228 [1] INIT:	%d --> CHIP_ID: 0x%02X\n\r", result, monitorMotor_1.devID);
+
+	pca9685_init(&pwmControl);
+	printf("PCA9685 INIT:	%d --> CHIP_ID: 0x%02X\n\r", pwmControl.rslt, pwmControl.chip_id);
+	
+	bool status_0 = ads1115_Open(&analogSensor_0, ADS1115_ADDRESS1, user_i2c_read_ads1115, user_i2c_write_ads1115);
+	bool status_1 = ads1115_Open(&analogSensor_1, ADS1115_ADDRESS2, user_i2c_read_ads1115, user_i2c_write_ads1115);
+	
+	printf("ADS1115 [0] OPEN:	%d\n\r", (int8_t)status_0 );
+	printf("ADS1115 [1] OPEN:	%d\n\r", (int8_t)status_1);
 
 	ADC0_init(VREF_REFSEL_2V500_gc);
 	ADC0_start();
@@ -497,13 +542,8 @@ int main(void)
 		return 0;
 	
 	#else
-	
-		int8_t rslt;
-		int16_t temp_C;
+
 		uint16_t adcVal;
-		float hdc1080_Temp = 0;
-		float hdc1080_Humidity = 0;
-		uint16_t dutyCycle = 0;
 	
 		struct bme280_data sensEnvData;
 		
@@ -515,7 +555,7 @@ int main(void)
 
 		while (1)
 		{
-			rslt = bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
+			bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
 			configure_bmm150(&sensorCompass);
 			
 			readAnalog(ADC_MUXPOS_AIN19_gc, &adcVal);
@@ -527,10 +567,13 @@ int main(void)
 			ina228_voltage(&voltage_1, &monitorMotor_1);
 			ina228_dietemp(&dieTemp_0, &monitorMotor_0);
 			ina228_dietemp(&dieTemp_1, &monitorMotor_1);
-			printf("************************************************************\n\r", adcVal);
-			printf("ADC0: [19] = %04u mV\n\r", adcVoltage);
+
+			//printf("ADC0: [19] = %04u mV\n\r", adcVoltage);
 			
-			printf("M0: V: %05dmV T: %04d M1: V: %05dmV  T: %04d\n\r", (uint16_t)(voltage_0*1000), (uint16_t)(dieTemp_0 * 10), (uint16_t)(voltage_1 * 1000), (uint16_t)(dieTemp_1 * 10) );
+			int16_t adc_0 = ads1115_ConvertOnce(&analogSensor_0, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
+			int16_t adc_1 = ads1115_ConvertOnce(&analogSensor_1, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
+			printf("ADS1115 -> [0] %04d  [0] %04d ", adc_0, adc_1);
+			printf("M0: V: %05dmV M1: V: %05dmV   ", (uint16_t)(voltage_0*1000), (uint16_t)(voltage_1 * 1000) );
 			
 			bme280_get_sensor_data(BME280_ALL, &sensEnvData, &sensorEnv);
 			print_bme280_sensor_data(&sensEnvData);
@@ -538,12 +581,29 @@ int main(void)
 			/* To read both Accel and Gyro data */
 			bmi160_get_sensor_data((BMI160_ACCEL_SEL | BMI160_GYRO_SEL | BMI160_TIME_SEL), &bmi160_accel, &bmi160_gyro, &sensorGyro);
 
-			printf("ax:%d\tay:%d\taz:%d\t", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
-			printf("gx:%d\tgy:%d\tgz:%d\n\r", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
+			printf("ax:%04d\tay:%04d\taz:%04d   ", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
+			printf("gx:%04d\tgy:%04d\tgz:%04d   ", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
 			
 			get_compass_data(&sensorCompass);
 			
-			printf("\n\r", adcVal);
+			uint16_t on = 0;
+			uint16_t off = 0;
+			uint8_t mode_1 = 0;
+			uint8_t mode_2 = 0;
+			
+			printf("\n\rpca9685 set PWM:\n\r");
+			for (int i = 0; i < 16; i++)
+			{
+				mode_1 = pca9685_getModeReg(PCA9685_MODE_1, &pwmControl);
+				mode_2 = pca9685_getModeReg(PCA9685_MODE_2, &pwmControl);
+				pca9685_setPWM(i, (200 + i * 10), (1048 + i * 10), &pwmControl);
+				on = 0;
+				off = 0;
+				pca9685_getPWM(i, &on, &off, &pwmControl);
+				printf("     CH [%02d]  mode1-2: 0x%02X 0x%02X  on: %04d off: %04d\n\r", i, mode_1, mode_2, on, off);
+			}
+
+			printf("\n\r");
 			_delay_ms(500);
 		
 		}

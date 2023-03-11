@@ -152,6 +152,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="driver\ADS1115\ads1115.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\ADS1115\ads1115.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="driver\BME280\bme280.c">
       <SubType>compile</SubType>
     </Compile>
@@ -183,6 +189,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\INA228\ina228.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\PCA9685\pca9685.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\PCA9685\pca9685.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\ws2812\ws2812.c">
@@ -338,10 +350,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="driver\" />
+    <Folder Include="driver\ADS1115\" />
     <Folder Include="driver\BME280\" />
     <Folder Include="driver\BMI160\" />
     <Folder Include="driver\BMM150\" />
     <Folder Include="driver\INA228\" />
+    <Folder Include="driver\PCA9685\" />
     <Folder Include="driver\ws2812\" />
     <Folder Include="hal\" />
     <Folder Include="OS\" />
