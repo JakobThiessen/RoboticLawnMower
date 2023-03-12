@@ -191,6 +191,12 @@
     <Compile Include="driver\INA228\ina228.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="driver\NMEA\nmea_process.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\NMEA\nmea_process.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="driver\PCA9685\pca9685.c">
       <SubType>compile</SubType>
     </Compile>
@@ -355,6 +361,7 @@
     <Folder Include="driver\BMI160\" />
     <Folder Include="driver\BMM150\" />
     <Folder Include="driver\INA228\" />
+    <Folder Include="driver\NMEA\" />
     <Folder Include="driver\PCA9685\" />
     <Folder Include="driver\ws2812\" />
     <Folder Include="hal\" />
