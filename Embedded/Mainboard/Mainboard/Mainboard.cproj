@@ -191,16 +191,28 @@
     <Compile Include="driver\INA228\ina228.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\NMEA\nmea_process.h">
+    <Compile Include="driver\lwgps\lwgps.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driver\NMEA\nmea_process.c">
+    <Compile Include="driver\lwgps\lwgps.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\lwgps\lwgps_opt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\lwgps\lwgps_opts_template.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\PCA9685\pca9685.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\PCA9685\pca9685.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\TMAG5273\tmag5273.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\TMAG5273\tmag5273.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\ws2812\ws2812.c">
@@ -361,8 +373,9 @@
     <Folder Include="driver\BMI160\" />
     <Folder Include="driver\BMM150\" />
     <Folder Include="driver\INA228\" />
-    <Folder Include="driver\NMEA\" />
+    <Folder Include="driver\lwgps\" />
     <Folder Include="driver\PCA9685\" />
+    <Folder Include="driver\TMAG5273\" />
     <Folder Include="driver\ws2812\" />
     <Folder Include="hal\" />
     <Folder Include="OS\" />

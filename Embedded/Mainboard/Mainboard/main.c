@@ -20,6 +20,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <avr/cpufunc.h>
+#include <string.h>
+
+
 
 #ifdef USE_FREE_RTOS
 	#include "OS/freeRTOS/include/FreeRTOS.h"
@@ -40,12 +43,19 @@
 #include "driver/INA228/ina228.h"
 
 #include "driver/PCA9685/pca9685.h"
+#include "driver/TMAG5273/tmag5273.h"
 #include "driver/ADS1115/ads1115.h"
 
+#include "driver/lwgps/lwgps.h"
 
 // ********************************************************************************
 // Macros and Defines
 // ********************************************************************************
+
+#if !LWGPS_CFG_STATUS
+//#error "this test must be compiled with -DLWGPS_CFG_STATUS=1"
+#endif /* !LWGPS_CFG_STATUS */
+
 #define LED0	PIN3_bm
 #define SW0		PIN2_bm
 #define DIO		PIN7_bm
@@ -96,6 +106,65 @@ ads1115_t	analogSensor_0;
 ads1115_t	analogSensor_1;
 
 struct pca9685_dev	pwmControl;
+
+struct tmag5273_dev magnetSensor;
+
+/* GPS handle */
+lwgps_t hgps;
+
+/**
+ * \brief           Dummy data from GPS receiver
+ */
+const char
+gps_rx_data[] = ""
+                "$GPRMC,183729,A,3907.356,N,12102.482,W,000.0,360.0,080301,015.5,E*6F\r\n"
+                "$GPRMB,A,,,,,,,,,,,,V*71\r\n"
+                "$GPGGA,183730,3907.356,N,12102.482,W,1,05,1.6,646.4,M,-24.1,M,,*75\r\n"
+                "$GPGSA,A,3,02,,,07,,09,24,26,,,,,1.6,1.6,1.0*3D\r\n"
+                "$GPGSV,2,1,08,02,43,088,38,04,42,145,00,05,11,291,00,07,60,043,35*71\r\n"
+                "$GPGSV,2,2,08,08,02,145,00,09,46,303,47,24,16,178,32,26,18,231,43*77\r\n"
+                "$PGRME,22.0,M,52.9,M,51.0,M*14\r\n"
+                "$GPGLL,3907.360,N,12102.481,W,183730,A*33\r\n"
+                "$PGRMZ,2062,f,3*2D\r\n"
+                "$PGRMM,WGS84*06\r\n"
+                "$GPBOD,,T,,M,,*47\r\n"
+                "$GPRTE,1,1,c,0*07\r\n"
+                "$GPRMC,183731,A,3907.482,N,12102.436,W,000.0,360.0,080301,015.5,E*67\r\n"
+                "$GPRMB,A,,,,,,,,,,,,V*71\r\n";
+				
+const lwgps_statement_t expected[] = {
+	STAT_RMC,
+	STAT_UNKNOWN,
+	STAT_GGA,
+	STAT_GSA,
+	STAT_GSV,
+	STAT_GSV,
+	STAT_UNKNOWN,
+	STAT_UNKNOWN,
+	STAT_UNKNOWN,
+	STAT_CHECKSUM_FAIL,
+	STAT_UNKNOWN,
+	STAT_UNKNOWN,
+	STAT_RMC,
+	STAT_UNKNOWN
+};
+
+static int err_cnt;
+
+void callback(lwgps_statement_t res)
+{
+	static int i;
+
+	if (res != expected[i])
+	{
+		printf("failed i %d, expected res %d but received %d\n",
+		i, expected[i], res);
+		++err_cnt;
+	}
+
+	++i;
+}
+
 
 void PORT_init(void)
 {
@@ -487,6 +556,10 @@ int main(void)
 	analogSensor_1.Read = user_i2c_read_ads1115;
 	analogSensor_1.Write = user_i2c_write_ads1115;
 	
+	magnetSensor.i2c_addr = TMAG5273A1_I2C_DEF_ADDR;
+	magnetSensor.read = user_i2c_read_bmi160;
+	magnetSensor.write = user_i2c_write_bmi160;
+	
 	printf("\n***************************************************\n\r");
 	
 	int8_t result = 0;
@@ -507,6 +580,9 @@ int main(void)
 	pca9685_init(&pwmControl);
 	printf("PCA9685 INIT:	%d --> CHIP_ID: 0x%02X\n\r", pwmControl.rslt, pwmControl.chip_id);
 	
+	tmag5273_init(&magnetSensor);
+	printf("TMAG5273A1 INIT:	%d --> DEVICE_ID: 0x%02X  MAN_ID: 0x%04X\n\r", magnetSensor.rslt, magnetSensor.deviceID, magnetSensor.manufacturerID);
+	
 	bool status_0 = ads1115_Open(&analogSensor_0, ADS1115_ADDRESS1, user_i2c_read_ads1115, user_i2c_write_ads1115);
 	bool status_1 = ads1115_Open(&analogSensor_1, ADS1115_ADDRESS2, user_i2c_read_ads1115, user_i2c_write_ads1115);
 	
@@ -516,6 +592,11 @@ int main(void)
 	ADC0_init(VREF_REFSEL_2V500_gc);
 	ADC0_start();
 	printf("ADC init \n\r");
+	
+	/* Init GPS */
+	status_1 = lwgps_init(&hgps);
+	printf("lwgps init:	%d\n\r", (int8_t)status_1);
+		
 	printf("***************************************************\n\r");
 
 	/************************************************************************/
@@ -586,6 +667,16 @@ int main(void)
 			
 			get_compass_data(&sensorCompass);
 			
+			float magTemp = 0.0f;
+			float magAng = 0.0f;
+			struct tmag5273_sensor_data magSensorVector;
+			
+			readTemperatureData(&magTemp, &magnetSensor);
+			readAngleData(&magAng, &magnetSensor);
+			readRawXYZData(&magSensorVector, &magnetSensor);
+			
+			printf("\n\rTMAG--> T: %.02f, A: %.03f, Vec[x,y,z] %04d %04d %04d\n\r", magTemp, magAng, magSensorVector.x, magSensorVector.y, magSensorVector.z);
+
 			uint16_t on = 0;
 			uint16_t off = 0;
 			uint8_t mode_1 = 0;
@@ -603,8 +694,12 @@ int main(void)
 				printf("     CH [%02d]  mode1-2: 0x%02X 0x%02X  on: %04d off: %04d\n\r", i, mode_1, mode_2, on, off);
 			}
 
+			/* Process all input data */
+			//lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data), callback);
+			lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data) );
+			printf("GPS: %06f, %06f, %02d:%02d:%02d\r\n", hgps.longitude, hgps.latitude, hgps.hours, hgps.minutes, hgps.seconds);
 			printf("\n\r");
-			_delay_ms(500);
+		_delay_ms(500);
 		
 		}
 		
