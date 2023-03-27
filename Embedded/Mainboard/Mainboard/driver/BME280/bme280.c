@@ -39,6 +39,7 @@
 /*! @file bme280.c
  * @brief Sensor driver for BME280 sensor
  */
+#include <stdint.h>
 #include "bme280.h"
 
 /**\name Internal macros */
@@ -1455,7 +1456,7 @@ static int8_t get_calib_data(struct bme280_dev *dev)
     uint8_t reg_addr = BME280_TEMP_PRESS_CALIB_DATA_ADDR;
 
     /* Array to store calibration data */
-    uint8_t calib_data[BME280_TEMP_PRESS_CALIB_DATA_LEN] = { 0 };
+    uint8_t calib_data[BME280_TEMP_PRESS_CALIB_DATA_LEN];
 
     /* Read the calibration data from the sensor */
     rslt = bme280_get_regs(reg_addr, calib_data, BME280_TEMP_PRESS_CALIB_DATA_LEN, dev);

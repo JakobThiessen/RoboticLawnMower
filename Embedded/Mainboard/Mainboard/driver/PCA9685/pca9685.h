@@ -110,6 +110,9 @@
 #define PCA9685_I2C_ADDRESS_2	0x42	/**< Default PCA9685 I2C Slave Address */
 #define PCA9685_I2C_ADDRESS_3	0x43	/**< Default PCA9685 I2C Slave Address */
 #define PCA9685_I2C_ADDRESS_4	0x44	/**< Default PCA9685 I2C Slave Address */
+#define PCA9685_I2C_ADDRESS_7	0x47	/**< Default PCA9685 I2C Slave Address */
+
+#define PCA9685_I2C_ADDRESS(A5, A4, A3, A2, A1, A0)	(PCA9685_I2C_ADDRESS_0 + ( (A5 << 5) | (A4 << 4) | (A3 << 3) | (A2 << 2) | (A1 << 1) | (A0) ) )
 
 #define FREQUENCY_OSCILLATOR	25000000	/**< Int. osc. frequency in datasheet */
 

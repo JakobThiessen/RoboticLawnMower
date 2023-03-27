@@ -38,6 +38,8 @@ int8_t tmag5273_init(struct tmag5273_dev *dev)
 		//Temp channel enabled
 		data = 0x01;
 		dev->rslt += dev->write(dev->i2c_addr, TMAG5273_T_CONFIG, &data, 1);
+		
+		dev->rslt += TMAG5x73getXYZrange(&dev->rangeXY, &dev->rangeZ, dev);
 	}
 	else
 	{
@@ -122,7 +124,7 @@ int8_t readTemperatureData(float *temp, struct tmag5273_dev *dev)
 	return dev->rslt;
 }
 
-int8_t readRawXYZData(struct tmag5273_sensor_data *vector, struct tmag5273_dev *dev)
+int8_t readRawXYZData(struct tmag5273_raw_sensor_data *vector, struct tmag5273_dev *dev)
 {
 	uint8_t data[6];
 	dev->rslt = dev->read(dev->i2c_addr, TMAG5273_X_MSB_RESULT, (uint8_t*)&data, 6);
@@ -136,7 +138,18 @@ int8_t readRawXYZData(struct tmag5273_sensor_data *vector, struct tmag5273_dev *
 
 int8_t readXYZData(struct tmag5273_sensor_data *vector, struct tmag5273_dev *dev)
 {
+	uint8_t data[6];
+	dev->rslt = dev->read(dev->i2c_addr, TMAG5273_X_MSB_RESULT, (uint8_t*)&data, 6);
 	
+	vector->x = (float)( ( (int16_t)data[0] << 8) | (int16_t)data[1] );
+	vector->y = (float)( ( (int16_t)data[2] << 8) | (int16_t)data[3] );
+	vector->z = (float)( ( (int16_t)data[4] << 8) | (int16_t)data[5] );
+	
+	vector->x = (vector->x / 32768) * dev->rangeXY;
+	vector->y = (vector->x / 32768) * dev->rangeXY;
+	vector->z = (vector->x / 32768) * dev->rangeZ;
+	
+	return dev->rslt;
 }
 
 int8_t readRawAngleData(uint16_t *angle, struct tmag5273_dev *dev)
@@ -175,3 +188,65 @@ int8_t readRawMagnitudeData(uint8_t *magnitude, struct tmag5273_dev *dev)
 	
 	return dev->rslt;
 }
+
+//****************************************************************************
+//! Get and return the integer value of the X_Y_RANGE bits for an axis
+//!
+//! Returns an unsigned 16-bit integer value of the X axis range in mT.
+//****************************************************************************
+int8_t TMAG5x73getXYZrange(uint16_t *rangeXY, uint16_t *rangeZ, struct tmag5273_dev *dev)
+{
+    // Get SENSOR_CONFIG_2 and isolate X_Y_RANGE bits.
+	uint8_t data = 0;
+	uint8_t configXY = 0;
+	uint8_t configZ = 0;
+	dev->rslt = dev->read(dev->i2c_addr, TMAG5273_SENSOR_CONFIG_2, (uint8_t*)&data, 1);
+	configXY = (data  & SENSOR_CONFIG_2_X_Y_RANGE_MASK) >> 1;
+	configZ = (data  & SENSOR_CONFIG_2_X_Y_RANGE_MASK);
+	
+	uint8_t version = 0;
+	TMAG5x73getVersion(&version, dev);
+	
+    if (version == 2)
+    {
+        // range values for TMAG5x73A2
+        *rangeXY = 133;
+		*rangeZ = 133;
+        if (configXY == 0x1) *rangeXY = 266; // If examined bits equal 1b, range is set to 266 mT (for A2)
+        else *rangeXY = 133; // If examined bits equal 0b, range is set to 133 mT (for A2)
+        
+		if (configZ == 0x1) *rangeZ = 266; // If examined bits equal 1b, range is set to 266 mT (for A2)
+        else *rangeZ = 133; // If examined bits equal 0b, range is set to 133 mT (for A2)
+    }
+    else
+    {
+        // range values for TMAG5x73A1
+        *rangeXY = 40;
+		*rangeZ = 40;
+        if (configXY == 0x1) *rangeXY = 80; // If examined bits equal 1b, range is set to 80 mT (for A1)
+        else *rangeXY = 40; // If examined bits equal 0b, range is set to 40 mT (for A1)
+		
+		if (configZ == 0x1) *rangeZ = 80; // If examined bits equal 1b, range is set to 80 mT (for A1)
+		else *rangeZ = 40; // If examined bits equal 0b, range is set to 40 mT (for A1)
+    }
+	
+    return dev->rslt;
+}
+
+//****************************************************************************
+//! Get TMAG5x73 Version (A1 or A2)
+//!
+//! Sends a read command for TEST_CONFIG and returns the VER field bit.
+//!      VER == 0x00 --> TMAG5x73APL
+//!      VER == 0x01 --> TMAG5x73A1
+//!      VER == 0x02 --> TMAG5x73A2
+//****************************************************************************
+int8_t TMAG5x73getVersion(uint8_t *version, struct tmag5273_dev *dev)
+{
+	uint8_t data;
+	dev->rslt = dev->read(dev->i2c_addr, TMAG5273_DEVICE_ID, (uint8_t*)&data, 1);
+	*version = data & DEVICE_ID_VER_MASK;
+	
+	return dev->rslt;
+}
+

@@ -78,9 +78,6 @@
 #define CONFIG_COMP_QUE_ASSERT4                ((uint16_t) 0x0002)
 #define CONFIG_COMP_QUE_DISABLE                ((uint16_t) 0x0003)
 
-
-
-
 /* LO_THRESH register address */
 #define LO_THRESH_ADDRESS                      ((uint16_t) 0x02)
 
@@ -127,7 +124,7 @@ int16_t ads1115_ConvertOnce(ads1115_t* handle, uint8_t muxConfig, uint8_t pga)
 	buffer[1] = ((CONFIG_OS_CONV_START | CONFIG_MODE_SS) >> 8) | muxConfig | pga; // start a single conversion
 	buffer[2] = CONFIG_DR_8SPS | CONFIG_COMP_QUE_DISABLE; // sample rate: 8 Hz, comparator disabled and high-z
 	
-	uint8_t i2cResult = handle->Write(handle->DevAddr, buffer, 3);
+	int8_t i2cResult = handle->Write(handle->DevAddr, buffer, 3);
 	if (i2cResult != 0)
 	{
 		 return 0;

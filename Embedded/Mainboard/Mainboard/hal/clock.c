@@ -5,6 +5,7 @@
  *  Author: JThiessen
  */ 
 
+#include <avr/cpufunc.h>
 #include "clock.h"
 
 void CLOCK_OSCHF_crystal_PLL_8M_init(void)

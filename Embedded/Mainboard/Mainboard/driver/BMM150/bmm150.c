@@ -571,7 +571,7 @@ int8_t bmm150_init(struct bmm150_dev *dev)
 {
     int8_t rslt;
     uint8_t chip_id = 0;
-	uint8_t reg_data = BMM150_POWER_CNTRL_ENABLE;
+	//uint8_t reg_data = BMM150_POWER_CNTRL_ENABLE;
     /* Power up the sensor from suspend to sleep mode */
     rslt = set_power_control_bit(BMM150_POWER_CNTRL_ENABLE, dev);
 	//rslt = dev->write(BMM150_REG_POWER_CONTROL, &reg_data, 1, dev->intf_ptr );
@@ -606,7 +606,7 @@ int8_t bmm150_init(struct bmm150_dev *dev)
  * @brief This API writes the given data to the register address
  * of the sensor.
  */
-int8_t bmm150_set_regs(uint8_t reg_addr, const uint8_t *reg_data, uint32_t len, struct bmm150_dev *dev)
+int8_t bmm150_set_regs(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, struct bmm150_dev *dev)
 {
     int8_t rslt;
 

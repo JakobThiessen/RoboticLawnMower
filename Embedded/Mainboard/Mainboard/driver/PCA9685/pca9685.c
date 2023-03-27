@@ -127,7 +127,7 @@ void pca9685_setExtClk(uint8_t prescale, struct pca9685_dev *dev)
 
 	// This sets both the SLEEP and EXTCLK bits of the MODE1 register to switch to
 	// use the external clock.
-	newmode = (newmode |= MODE_1_EXTCLK);
+	newmode |= MODE_1_EXTCLK;
 	dev->rslt += dev->write(dev->i2c_addr, PCA9685_MODE_1, &newmode, 1);
 
 	dev->rslt += dev->write(dev->i2c_addr, PCA9685_PRESCALE, &prescale, 1); // set the prescaler
@@ -282,4 +282,5 @@ uint8_t pca9685_getModeReg(uint8_t mode_reg, struct pca9685_dev *dev)
 uint8_t pca9685_setModeReg(uint8_t mode_reg, uint8_t data, struct pca9685_dev *dev)
 {
 	dev->rslt = dev->write(dev->i2c_addr, mode_reg, (uint8_t*)&data, 1);
+	return  0;
 }

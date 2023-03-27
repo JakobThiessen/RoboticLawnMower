@@ -19,6 +19,7 @@
  */
 
 #include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -45,13 +46,15 @@ static volatile float currentShuntLsb = 0;
 int8_t ina228_init(struct ina228_dev *dev)
 {
 	dev->isConfigured = false;
+	uint16_t data = 0x8000;
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_CONFIG, 0x8000);	// Reset
-	dev->intf_rslt = dev->write(INA228_CONFIG, 0x8000, 2, dev->intf_ptr);
+	dev->intf_rslt = dev->write(INA228_CONFIG, (uint8_t*)&data, 2, dev->intf_ptr);
 	dev->intf_rslt += dev->read(INA228_MANUFACTURER_ID, (uint8_t*)&dev->manID, 1, dev->intf_ptr);
 	dev->intf_rslt += dev->read(INA228_DEVICE_ID, (uint8_t*)&dev->devID, 1, dev->intf_ptr);
 
 	//i2c_write_short(i2c_master_port, INA228_SLAVE_ADDRESS, INA228_SHUNT_CAL, SHUNT_CAL);
-	dev->intf_rslt += dev->write(INA228_SHUNT_CAL, SHUNT_CAL, 2, dev->intf_ptr);
+	data = SHUNT_CAL;
+	dev->intf_rslt += dev->write(INA228_SHUNT_CAL, (uint8_t*)&data, 2, dev->intf_ptr);
 	
 	if(dev->shunt_ADCRange == 0)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_0;
 	if(dev->shunt_ADCRange == 1)	currentShuntLsb = CURRENT_SHUNT_LSB_ADCRange_1;

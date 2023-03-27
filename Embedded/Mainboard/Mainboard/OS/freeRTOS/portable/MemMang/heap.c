@@ -25,8 +25,8 @@
  *
  * 1 tab == 4 spaces!
  */
-
-#define USE_HEAP 3
+/*
+#define USE_HEAP 4
 
 #if USE_HEAP == 1
 #include "heap_1.h"
@@ -41,3 +41,4 @@
 #else
 #error "Invalid heap selection"
 #endif
+*/

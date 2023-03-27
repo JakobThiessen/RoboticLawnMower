@@ -152,6 +152,18 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="commonDriver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commonDriver.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commonOS.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commonOS.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="driver\ADS1115\ads1115.c">
       <SubType>compile</SubType>
     </Compile>
@@ -213,15 +225,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\TMAG5273\tmag5273.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\ws2812\ws2812.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\ws2812\ws2812.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\ws2812\ws2812_config.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\adc.c">
@@ -332,6 +335,9 @@
     <Compile Include="OS\freeRTOS\portable\MemMang\heap.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="OS\freeRTOS\portable\MemMang\heap_1.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="OS\freeRTOS\portable\MemMang\heap_1.h">
       <SubType>compile</SubType>
     </Compile>
@@ -350,6 +356,9 @@
     <Compile Include="OS\freeRTOS\portable\port.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="OS\freeRTOS\portable\porthardware.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="OS\freeRTOS\portable\portmacro.h">
       <SubType>compile</SubType>
     </Compile>
@@ -365,6 +374,30 @@
     <Compile Include="OS\freeRTOS\timers.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="taskCommuncation.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskCommuncation.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskEnvSensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskEnvSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskGPS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskGPS.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskMotion.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="taskMotion.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="driver\" />
@@ -376,7 +409,6 @@
     <Folder Include="driver\lwgps\" />
     <Folder Include="driver\PCA9685\" />
     <Folder Include="driver\TMAG5273\" />
-    <Folder Include="driver\ws2812\" />
     <Folder Include="hal\" />
     <Folder Include="OS\" />
     <Folder Include="OS\freeRTOS\" />

@@ -9,7 +9,8 @@
 #ifndef __ADS1115_H_
 #define __ADS1115_H_
 
-#include <inttypes.h>
+//#include <inttypes.h>
+#include <stdint.h>
 #include <stdbool.h>
 #include <util/delay.h>
 //#include "iic.h"
@@ -39,8 +40,8 @@
 #define ADS1115_PGA_0p512V       0x08
 #define ADS1115_PGA_0p256V       0x0A
 
-typedef uint8_t (*iic_Read_t)(uint8_t address, uint8_t* buffer, uint8_t length);
-typedef uint8_t (*iic_Write_t)(uint8_t address, uint8_t* buffer, uint8_t length);
+typedef int8_t (*iic_Read_t)(uint8_t address, uint8_t* buffer, uint8_t length);
+typedef int8_t (*iic_Write_t)(uint8_t address, uint8_t* buffer, uint8_t length);
 
 typedef struct
 {

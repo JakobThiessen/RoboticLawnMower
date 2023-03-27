@@ -31,6 +31,6 @@ void USART3_init(uint8_t txPin, uint8_t rxPin, uint8_t altPin, uint32_t baudrate
 void USART3_sendChar(char c);
 void USART3_sendString(char *str);int USART3_putchar_printf(char var, FILE *stream);
 
-static FILE mystdout = FDEV_SETUP_STREAM(USART0_putchar_printf, NULL, _FDEV_SETUP_WRITE);
+//static FILE mystdout = FDEV_SETUP_STREAM(USART0_putchar_printf, NULL, _FDEV_SETUP_WRITE);
 
 #endif /* UART_H_ */

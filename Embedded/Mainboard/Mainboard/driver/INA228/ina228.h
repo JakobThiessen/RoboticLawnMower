@@ -52,7 +52,7 @@
 /* type definitions */
 typedef int8_t (*ina228_read_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
 typedef int8_t (*ina228_write_fptr_t)(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
-typedef void (*ina228_delay_us_fptr_t)(uint32_t period);
+typedef void (*ina228_delay_us_fptr_t)(uint32_t period, void *intf_ptr);
 
 struct ina228_dev
 {
