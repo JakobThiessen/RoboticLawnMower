@@ -30,6 +30,9 @@
 // Macros and Defines
 // ********************************************************************************
 
+#define GPS_DEBUG 1
+//#define GPS_DEBUG 0
+
 #if !LWGPS_CFG_STATUS
 //#error "this test must be compiled with -DLWGPS_CFG_STATUS=1"
 #endif /* !LWGPS_CFG_STATUS */
@@ -44,7 +47,7 @@ lwgps_t hgps;
 /**
  * \brief           Dummy data from GPS receiver
  */
-const char gps_rx_data[] = ""
+const char gps_rx_data_test[] = ""
                 "$GPRMC,183729,A,3907.356,N,12102.482,W,000.0,360.0,080301,015.5,E*6F\r\n"
                 "$GPRMB,A,,,,,,,,,,,,V*71\r\n"
                 "$GPGGA,183730,3907.356,N,12102.482,W,1,05,1.6,646.4,M,-24.1,M,,*75\r\n"
@@ -59,7 +62,18 @@ const char gps_rx_data[] = ""
                 "$GPRTE,1,1,c,0*07\r\n"
                 "$GPRMC,183731,A,3907.482,N,12102.436,W,000.0,360.0,080301,015.5,E*67\r\n"
                 "$GPRMB,A,,,,,,,,,,,,V*71\r\n";
-			
+
+uint16_t gps_rx_data_idx = 0;
+char gps_rx_data[2048];
+
+ISR(USART3_RXC_vect)
+{
+	cli();
+	gps_rx_data[gps_rx_data_idx] = USART3.RXDATAL;
+	gps_rx_data_idx++;
+	sei();
+}
+
 const lwgps_statement_t expected[] = {
 	STAT_RMC,
 	STAT_UNKNOWN,
@@ -110,11 +124,33 @@ void vGpsTask(void* pvParameters)
 	{
 		/* Process all input data */
 		//lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data), callback);
-		lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data) );
+		uint8_t gpsResult = lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data) );
 
-		sprintf((char*)buffer, "--> TASK vGpsTask: %06f, %06f, %02d:%02d:%02d\r\n", hgps.longitude, hgps.latitude, hgps.hours, hgps.minutes, hgps.seconds);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+		if(gpsResult == 1 && GPS_DEBUG == 0)
+		{
+			sprintf((char*)buffer, "--> TASK vGpsTask: LONG %06f, LAT %06f, GPS TIME %02d:%02d:%02d; size %d\r\n", hgps.longitude, hgps.latitude, hgps.hours, hgps.minutes, hgps.seconds, gps_rx_data_idx);
+			xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+			memset(gps_rx_data, 0, sizeof(gps_rx_data));
+			gps_rx_data_idx = 0;
+		}
+		else
+		{
+			char delimiter[] = "$";
+			char *ptr;
 
-		vTaskDelay(pdMS_TO_TICKS(1000));
+			ptr = strtok(gps_rx_data, delimiter);
+
+			while(ptr != NULL)
+			{
+				sprintf((char*)buffer, "--> TASK vGpsTask: %s\r\n", ptr);
+				xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+				// naechsten Abschnitt erstellen
+				ptr = strtok(NULL, delimiter);
+			}
+			memset(gps_rx_data, 0, sizeof(gps_rx_data));
+			gps_rx_data_idx = 0;
+		}
+		
+		vTaskDelay(pdMS_TO_TICKS(2000));
 	}
 }

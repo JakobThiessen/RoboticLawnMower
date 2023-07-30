@@ -151,8 +151,9 @@ void USART3_init(uint8_t txPin, uint8_t rxPin, uint8_t altPin, uint32_t baudrate
 	
 	USART3.BAUD = (uint16_t)(USART_BAUD_RATE(baudrate));   /* set the baud rate*/
 	USART3.CTRLC = USART_CHSIZE0_bm | USART_CHSIZE1_bm;	/* set the data format to 8-bit*/
-	USART3.CTRLB |= USART_TXEN_bm;                      /* enable transmitter*/
-	//	USART3.CTRLB |= USART_RXEN_bm | USART_TXEN_bm; /* enable receiver and transmitter*/
+	//USART3.CTRLB |= USART_TXEN_bm;                      /* enable transmitter*/
+	USART3.CTRLB |= USART_RXEN_bm | USART_TXEN_bm; /* enable receiver and transmitter*/
+	USART3.CTRLA |= USART_RXCIE_bm;
 }
 
 void USART3_sendChar(char c)
@@ -164,6 +165,18 @@ void USART3_sendChar(char c)
 	
 	USART3.TXDATAL = c;
 }
+
+char USART3_getChar()
+{
+	char a = 0;
+	while(!(USART3.STATUS & USART_RXCIF_bm)) //WAIT UNtil done reading
+	{
+		;
+	}
+	a = USART3.RXDATAL;
+	return a;
+}
+
 
 int USART3_putchar_printf(char var, FILE *stream)
 {

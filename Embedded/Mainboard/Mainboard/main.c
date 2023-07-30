@@ -109,6 +109,7 @@ int main(void)
 	//TCA1_init();
 	
 	USART0_init(PIN4_bm, PIN5_bm, 1, 115200);
+	USART3_init(PIN4_bm, PIN5_bm, 1, 9600);
 	
 	I2C_0_init(PORTMUX_TWI0_DEFAULT_gc, I2C_SCL_FREQ);
 	I2C_1_init(PORTMUX_TWI1_ALT2_gc, I2C_SCL_FREQ);	
@@ -131,8 +132,8 @@ int main(void)
 */
 	sei();
 
-	PORTC_set_pin_level(MOTOR_EN_M1, true);
-	PORTC_set_pin_level(MOTOR_EN_M5, true);
+	PORTC_set_pin_level(MOTOR_EN_M1, false);
+	PORTC_set_pin_level(MOTOR_EN_M5, false);
 	
 	static char tx_buff[256];
 	sprintf((char*)tx_buff, "--> Test Test: started...\n\r");
