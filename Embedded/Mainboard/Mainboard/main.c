@@ -43,6 +43,8 @@
 	#include "taskEnvSensor.h"
 	#include "taskGPS.h"
 	#include "taskMotion.h"
+	
+	#include "commonDataMgmt.h"
 #endif
 
 // ********************************************************************************
@@ -108,7 +110,7 @@ int main(void)
 	PORT_init();
 	//TCA1_init();
 	
-	USART0_init(PIN4_bm, PIN5_bm, 1, 115200);
+	USART0_init(PIN4_bm, PIN5_bm, 1, 256000);
 	USART3_init(PIN4_bm, PIN5_bm, 1, 9600);
 	
 	I2C_0_init(PORTMUX_TWI0_DEFAULT_gc, I2C_SCL_FREQ);
@@ -138,7 +140,9 @@ int main(void)
 	static char tx_buff[256];
 	sprintf((char*)tx_buff, "--> Test Test: started...\n\r");
 	USART0_sendString(tx_buff);
-
+	
+	initCommonDataMgmt();
+	
 	#ifdef USE_FREE_RTOS
 		
 		terminal_tx_buffer = xMessageBufferCreate(512);

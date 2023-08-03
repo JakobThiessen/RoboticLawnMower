@@ -47,7 +47,6 @@ int8_t user_i2c_write_ads1115(uint8_t dev_addr, uint8_t *data, uint8_t len);
 void user_delay_us(uint32_t period_us, void *intf_ptr);
 void user_delay_ms(uint32_t period_ms);
 
-
 void configuration_spi(void);
 uint8_t write_spi_data(uint8_t data);
 uint8_t write_spi_buffer(uint8_t *buffer, uint8_t len);

@@ -17,7 +17,7 @@
 
 void USART0_init(uint8_t txPin, uint8_t rxPin, uint8_t altPin, uint32_t baudrate);
 void USART0_sendChar(char c);
-void USART0_sendString(char *str);int USART0_putchar_printf(char var, FILE *stream);
+void USART0_sendString(char *str);void USART0_sendBuffer(uint8_t *data, uint16_t size);int USART0_putchar_printf(char var, FILE *stream);
 
 void USART1_init(uint8_t txPin, uint8_t rxPin, uint8_t altPin, uint32_t baudrate);
 void USART1_sendChar(char c);

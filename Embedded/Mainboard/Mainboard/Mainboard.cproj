@@ -152,6 +152,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="commonDataMgmt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commonDataMgmt.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="commonDriver.c">
       <SubType>compile</SubType>
     </Compile>

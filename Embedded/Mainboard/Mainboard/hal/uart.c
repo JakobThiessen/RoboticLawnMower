@@ -47,6 +47,14 @@ void USART0_sendString(char *str)
 	}
 }
 
+void USART0_sendBuffer(uint8_t *data, uint16_t size)
+{
+	for(size_t i = 0; i < size; i++)
+	{
+		USART0_sendChar(data[i]);
+	}
+}
+
 /************************************************************************/
 /*  UART 1                                                              */
 /************************************************************************/

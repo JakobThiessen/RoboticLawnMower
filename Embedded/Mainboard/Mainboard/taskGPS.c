@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <avr/cpufunc.h>
-#include <string.h>
 #include <stdbool.h>
 
 #include "OS/freeRTOS/include/FreeRTOS.h"
@@ -21,6 +20,7 @@
 
 #include "commonOS.h"
 #include "commonDriver.h"
+#include "commonDataMgmt.h"
 
 #include "driver/lwgps/lwgps.h"
 
@@ -30,7 +30,7 @@
 // Macros and Defines
 // ********************************************************************************
 
-#define GPS_DEBUG 1
+#define GPS_DEBUG 0
 //#define GPS_DEBUG 0
 
 #if !LWGPS_CFG_STATUS
@@ -125,11 +125,17 @@ void vGpsTask(void* pvParameters)
 		/* Process all input data */
 		//lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data), callback);
 		uint8_t gpsResult = lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data) );
-
+		glbRoboterData.latitude = hgps.latitude;
+		glbRoboterData.longitude = hgps.longitude;
+		
+		glbRoboterData.hours = hgps.hours;
+		glbRoboterData.minutes = hgps.minutes;
+		glbRoboterData.seconds = hgps.seconds;
+		
 		if(gpsResult == 1 && GPS_DEBUG == 0)
 		{
-			sprintf((char*)buffer, "--> TASK vGpsTask: LONG %06f, LAT %06f, GPS TIME %02d:%02d:%02d; size %d\r\n", hgps.longitude, hgps.latitude, hgps.hours, hgps.minutes, hgps.seconds, gps_rx_data_idx);
-			xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+			//sprintf((char*)buffer, "--> TASK vGpsTask: Lat: %06f, Long: %06f, GPS TIME %02d:%02d:%02d; size %d\r\n", hgps.latitude, hgps.longitude, hgps.hours, hgps.minutes, hgps.seconds, gps_rx_data_idx);
+			//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
 			memset(gps_rx_data, 0, sizeof(gps_rx_data));
 			gps_rx_data_idx = 0;
 		}
@@ -142,7 +148,7 @@ void vGpsTask(void* pvParameters)
 
 			while(ptr != NULL)
 			{
-				sprintf((char*)buffer, "--> TASK vGpsTask: %s\r\n", ptr);
+				sprintf((char*)buffer, "->TASK Gps: %s", ptr);
 				xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
 				// naechsten Abschnitt erstellen
 				ptr = strtok(NULL, delimiter);

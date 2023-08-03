@@ -20,6 +20,7 @@
 
 #include "commonOS.h"
 #include "commonDriver.h"
+#include "commonDataMgmt.h"
 
 #include "driver/INA228/ina228.h"
 #include "driver/PCA9685/pca9685.h"
@@ -104,11 +105,15 @@ void vMotionTask(void* pvParameters)
 		setMotorParameter(2, 2048, 1, &pwmControl);
 		
 		setMotorParameter(5, 4000, 1, &pwmControl);
+		glbRoboterData.motorCurrent[0] = (int16_t)(current_0 * 1);
+		glbRoboterData.motorVoltage[0] = (int16_t)(voltage_0 * 1000);
+		glbRoboterData.motorCurrent[1] = (int16_t)(current_1 * 1);
+		glbRoboterData.motorVoltage[1] = (int16_t)(voltage_1 * 1000);
 		
-		sprintf((char*)buffer, "--> vMotionTask: M[0] U= %.03fmV I= %.03fmA\tM[1] U= %.03fmV I= %.03fmA\n\r", voltage_0, current_0, voltage_1, current_1);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+		//sprintf((char*)buffer, "--> vMotionTask: M[0] U= %.03fmV I= %.03fmA\tM[1] U= %.03fmV I= %.03fmA\n\r", voltage_0, current_0, voltage_1, current_1);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
 		
-		vTaskDelay(pdMS_TO_TICKS(100));
+		vTaskDelay(pdMS_TO_TICKS(50));
 	}
 }
 
@@ -190,4 +195,6 @@ int8_t setMotorParameter(uint8_t motorNr, uint16_t velocity, uint8_t direction, 
 		default:
 			break;
 	}
+	
+	return 0;
 }

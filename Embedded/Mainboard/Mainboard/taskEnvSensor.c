@@ -21,6 +21,7 @@
 
 #include "commonOS.h"
 #include "commonDriver.h"
+#include "commonDataMgmt.h"
 
 #include "driver/BME280/bme280.h"
 #include "driver/BME280/bme280_defs.h"
@@ -268,8 +269,8 @@ void vEnvSensorTask(void* pvParameters)
 		int16_t adc_0 = ads1115_ConvertOnce(&analogSensor_0, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
 		int16_t adc_1 = ads1115_ConvertOnce(&analogSensor_1, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
 
-		sprintf((char*)buffer, "--> vSensTask: ADS1115 -> [0] %04d  [1] %04d\n\r", adc_0, adc_1);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 500);
+		//sprintf((char*)buffer, "--> vSensTask: ADS1115 -> [0] %04d  [1] %04d\n\r", adc_0, adc_1);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 500);
 
 		bme280_get_sensor_data(BME280_ALL, &sensEnvData, &sensorEnv);
 		convert_bme280_sensor_data2float(&sensEnvData, &convData);
@@ -277,14 +278,14 @@ void vEnvSensorTask(void* pvParameters)
 		/* To read both Accel and Gyro data */
 		bmi160_get_sensor_data((BMI160_ACCEL_SEL | BMI160_GYRO_SEL | BMI160_TIME_SEL), &bmi160_accel, &bmi160_gyro, &sensorGyro);
 
-		sprintf((char*)buffer, "--> vSensTask: ACC--> ax:%04d\tay:%04d\taz:%04d\n\r", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
-		sprintf((char*)buffer, "--> vSensTask: GYR--> gx:%04d\tgy:%04d\tgz:%04d\n\r", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+		//sprintf((char*)buffer, "--> vSensTask: ACC--> ax:%04d\tay:%04d\taz:%04d\n\r", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+		//sprintf((char*)buffer, "--> vSensTask: GYR--> gx:%04d\tgy:%04d\tgz:%04d\n\r", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
 			
 		get_compass_data(&sensorCompass, &magData);
-		sprintf((char*)buffer, "--> vSensTask: MAG X : %04duT Y : %04duT Z : %04duT\n\r", magData.x, magData.y, magData.z);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);	
+		//sprintf((char*)buffer, "--> vSensTask: MAG X : %04duT Y : %04duT Z : %04duT\n\r", magData.x, magData.y, magData.z);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);	
 			
 		float magTemp = 0.0f;
 		float magAng = 0.0f;
@@ -294,9 +295,32 @@ void vEnvSensorTask(void* pvParameters)
 		readAngleData(&magAng, &magnetSensor);
 		readRawXYZData(&magSensorVector, &magnetSensor);
 
-		sprintf((char*)buffer, "--> vSensTask: TMAG--> T: %.02f, A: %.03f, Vec[x,y,z] %04d %04d %04d\n\r", magTemp, magAng, magSensorVector.x, magSensorVector.y, magSensorVector.z);
-		xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
-
+		//sprintf((char*)buffer, "--> vSensTask: TMAG--> T: %.02f, A: %.03f, Vec[x,y,z] %04d %04d %04d\n\r", magTemp, magAng, magSensorVector.x, magSensorVector.y, magSensorVector.z);
+		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
+		
+		glbRoboterData.dataAcc[0] = bmi160_accel.x;
+		glbRoboterData.dataAcc[1] = bmi160_accel.y;
+		glbRoboterData.dataAcc[2] = bmi160_accel.z;
+		
+		glbRoboterData.dataGyro[0] = bmi160_gyro.x;
+		glbRoboterData.dataGyro[1] = bmi160_gyro.y;
+		glbRoboterData.dataGyro[2] = bmi160_gyro.z;
+		
+		glbRoboterData.dataCompass[0] = magData.x;
+		glbRoboterData.dataCompass[1] = magData.y;
+		glbRoboterData.dataCompass[2] = magData.z;
+		
+		glbRoboterData.temperature = convData.temperature;
+		glbRoboterData.humidity = convData.humidity;
+		glbRoboterData.pressure = convData.pressure;
+		
+		glbRoboterData.analogSensor[0] = adc_0;
+		glbRoboterData.analogSensor[4] = adc_1;
+		
+		glbRoboterData.magnetSensor[0] = magSensorVector.x;
+		glbRoboterData.magnetSensor[0] = magSensorVector.y;
+		glbRoboterData.magnetSensor[0] = magSensorVector.z;
+		
 		vTaskDelay(pdMS_TO_TICKS(200));
 	}
 }
