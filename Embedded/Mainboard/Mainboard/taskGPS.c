@@ -125,12 +125,20 @@ void vGpsTask(void* pvParameters)
 		/* Process all input data */
 		//lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data), callback);
 		uint8_t gpsResult = lwgps_process(&hgps, gps_rx_data, strlen(gps_rx_data) );
+		glbRoboterData.gpsValid = hgps.fix;
 		glbRoboterData.latitude = hgps.latitude;
 		glbRoboterData.longitude = hgps.longitude;
+		glbRoboterData.speed = lwgps_to_speed(hgps.speed, lwgps_speed_mps);
+		glbRoboterData.course = hgps.course;
+		glbRoboterData.variation = hgps.variation;
 		
 		glbRoboterData.hours = hgps.hours;
 		glbRoboterData.minutes = hgps.minutes;
 		glbRoboterData.seconds = hgps.seconds;
+		
+		glbRoboterData.date = hgps.date;
+		glbRoboterData.month = hgps.month;
+		glbRoboterData.year = hgps.year;
 		
 		if(gpsResult == 1 && GPS_DEBUG == 0)
 		{
@@ -157,6 +165,6 @@ void vGpsTask(void* pvParameters)
 			gps_rx_data_idx = 0;
 		}
 		
-		vTaskDelay(pdMS_TO_TICKS(2000));
+		vTaskDelay(pdMS_TO_TICKS(500));
 	}
 }

@@ -18,7 +18,8 @@ extern struct globalData
 	int16_t dataGyro[3];		// [6]
 	int16_t dataAcc[3];			// [6]
 	int16_t dataCompass[3];		// [6]
-
+	uint32_t CompassDeg;		// [4]
+	
 	int16_t analogSensor[8];	// [16]
 			
 	int16_t magnetSensor[3];	// [6]
@@ -28,11 +29,22 @@ extern struct globalData
 	
 	int16_t	velocity[5];		// [10]
 	
+	uint8_t gpsValid;			// [1]
 	float	latitude;			// [4]
 	float	longitude;			// [4]
+	
+	float speed;				// [4] /*!< Current spead over the ground in knots */
+	float course;				// [4] /*!< Current course over ground */
+	float variation;			// [4]
+						
 	uint8_t hours;				// [1]
-	uint8_t minutes;				// [1]
-	uint8_t seconds;				// [1]
+	uint8_t minutes;			// [1]
+	uint8_t seconds;			// [1]
+	
+	uint8_t date;				// [1]
+	uint8_t month;				// [1]
+	uint8_t year;				// [1]
+
 };
 
 struct globalData glbRoboterData;

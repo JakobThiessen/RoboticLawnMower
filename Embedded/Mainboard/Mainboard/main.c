@@ -55,6 +55,7 @@
 #define SW0		PIN2_bm
 #define DIO		PIN7_bm
 
+#define PIN_WLAN_EN	PIN0_bm
 #define MOTOR_EN_M1	PIN3_bm
 #define MOTOR_EN_M5	PIN2_bm
 
@@ -97,6 +98,9 @@ void PORT_init(void)
 	
 	PORTC.DIR |= MOTOR_EN_M5;
 	PORTC.OUT |= MOTOR_EN_M5;
+	
+	PORTB.DIR |= PIN_WLAN_EN;
+	PORTB.OUT |= PIN_WLAN_EN;
 }
 
 
@@ -110,7 +114,7 @@ int main(void)
 	PORT_init();
 	//TCA1_init();
 	
-	USART0_init(PIN4_bm, PIN5_bm, 1, 256000);
+	USART0_init(PIN4_bm, PIN5_bm, 1, 115200);
 	USART3_init(PIN4_bm, PIN5_bm, 1, 9600);
 	
 	I2C_0_init(PORTMUX_TWI0_DEFAULT_gc, I2C_SCL_FREQ);

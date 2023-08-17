@@ -13,6 +13,7 @@
 #include <avr/cpufunc.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "OS/freeRTOS/include/FreeRTOS.h"
 #include "OS/freeRTOS/include/task.h"
@@ -168,6 +169,31 @@ static int8_t get_compass_data(struct bmm150_dev *dev, struct bmm150_mag_data *m
 	return rslt;
 }
 
+int16_t magX0 = 0;
+int16_t magY0 = 0;
+static float twoPI = 2*M_PI;
+
+static void get_compassInDegrees(int16_t data_x, int16_t data_y, uint32_t *mDeg)
+{
+	float xyHeading = atan2(data_x, data_y);
+	
+	if(xyHeading < 0)
+	{
+		xyHeading += twoPI;
+	}
+	else
+	{
+		if(xyHeading > twoPI)
+		{
+			xyHeading -= twoPI;
+		}
+	}
+	
+	float deg = xyHeading * 180 * M_1_PI;		// M_1_PI = 1/pi
+	*mDeg = (uint32_t)(deg * 1000);
+
+}
+
 uint8_t buffer[300];
 /**************************************************************************//**
 * \fn static void vUartTask(void* pvParameters)
@@ -310,6 +336,10 @@ void vEnvSensorTask(void* pvParameters)
 		glbRoboterData.dataCompass[1] = magData.y;
 		glbRoboterData.dataCompass[2] = magData.z;
 		
+		uint32_t mDeg;
+		get_compassInDegrees(magData.x, magData.y, &mDeg);
+		glbRoboterData.CompassDeg = mDeg;
+		
 		glbRoboterData.temperature = convData.temperature;
 		glbRoboterData.humidity = convData.humidity;
 		glbRoboterData.pressure = convData.pressure;
@@ -321,6 +351,6 @@ void vEnvSensorTask(void* pvParameters)
 		glbRoboterData.magnetSensor[0] = magSensorVector.y;
 		glbRoboterData.magnetSensor[0] = magSensorVector.z;
 		
-		vTaskDelay(pdMS_TO_TICKS(200));
+		vTaskDelay(pdMS_TO_TICKS(50));
 	}
 }

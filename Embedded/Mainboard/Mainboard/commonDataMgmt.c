@@ -26,7 +26,7 @@ void initCommonDataMgmt()
 
 int8_t getGlbRoboterData(uint8_t *buffer, uint8_t *size)
 {
-	*size = 87;
+	*size = sizeof(glbRoboterData);
 	memcpy(buffer, &glbRoboterData, *size);
 	return 0;
 }
