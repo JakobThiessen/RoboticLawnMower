@@ -245,13 +245,16 @@
     <Compile Include="driver\VL53L1X\API\core\VL53L1X_calibration.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="driver\VL53L1X\API\core\vl53l1_error_codes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\core\vl53l1_types.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="driver\VL53L1X\API\platform\vl53l1_platform.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="driver\VL53L1X\API\platform\vl53l1_platform.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\VL53L1X\API\platform\vl53l1_types.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\adc.c">

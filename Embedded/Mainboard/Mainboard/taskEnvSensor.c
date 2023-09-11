@@ -35,6 +35,8 @@
 
 #include "driver/TMAG5273/tmag5273.h"
 #include "driver/ADS1115/ads1115.h"
+#include "driver/VL53L1X/API/core/VL53L1X_api.h"
+#include "driver/VL53L1X/API/platform/vl53l1_platform.h"
 
 #include "taskEnvSensor.h"
 
@@ -52,6 +54,7 @@ struct bmi160_dev	sensorGyro;
 struct bmm150_dev	sensorCompass;
 
 struct bmm150_mag_data magData;
+struct vl53l1_dev	sensorDistance_0;
 
 ads1115_t	analogSensor_0;
 ads1115_t	analogSensor_1;
@@ -160,6 +163,55 @@ static int8_t configure_bmm150(struct bmm150_dev *dev)
 	return rslt;
 }
 
+static int8_t config_VL53L1(uint8_t chip_id)
+{
+	int8_t status = 0;
+	
+	  /* This function must to be called to initialize the sensor with the default setting  */
+	  status = VL53L1X_SensorInit(chip_id);
+	  /* Optional functions to be used to change the main ranging parameters according the application requirements to get the best ranging performances */
+	  status = VL53L1X_SetDistanceMode(chip_id, 2); /* 1=short, 2=long */
+	  status = VL53L1X_SetTimingBudgetInMs(chip_id, 100); /* in ms possible values [20, 50, 100, 200, 500] */
+	  status = VL53L1X_SetInterMeasurementInMs(chip_id, 100); /* in ms, IM must be > = TB */
+	  //  status = VL53L1X_SetOffset(chip_id,20); /* offset compensation in mm */
+	  //  status = VL53L1X_SetROI(chip_id, 16, 16); /* minimum ROI 4,4 */
+	  //	status = VL53L1X_CalibrateOffset(chip_id, 140, &offset); /* may take few second to perform the offset cal*/
+	  //	status = VL53L1X_CalibrateXtalk(chip_id, 1000, &xtalk); /* may take few second to perform the xtalk cal */
+//	  printf("VL53L1X Ultra Lite Driver Example running ...\n");
+	  status = VL53L1X_StartRanging(chip_id);   /* This function has to be called to enable the ranging */	  
+	  return status;
+}
+
+
+struct range_vl53l1
+{
+	uint16_t Distance;
+	uint16_t SignalRate;
+	uint16_t AmbientRate;
+	uint16_t SpadNum;
+	uint8_t RangeStatus;
+};
+
+int8_t getRange_VL53L1(uint8_t chip_id, struct range_vl53l1 *data)
+{
+	int8_t status;
+	uint8_t dataReady = 0;
+	while (dataReady == 0)
+	{
+		status = VL53L1X_CheckForDataReady(chip_id, &dataReady);
+		//HAL_Delay(2);
+	}
+	dataReady = 0;
+	status = VL53L1X_GetRangeStatus(chip_id, &data->RangeStatus);
+	status = VL53L1X_GetDistance(chip_id, &data->Distance);
+	status = VL53L1X_GetSignalRate(chip_id, &data->SignalRate);
+	status = VL53L1X_GetAmbientRate(chip_id, &data->AmbientRate);
+	status = VL53L1X_GetSpadNb(chip_id, &data->SpadNum);
+	status = VL53L1X_ClearInterrupt(chip_id); /* clear interrupt has to be called to enable next interrupt*/
+//	printf("%u, %u, %u, %u, %u\n", data->RangeStatus, data->Distance, data->SignalRate, data->AmbientRate, data->SpadNum);
+	return status;
+}
+
 static int8_t get_compass_data(struct bmm150_dev *dev, struct bmm150_mag_data *mag_data)
 {
 	/* Status of api are returned to this variable. */
@@ -248,7 +300,7 @@ void vEnvSensorTask(void* pvParameters)
 	sensorCompass.read = user_i2c_read;
 	sensorCompass.write = user_i2c_write;
 	sensorCompass.delay_us = user_delay_us;
-		
+	
 	analogSensor_0.DevAddr = 0x48;
 	analogSensor_0.Read = user_i2c_read_ads1115;
 	analogSensor_0.Write = user_i2c_write_ads1115;
@@ -299,22 +351,33 @@ void vEnvSensorTask(void* pvParameters)
 	configure_bmi160(&sensorGyro);
 	configure_bmm150(&sensorCompass);
 	
+	/*	sensorDistance_0.chip_id = 0x52;
+		sensorDistance_0.read = user_i2c_read_ads1115;
+		sensorDistance_0.write = user_i2c_write_ads1115;
+	*/
+	VL53L1_initInterface(0x29, user_i2c_read_ads1115, user_i2c_write_ads1115);
+	config_VL53L1(0x29);
+	
 	int16_t pitch = 0;
 	int16_t roll = 0;
 	int16_t yaw = 0;
 	int8_t errorNeigung = 0;
+	struct range_vl53l1 range_data;
 	
 	for ( ;; )
 	{
 		bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
 		configure_bmm150(&sensorCompass);
-					
+		
+		getRange_VL53L1(0x29, &range_data);
+		glbRoboterData.sens_dist_00 = range_data.Distance;
+		
 		readAnalog(ADC_MUXPOS_AIN18_gc, &adcVal);
 		glbRoboterData.sens_rain = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 		
 		vTaskDelay(pdMS_TO_TICKS(1));
 		readAnalog(ADC_MUXPOS_AIN19_gc, &adcVal);
-		glbRoboterData.sens_dist_00 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
+		//glbRoboterData.sens_dist_00 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 		
 		vTaskDelay(pdMS_TO_TICKS(1));
 		readAnalog(ADC_MUXPOS_AIN20_gc, &adcVal);

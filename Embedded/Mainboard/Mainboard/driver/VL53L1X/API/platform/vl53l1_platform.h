@@ -6,7 +6,8 @@
 #ifndef _VL53L1_PLATFORM_H_
 #define _VL53L1_PLATFORM_H_
 
-#include "vl53l1_types.h"
+#include "..\core\vl53l1_types.h"
+#include "..\core\vl53l1_error_codes.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -18,6 +19,8 @@ typedef struct {
 } VL53L1_Dev_t;
 
 typedef VL53L1_Dev_t *VL53L1_DEV;
+
+
 
 /** @brief VL53L1_WriteMulti() definition.\n
  * To be implemented by the developer
@@ -96,8 +99,8 @@ int8_t VL53L1_WaitMs(
 #define VL53L1_INTF_RET_SUCCESS  int8_t
 #endif
 
-typedef VL53L1_INTF_RET_TYPE (*vl53l1_read_fptr_t)(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint16_t len);
-typedef VL53L1_INTF_RET_TYPE (*vl53l1_write_fptr_t)(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint16_t len);
+typedef int8_t (*vl53l1_iic_Read_t)(uint8_t address, uint8_t* buffer, uint8_t length);
+typedef int8_t (*vl53l1_iic_Write_t)(uint8_t address, uint8_t* buffer, uint8_t length);
 typedef void (*vl53l1_delay_us_fptr_t)(uint32_t period);
 
 /*!
@@ -112,15 +115,16 @@ struct vl53l1_dev
     VL53L1_INTF_RET_SUCCESS intf_rslt;
 
     /*! Bus read function pointer */
-    vl53l1_read_fptr_t read;
+    vl53l1_iic_Read_t read;
 
     /*! Bus write function pointer */
-    vl53l1_write_fptr_t write;
+    vl53l1_iic_Write_t write;
 
     /*! delay(in us) function pointer */
     vl53l1_delay_us_fptr_t delay_us;
 };
 
+int8_t VL53L1_initInterface(uint8_t chip_id, vl53l1_iic_Read_t read, vl53l1_iic_Write_t write);
 
 #ifdef __cplusplus
 }
