@@ -1,1 +1,53 @@
 
+
+'''
+static int8_t config_VL53L1(uint8_t chip_id)
+{
+	int8_t status = 0;
+	
+	  /* This function must to be called to initialize the sensor with the default setting  */
+	  status = VL53L1X_SensorInit(chip_id);
+	  /* Optional functions to be used to change the main ranging parameters according the application requirements to get the best ranging performances */
+	  status = VL53L1X_SetDistanceMode(chip_id, 2); /* 1=short, 2=long */
+	  status = VL53L1X_SetTimingBudgetInMs(chip_id, 100); /* in ms possible values [20, 50, 100, 200, 500] */
+	  status = VL53L1X_SetInterMeasurementInMs(chip_id, 100); /* in ms, IM must be > = TB */
+	  //  status = VL53L1X_SetOffset(chip_id,20); /* offset compensation in mm */
+	  //  status = VL53L1X_SetROI(chip_id, 16, 16); /* minimum ROI 4,4 */
+	  //	status = VL53L1X_CalibrateOffset(chip_id, 140, &offset); /* may take few second to perform the offset cal*/
+	  //	status = VL53L1X_CalibrateXtalk(chip_id, 1000, &xtalk); /* may take few second to perform the xtalk cal */
+//	  printf("VL53L1X Ultra Lite Driver Example running ...\n");
+	  status = VL53L1X_StartRanging(chip_id);   /* This function has to be called to enable the ranging */	  
+	  return status;
+}
+'''
+
+'''
+struct range_vl53l1
+{
+	uint16_t Distance;
+	uint16_t SignalRate;
+	uint16_t AmbientRate;
+	uint16_t SpadNum;
+	uint8_t RangeStatus;
+};
+'''
+
+int8_t getRange_VL53L1(uint8_t chip_id, struct range_vl53l1 *data)
+{
+	int8_t status;
+	uint8_t dataReady = 0;
+	while (dataReady == 0)
+	{
+		status = VL53L1X_CheckForDataReady(chip_id, &dataReady);
+		//HAL_Delay(2);
+	}
+	dataReady = 0;
+	status = VL53L1X_GetRangeStatus(chip_id, &data->RangeStatus);
+	status = VL53L1X_GetDistance(chip_id, &data->Distance);
+	status = VL53L1X_GetSignalRate(chip_id, &data->SignalRate);
+	status = VL53L1X_GetAmbientRate(chip_id, &data->AmbientRate);
+	status = VL53L1X_GetSpadNb(chip_id, &data->SpadNum);
+	status = VL53L1X_ClearInterrupt(chip_id); /* clear interrupt has to be called to enable next interrupt*/
+//	printf("%u, %u, %u, %u, %u\n", data->RangeStatus, data->Distance, data->SignalRate, data->AmbientRate, data->SpadNum);
+	return status;
+}
