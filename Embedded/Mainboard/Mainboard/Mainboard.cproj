@@ -233,6 +233,27 @@
     <Compile Include="driver\TMAG5273\tmag5273.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="driver\VL53L1X\API\core\VL53L1X_api.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\core\VL53L1X_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\core\VL53L1X_calibration.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\core\VL53L1X_calibration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\platform\vl53l1_platform.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\platform\vl53l1_platform.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver\VL53L1X\API\platform\vl53l1_types.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\adc.c">
       <SubType>compile</SubType>
     </Compile>
@@ -415,6 +436,10 @@
     <Folder Include="driver\lwgps\" />
     <Folder Include="driver\PCA9685\" />
     <Folder Include="driver\TMAG5273\" />
+    <Folder Include="driver\VL53L1X\" />
+    <Folder Include="driver\VL53L1X\API\" />
+    <Folder Include="driver\VL53L1X\API\core\" />
+    <Folder Include="driver\VL53L1X\API\platform\" />
     <Folder Include="hal\" />
     <Folder Include="OS\" />
     <Folder Include="OS\freeRTOS\" />

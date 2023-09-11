@@ -51,13 +51,7 @@
 // Macros and Defines
 // ********************************************************************************
 
-#define LED0	PIN3_bm
-#define SW0		PIN2_bm
-#define DIO		PIN7_bm
 
-#define PIN_WLAN_EN	PIN0_bm
-#define MOTOR_EN_M1	PIN3_bm
-#define MOTOR_EN_M5	PIN2_bm
 
 #define MAXPIX 8
 #define COLORLENGTH MAXPIX/2
@@ -93,6 +87,13 @@ void PORT_init(void)
 	PORTD.DIR |= DIO;
 	PORTD.OUT |= DIO;
 	*/
+	//SENSOR_COLLISION_PORT.DIR &= ~(SENSOR_COLLISION_00);
+	//SENSOR_COLLISION_PORT.DIR &= ~(SENSOR_COLLISION_01);
+	//SENSOR_COLLISION_PORT.DIR &= ~(SENSOR_COLLISION_02);
+	PORTD_set_pin_dir(SENSOR_COLLISION_00, PORT_DIR_IN);
+	PORTD_set_pin_dir(SENSOR_COLLISION_01, PORT_DIR_IN);
+	PORTD_set_pin_dir(SENSOR_COLLISION_02, PORT_DIR_IN);
+	
 	PORTC.DIR |= MOTOR_EN_M1;
 	PORTC.OUT |= MOTOR_EN_M1;
 	

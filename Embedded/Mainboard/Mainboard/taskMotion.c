@@ -112,7 +112,9 @@ void vMotionTask(void* pvParameters)
 		
 		//sprintf((char*)buffer, "--> vMotionTask: M[0] U= %.03fmV I= %.03fmA\tM[1] U= %.03fmV I= %.03fmA\n\r", voltage_0, current_0, voltage_1, current_1);
 		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
-		
+		glbRoboterData.sens_collosion_00 = PORTD_get_pin_level(SENSOR_COLLISION_00);
+		glbRoboterData.sens_collosion_01 = PORTD_get_pin_level(SENSOR_COLLISION_01);
+		glbRoboterData.sens_collosion_02 = PORTD_get_pin_level(SENSOR_COLLISION_02);
 		vTaskDelay(pdMS_TO_TICKS(50));
 	}
 }

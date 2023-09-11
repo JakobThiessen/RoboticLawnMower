@@ -29,6 +29,19 @@
 #include "OS/freeRTOS/include/FreeRTOS.h"
 #include "OS/freeRTOS/include/task.h"
 
+#define LED0	PIN3_bm
+#define SW0		PIN2_bm
+#define DIO		PIN7_bm
+
+#define PIN_WLAN_EN	PIN0_bm
+#define MOTOR_EN_M1	PIN3_bm
+#define MOTOR_EN_M5	PIN2_bm
+
+#define SENSOR_COLLISION_PORT PORTD
+#define SENSOR_COLLISION_00	PIN6_bp
+#define SENSOR_COLLISION_01	PIN5_bp
+#define SENSOR_COLLISION_02	PIN4_bp
+
 int8_t user_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
 int8_t user_i2c_write(uint8_t reg_addr, uint8_t *reg_data, uint32_t len, void *intf_ptr);
 

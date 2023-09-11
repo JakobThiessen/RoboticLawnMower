@@ -60,6 +60,6 @@ void vCommunicationTask(void* pvParameters)
 		getGlbRoboterData(&tx_data[3], &tx_data[2]);
 		
 		USART0_sendBuffer(tx_data, tx_data[2] + 3);
-		vTaskDelay(pdMS_TO_TICKS(50));
+		vTaskDelay(pdMS_TO_TICKS(20));
 	}
 }

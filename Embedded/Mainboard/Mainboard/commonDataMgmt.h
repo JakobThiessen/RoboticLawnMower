@@ -17,6 +17,7 @@ extern struct globalData
 	
 	int16_t dataGyro[3];		// [6]
 	int16_t dataAcc[3];			// [6]
+	int16_t inclination[3];		// [6]
 	int16_t dataCompass[3];		// [6]
 	uint32_t CompassDeg;		// [4]
 	
@@ -45,6 +46,16 @@ extern struct globalData
 	uint8_t month;				// [1]
 	uint8_t year;				// [1]
 
+	int8_t errorNeigung;		// [1]
+	uint8_t sens_collosion_00;	// [1]
+	uint8_t sens_collosion_01;	// [1]
+	uint8_t sens_collosion_02;	// [1]
+	
+	uint16_t sens_rain;			// [2]
+	
+	uint16_t sens_dist_00;		// [2]
+	uint16_t sens_dist_01;		// [2]
+	uint16_t sens_dist_02;		// [2]
 };
 
 struct globalData glbRoboterData;

@@ -118,7 +118,7 @@ int8_t configure_bmi160(struct bmi160_dev *dev)
 	dev->gyro_cfg.power = BMI160_GYRO_NORMAL_MODE;
 	/* Select the Output data rate, range of Gyroscope sensor */
 	dev->gyro_cfg.odr = BMI160_GYRO_ODR_100HZ;
-	dev->gyro_cfg.range = BMI160_GYRO_RANGE_2000_DPS;
+	dev->gyro_cfg.range = BMI160_GYRO_RANGE_250_DPS;
 	dev->gyro_cfg.bw = BMI160_GYRO_BW_NORMAL_MODE;
 
 	/* Set the sensor configuration */
@@ -139,19 +139,24 @@ static int8_t configure_bmm150(struct bmm150_dev *dev)
 	struct bmm150_settings settings;
 
 	/* Read the default configuration from the sensor */
-	settings.pwr_mode = BMM150_POWERMODE_FORCED; //BMM150_POWERMODE_NORMAL;
-	settings.preset_mode = 0x00;
-	settings.xyz_axes_control = 0x3F;
-	
+	settings.pwr_mode = BMM150_POWERMODE_FORCED; //
+	//settings.preset_mode = 0x00;
+	settings.data_rate = BMM150_DATA_RATE_20HZ;
+	//settings.xyz_axes_control = 0x3F;
+	settings.xy_rep = 47;
+	settings.z_rep = 83;
+
 	rslt = bmm150_set_op_mode(&settings, dev);
 
+	/*
 	if (rslt == BMM150_OK)
 	{
-		/* Set any threshold level below which low threshold interrupt occurs */
-		settings.int_settings.low_threshold = 0x0A;
+		// Set any threshold level below which low threshold interrupt occurs
+		settings.int_settings.low_int_en = 1;
+		settings.int_settings.low_threshold = 0x80;
 		rslt = bmm150_set_sensor_settings(BMM150_SEL_LOW_THRESHOLD_SETTING, &settings, dev);
 	}
-
+	*/
 	return rslt;
 }
 
@@ -161,11 +166,11 @@ static int8_t get_compass_data(struct bmm150_dev *dev, struct bmm150_mag_data *m
 	int8_t rslt;
 
 	/* Get the interrupt status */
-	rslt = bmm150_get_interrupt_status(dev);
+	//rslt = bmm150_get_interrupt_status(dev);
 
 	/* Read mag data */
 	rslt = bmm150_read_mag_data(mag_data, dev);
-
+	
 	return rslt;
 }
 
@@ -192,6 +197,16 @@ static void get_compassInDegrees(int16_t data_x, int16_t data_y, uint32_t *mDeg)
 	float deg = xyHeading * 180 * M_1_PI;		// M_1_PI = 1/pi
 	*mDeg = (uint32_t)(deg * 1000);
 
+}
+
+static void getPitchRollData(int16_t x, int16_t y, int16_t z, int16_t *pitch, int16_t *roll)
+{
+	int32_t accelX = x;
+	int32_t accelY = y;
+	int32_t accelZ = z;
+	
+	*pitch = 180 * atan2(accelX, sqrt(accelY*accelY + accelZ*accelZ )) / M_PI;
+	*roll = 180 * atan2(accelY, sqrt(accelX*accelX + accelZ*accelZ )) / M_PI;
 }
 
 uint8_t buffer[300];
@@ -284,13 +299,30 @@ void vEnvSensorTask(void* pvParameters)
 	configure_bmi160(&sensorGyro);
 	configure_bmm150(&sensorCompass);
 	
+	int16_t pitch = 0;
+	int16_t roll = 0;
+	int16_t yaw = 0;
+	int8_t errorNeigung = 0;
+	
 	for ( ;; )
 	{
 		bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
 		configure_bmm150(&sensorCompass);
 					
+		readAnalog(ADC_MUXPOS_AIN18_gc, &adcVal);
+		glbRoboterData.sens_rain = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
+		
+		vTaskDelay(pdMS_TO_TICKS(1));
 		readAnalog(ADC_MUXPOS_AIN19_gc, &adcVal);
-//		uint32_t adcVoltage = ( (uint32_t)adcVal * 2500 ) / 4096;
+		glbRoboterData.sens_dist_00 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
+		
+		vTaskDelay(pdMS_TO_TICKS(1));
+		readAnalog(ADC_MUXPOS_AIN20_gc, &adcVal);
+		glbRoboterData.sens_dist_01 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
+		
+		vTaskDelay(pdMS_TO_TICKS(1));
+		readAnalog(ADC_MUXPOS_AIN21_gc, &adcVal);
+		glbRoboterData.sens_dist_02 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 
 		int16_t adc_0 = ads1115_ConvertOnce(&analogSensor_0, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
 		int16_t adc_1 = ads1115_ConvertOnce(&analogSensor_1, ADS1115_MUX_AIN0_GND, ADS1115_PGA_2p048V);
@@ -300,16 +332,35 @@ void vEnvSensorTask(void* pvParameters)
 
 		bme280_get_sensor_data(BME280_ALL, &sensEnvData, &sensorEnv);
 		convert_bme280_sensor_data2float(&sensEnvData, &convData);
-			
+		
 		/* To read both Accel and Gyro data */
 		bmi160_get_sensor_data((BMI160_ACCEL_SEL | BMI160_GYRO_SEL | BMI160_TIME_SEL), &bmi160_accel, &bmi160_gyro, &sensorGyro);
+		
+		getPitchRollData(bmi160_accel.x, bmi160_accel.y, bmi160_accel.z, &pitch, &roll);
+		glbRoboterData.inclination[0] = pitch;
+		glbRoboterData.inclination[1] = roll;
+		glbRoboterData.inclination[2] = yaw;
+		
+		if (abs(pitch) > 30 || abs(roll) > 30)
+		{
+			glbRoboterData.errorNeigung = 1;
+		} 
+		else
+		{
+			glbRoboterData.errorNeigung = 0;
+		}
 
 		//sprintf((char*)buffer, "--> vSensTask: ACC--> ax:%04d\tay:%04d\taz:%04d\n\r", bmi160_accel.x, bmi160_accel.y, bmi160_accel.z);
 		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
 		//sprintf((char*)buffer, "--> vSensTask: GYR--> gx:%04d\tgy:%04d\tgz:%04d\n\r", bmi160_gyro.x, bmi160_gyro.y, bmi160_gyro.z);
 		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);
-			
+
 		get_compass_data(&sensorCompass, &magData);
+		
+		glbRoboterData.dataCompass[0] = (int16_t)magData.x;
+		glbRoboterData.dataCompass[1] = (int16_t)magData.y;
+		glbRoboterData.dataCompass[2] = (int16_t)magData.z;
+
 		//sprintf((char*)buffer, "--> vSensTask: MAG X : %04duT Y : %04duT Z : %04duT\n\r", magData.x, magData.y, magData.z);
 		//xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 100);	
 			
@@ -332,10 +383,6 @@ void vEnvSensorTask(void* pvParameters)
 		glbRoboterData.dataGyro[1] = bmi160_gyro.y;
 		glbRoboterData.dataGyro[2] = bmi160_gyro.z;
 		
-		glbRoboterData.dataCompass[0] = magData.x;
-		glbRoboterData.dataCompass[1] = magData.y;
-		glbRoboterData.dataCompass[2] = magData.z;
-		
 		uint32_t mDeg;
 		get_compassInDegrees(magData.x, magData.y, &mDeg);
 		glbRoboterData.CompassDeg = mDeg;
@@ -352,5 +399,6 @@ void vEnvSensorTask(void* pvParameters)
 		glbRoboterData.magnetSensor[0] = magSensorVector.z;
 		
 		vTaskDelay(pdMS_TO_TICKS(50));
+		
 	}
 }
