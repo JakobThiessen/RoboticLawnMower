@@ -91,20 +91,19 @@ void vMotionTask(void* pvParameters)
 	sprintf((char*)buffer, "--> TASK vMotionTask: PCA9685 INIT --> CHIP_ID: 0x%02X\n\r", pwmControl.chip_id);
 	xMessageBufferSend(terminal_tx_buffer, buffer, sizeof(buffer), 500);
 
+	uint16_t velocity_1 = 0;
+	uint16_t velocity_2 = 0;
+	uint16_t mowerMotorVel = 0;
+	float voltage_0, voltage_1;
+	float current_0, current_1;
+		
 	for ( ;; )
 	{		
-		float voltage_0, voltage_1;
-		float current_0, current_1;
-
 		ina228_voltage(&voltage_0, &monitorMotor_0);
 		ina228_voltage(&voltage_1, &monitorMotor_1);
 		ina228_current(&current_0, &monitorMotor_0);
 		ina228_current(&current_1, &monitorMotor_1);
-		
-		setMotorParameter(1, 2048, 1, &pwmControl);
-		setMotorParameter(2, 2048, 1, &pwmControl);
-		
-		setMotorParameter(5, 4000, 1, &pwmControl);
+
 		glbRoboterData.motorCurrent[0] = (int16_t)(current_0 * 1);
 		glbRoboterData.motorVoltage[0] = (int16_t)(voltage_0 * 1000);
 		glbRoboterData.motorCurrent[1] = (int16_t)(current_1 * 1);
@@ -115,6 +114,38 @@ void vMotionTask(void* pvParameters)
 		glbRoboterData.sens_collosion_00 = PORTD_get_pin_level(SENSOR_COLLISION_00);
 		glbRoboterData.sens_collosion_01 = PORTD_get_pin_level(SENSOR_COLLISION_01);
 		glbRoboterData.sens_collosion_02 = PORTD_get_pin_level(SENSOR_COLLISION_02);
+		
+		if ( (glbRoboterData.sens_collosion_00 == 0) || (glbRoboterData.sens_collosion_01 == 0) || glbRoboterData.sens_collosion_02 == 0)
+		{
+			velocity_1 = 0;
+			velocity_2 = 0;
+			mowerMotorVel = 0;
+		}
+		else
+		{
+			if(glbRoboterData.sens_dist_00 > 800)
+			{
+				velocity_1 = 4000;
+				velocity_2 = 4000;
+				mowerMotorVel = 4000;
+			}
+			else if (glbRoboterData.sens_dist_00 <= 500 && glbRoboterData.sens_dist_00 > 250)
+			{
+				velocity_1 = 2000;
+				velocity_2 = 2000;
+				mowerMotorVel = 4000;
+			} 
+			else if(glbRoboterData.sens_dist_00 <= 250)
+			{
+				velocity_1 = 0;
+				velocity_2 = 0;
+				mowerMotorVel = 0;
+			}
+		}
+		
+		setMotorParameter(1, velocity_1,	1, &pwmControl);
+		setMotorParameter(2, velocity_2,	0, &pwmControl);
+		setMotorParameter(5, mowerMotorVel,	1, &pwmControl);
 		vTaskDelay(pdMS_TO_TICKS(50));
 	}
 }
