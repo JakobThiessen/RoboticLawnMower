@@ -77,6 +77,6 @@ void vCommunicationTask(void* pvParameters)
 			USART0_sendString(tx_data);
 			rx_data_idx = 0;
 		}
-		vTaskDelay(pdMS_TO_TICKS(20));
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
 }

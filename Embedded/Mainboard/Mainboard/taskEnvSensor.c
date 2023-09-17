@@ -199,16 +199,16 @@ int8_t getRange_VL53L1(uint8_t chip_id, struct range_vl53l1 *data)
 	while (dataReady == 0)
 	{
 		status = VL53L1X_CheckForDataReady(chip_id, &dataReady);
-		//HAL_Delay(2);
+		vTaskDelay(pdMS_TO_TICKS(5));
 	}
 	dataReady = 0;
 	status = VL53L1X_GetRangeStatus(chip_id, &data->RangeStatus);
-	status = VL53L1X_GetDistance(chip_id, &data->Distance);
-	status = VL53L1X_GetSignalRate(chip_id, &data->SignalRate);
-	status = VL53L1X_GetAmbientRate(chip_id, &data->AmbientRate);
-	status = VL53L1X_GetSpadNb(chip_id, &data->SpadNum);
-	status = VL53L1X_ClearInterrupt(chip_id); /* clear interrupt has to be called to enable next interrupt*/
-//	printf("%u, %u, %u, %u, %u\n", data->RangeStatus, data->Distance, data->SignalRate, data->AmbientRate, data->SpadNum);
+	status += VL53L1X_GetDistance(chip_id, &data->Distance);
+	//status = VL53L1X_GetSignalRate(chip_id, &data->SignalRate);
+	//status = VL53L1X_GetAmbientRate(chip_id, &data->AmbientRate);
+	//status = VL53L1X_GetSpadNb(chip_id, &data->SpadNum);
+	VL53L1X_ClearInterrupt(chip_id); /* clear interrupt has to be called to enable next interrupt*/
+
 	return status;
 }
 
@@ -361,7 +361,6 @@ void vEnvSensorTask(void* pvParameters)
 	int16_t pitch = 0;
 	int16_t roll = 0;
 	int16_t yaw = 0;
-	int8_t errorNeigung = 0;
 	struct range_vl53l1 range_data;
 	
 	for ( ;; )
@@ -369,21 +368,24 @@ void vEnvSensorTask(void* pvParameters)
 		bme280_set_sensor_mode(BME280_FORCED_MODE, &sensorEnv);
 		configure_bmm150(&sensorCompass);
 		
-		getRange_VL53L1(0x29, &range_data);
-		glbRoboterData.sens_dist_00 = range_data.Distance;
+		int8_t status = getRange_VL53L1(0x29, &range_data);
+		if (status == 0)
+		{
+			glbRoboterData.sens_dist_00 = range_data.Distance;
+		}
 		
 		readAnalog(ADC_MUXPOS_AIN18_gc, &adcVal);
 		glbRoboterData.sens_rain = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 		
-		vTaskDelay(pdMS_TO_TICKS(1));
+		vTaskDelay(pdMS_TO_TICKS(5));
 		readAnalog(ADC_MUXPOS_AIN19_gc, &adcVal);
 		//glbRoboterData.sens_dist_00 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 		
-		vTaskDelay(pdMS_TO_TICKS(1));
+		vTaskDelay(pdMS_TO_TICKS(5));
 		readAnalog(ADC_MUXPOS_AIN20_gc, &adcVal);
 		glbRoboterData.sens_dist_01 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 		
-		vTaskDelay(pdMS_TO_TICKS(1));
+		vTaskDelay(pdMS_TO_TICKS(5));
 		readAnalog(ADC_MUXPOS_AIN21_gc, &adcVal);
 		glbRoboterData.sens_dist_02 = (uint16_t)(( (uint32_t)adcVal * 2500 ) / 4096);
 

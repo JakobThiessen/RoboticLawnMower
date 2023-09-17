@@ -56,6 +56,8 @@ extern struct globalData
 	uint16_t sens_dist_00;		// [2]
 	uint16_t sens_dist_01;		// [2]
 	uint16_t sens_dist_02;		// [2]
+	
+	uint16_t state_MotionStateMachine; // [2]
 };
 
 struct globalData glbRoboterData;

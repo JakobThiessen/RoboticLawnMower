@@ -139,8 +139,8 @@ int main(void)
 */
 	sei();
 
-	PORTC_set_pin_level(MOTOR_EN_M1, false);
-	PORTC_set_pin_level(MOTOR_EN_M5, false);
+	PORTC_set_pin_level(MOTOR_EN_M1, true);
+	PORTC_set_pin_level(MOTOR_EN_M5, true);
 	
 	static char tx_buff[256];
 	sprintf((char*)tx_buff, "--> Test Test: started...\n\r");
@@ -156,7 +156,7 @@ int main(void)
 		xTaskCreate(vCommunicationTask,	"uart",		configMINIMAL_STACK_SIZE+1024,	NULL, COMMUNICATION_TASK_PRIORITY,	NULL);
 		xTaskCreate(vGpsTask,			"gps",		configMINIMAL_STACK_SIZE+512,	NULL, GPS_TASK_PRIORITY,			NULL);
 		xTaskCreate(vEnvSensorTask,		"sensor",	configMINIMAL_STACK_SIZE+512,	NULL, ENV_SESNOR_TASK_PRIORITY,		NULL);
-		xTaskCreate(vMotionTask,		"motion",	configMINIMAL_STACK_SIZE+512,	NULL, MOTION_TASK_PRIORITY,			NULL);
+		xTaskCreate(vMotionTask,		"motion",	configMINIMAL_STACK_SIZE+1024,	NULL, MOTION_TASK_PRIORITY,			NULL);
 
 		// Start scheduler.
 		vTaskStartScheduler();
