@@ -1,0 +1,234 @@
+(footprint "Y08500R10000F9R"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "Y08500R10000F9R-1")
+	(tags "Resistor")
+	(property "Reference" "R**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "d5e1c3d0-308f-450a-98b6-17734da054a0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "Y08500R10000F9R"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "51f4c961-8ba2-4b78-95aa-fb7d8e2108b7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a4a683e3-c06b-4807-ad7e-39cb13eac66f")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7cb4c32e-f9b0-4fdc-9ec4-d3cd2c3b8d52")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "04865f93-100b-4c58-ad37-69f031cb22be")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -3.175 -0.6)
+		(end -3.175 0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4a1ef226-4f41-4389-8fcf-ce76d490a62d")
+	)
+	(fp_line
+		(start -0.6 -2.03)
+		(end 0.6 -2.03)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b6dadad0-44f6-4e63-8683-a64eee7104ca")
+	)
+	(fp_line
+		(start -0.6 2.03)
+		(end 0.6 2.03)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "096007e2-250a-418e-9e04-2c49ed1a36f5")
+	)
+	(fp_line
+		(start 3.175 -0.6)
+		(end 3.175 0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6da9e43c-8198-42b1-bdca-8d4c4843ebe3")
+	)
+	(fp_line
+		(start -4.3 -3.54)
+		(end 4.3 -3.54)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "662ad18c-798b-4d45-a31a-0b1403622599")
+	)
+	(fp_line
+		(start -4.3 3.54)
+		(end -4.3 -3.54)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "91da7516-830e-415a-8532-a434adcb9441")
+	)
+	(fp_line
+		(start 4.3 -3.54)
+		(end 4.3 3.54)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "898a4773-82c8-489b-b0bd-ea294197f73d")
+	)
+	(fp_line
+		(start 4.3 3.54)
+		(end -4.3 3.54)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "db497ade-56f6-4b08-9972-3eb71a3a4482")
+	)
+	(fp_line
+		(start -3.175 -2.03)
+		(end 3.175 -2.03)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fb4edc01-72b9-408a-bb1e-fa063cb8ec80")
+	)
+	(fp_line
+		(start -3.175 2.03)
+		(end -3.175 -2.03)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "46dcd4c3-b830-4ed4-bccc-650c6169bf78")
+	)
+	(fp_line
+		(start 3.175 -2.03)
+		(end 3.175 2.03)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a9283ea7-1e2c-42f8-8165-325b38fdf60c")
+	)
+	(fp_line
+		(start 3.175 2.03)
+		(end -3.175 2.03)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d22510a9-0c9c-4ee3-ba05-8002d91f20b7")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "f25a4204-e1cc-4279-aa13-911f3e3bbb27")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2.095 -1.715 90)
+		(size 1.65 2.41)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "d9548d91-2df1-408b-b356-07013a66121d")
+	)
+	(pad "2" smd rect
+		(at -2.095 1.715 90)
+		(size 1.65 2.41)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "2ec2a3f8-1fc4-47a3-8f7c-62ef56a7292c")
+	)
+	(pad "3" smd rect
+		(at 2.095 -1.715 90)
+		(size 1.65 2.41)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "d86fa7bc-e256-4d68-9f00-ef99d2f3dbad")
+	)
+	(pad "4" smd rect
+		(at 2.095 1.715 90)
+		(size 1.65 2.41)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "3cf2868c-ef55-4e38-b586-4d35ca89e259")
+	)
+	(model "${KIPRJMOD}/lib/Y08500R10000F9R.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

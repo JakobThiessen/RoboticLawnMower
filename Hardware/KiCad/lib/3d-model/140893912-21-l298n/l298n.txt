@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"33-15012020-058797";"";
+"REFERENCE";"L298N";"";
+"TraceParts.PartTitle";"Integrated Circuit Transistor Outline, Vertical - L298N";"";
+"TraceParts.InstanceId";"33-15012020-058797DDMI6CCQK0LYNXIO6U3V7QBO6";"";
+"DESIGN";"Integrated Circuit Transistor Outline, Vertical - L298N";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";
+"SUPPLIER";"STMicroelectronics";"";
+"TraceParts.PartVersion";"1.1.3";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"STMICROELECTRONICS:33-15012020-058797";"";

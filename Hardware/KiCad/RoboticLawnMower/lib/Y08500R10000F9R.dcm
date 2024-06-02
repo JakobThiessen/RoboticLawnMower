@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Y08500R10000F9R
+D 100m Metal Foil Fixed Resistor +/-1% 0.5W Y08500R10000F9R
+K
+F https://www.mouser.com/datasheet/2/428/vcs1625-11157.pdf
+$ENDCMP
+#
+#End Doc Library
