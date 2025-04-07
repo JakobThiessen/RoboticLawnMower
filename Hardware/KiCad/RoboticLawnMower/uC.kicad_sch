@@ -801,7 +801,7 @@
 				)
 			)
 		)
-		(symbol "MCU_ST_STM32H5:STM32H503RBTx"
+		(symbol "MCU_ST_STM32H5:STM32H573RITx"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -814,7 +814,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "STM32H503RBTx"
+			(property "Value" "STM32H573RITx"
 				(at 10.16 44.45 0)
 				(effects
 					(font
@@ -833,7 +833,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h503rb.pdf"
+			(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h573ri.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -842,7 +842,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 128KB flash, 32KB RAM, 250 MHz, 49 GPIO, LQFP64"
+			(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 2048KB flash, 640KB RAM, 250 MHz, 1.62-3.6V, 49 GPIO, LQFP64"
 				(at 0 0 0)
 				(effects
 					(font
@@ -859,7 +859,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "Arm Cortex-M33 STM32H5 STM32H503"
+			(property "ki_keywords" "Arm Cortex-M33 STM32H5 STM32H563/H573"
 				(at 0 0 0)
 				(effects
 					(font
@@ -877,7 +877,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "STM32H503RBTx_0_1"
+			(symbol "STM32H573RITx_0_1"
 				(rectangle
 					(start -17.78 -40.64)
 					(end 20.32 43.18)
@@ -890,7 +890,7 @@
 					)
 				)
 			)
-			(symbol "STM32H503RBTx_1_1"
+			(symbol "STM32H573RITx_1_1"
 				(pin power_in line
 					(at -5.08 45.72 270)
 					(length 2.54)
@@ -928,13 +928,16 @@
 					)
 					(alternate "ADC1_INN11" bidirectional line)
 					(alternate "ADC1_INP12" bidirectional line)
-					(alternate "I2S1_SDI" bidirectional line)
+					(alternate "ADC2_INN11" bidirectional line)
+					(alternate "ADC2_INP12" bidirectional line)
+					(alternate "ETH_TXD2" bidirectional line)
 					(alternate "I2S2_SDI" bidirectional line)
-					(alternate "LPUART1_RTS" bidirectional line)
-					(alternate "PWR_CSTOP" bidirectional line)
-					(alternate "SPI1_MISO" bidirectional line)
+					(alternate "OCTOSPI1_IO2" bidirectional line)
+					(alternate "OCTOSPI1_IO5" bidirectional line)
+					(alternate "PWR_CSLEEP" bidirectional line)
 					(alternate "SPI2_MISO" bidirectional line)
-					(alternate "USART1_RTS" bidirectional line)
+					(alternate "TIM17_CH1" bidirectional line)
+					(alternate "TIM4_CH4" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 10.16 0)
@@ -955,15 +958,16 @@
 					)
 					(alternate "ADC1_INN12" bidirectional line)
 					(alternate "ADC1_INP13" bidirectional line)
-					(alternate "I2S1_SDO" bidirectional line)
+					(alternate "ADC2_INN12" bidirectional line)
+					(alternate "ADC2_INP13" bidirectional line)
+					(alternate "ETH_TX_CLK" bidirectional line)
 					(alternate "I2S2_SDO" bidirectional line)
-					(alternate "LPTIM2_IN2" bidirectional line)
-					(alternate "LPUART1_TX" bidirectional line)
-					(alternate "PWR_CSLEEP" bidirectional line)
-					(alternate "SPI1_MOSI" bidirectional line)
+					(alternate "LPTIM3_CH1" bidirectional line)
+					(alternate "OCTOSPI1_IO0" bidirectional line)
+					(alternate "OCTOSPI1_IO6" bidirectional line)
+					(alternate "PWR_CSTOP" bidirectional line)
+					(alternate "SAI1_D3" bidirectional line)
 					(alternate "SPI2_MOSI" bidirectional line)
-					(alternate "USART2_CTS" bidirectional line)
-					(alternate "USART2_NSS" bidirectional line)
 				)
 				(pin power_in line
 					(at 2.54 -43.18 90)
@@ -1020,31 +1024,23 @@
 					)
 					(alternate "ADC1_INN1" bidirectional line)
 					(alternate "ADC1_INP0" bidirectional line)
-					(alternate "COMP1_INP" bidirectional line)
-					(alternate "I2S1_SDI" bidirectional line)
-					(alternate "I2S2_MCK" bidirectional line)
-					(alternate "I2S3_WS" bidirectional line)
-					(alternate "LPTIM1_ETR" bidirectional line)
-					(alternate "LPTIM1_IN2" bidirectional line)
-					(alternate "LPTIM2_ETR" bidirectional line)
-					(alternate "OPAMP1_VINP" bidirectional line)
+					(alternate "ADC2_INN1" bidirectional line)
+					(alternate "ADC2_INP0" bidirectional line)
+					(alternate "ETH_CRS" bidirectional line)
 					(alternate "PWR_WKUP1" bidirectional line)
-					(alternate "RTC_OUT2" bidirectional line)
-					(alternate "SPI1_MISO" bidirectional line)
-					(alternate "SPI3_NSS" bidirectional line)
+					(alternate "SAI2_SD_B" bidirectional line)
 					(alternate "SPI3_RDY" bidirectional line)
+					(alternate "SPI6_NSS" bidirectional line)
 					(alternate "TAMP_IN2" bidirectional line)
 					(alternate "TAMP_OUT1" bidirectional line)
+					(alternate "TIM15_BKIN" bidirectional line)
 					(alternate "TIM2_CH1" bidirectional line)
 					(alternate "TIM2_ETR" bidirectional line)
-					(alternate "TIM3_CH1" bidirectional line)
-					(alternate "USART1_CTS" bidirectional line)
-					(alternate "USART1_NSS" bidirectional line)
+					(alternate "TIM5_CH1" bidirectional line)
+					(alternate "TIM8_ETR" bidirectional line)
+					(alternate "UART4_TX" bidirectional line)
 					(alternate "USART2_CTS" bidirectional line)
 					(alternate "USART2_NSS" bidirectional line)
-					(alternate "USART3_CK" bidirectional line)
-					(alternate "USART3_CTS" bidirectional line)
-					(alternate "USART3_NSS" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 38.1 180)
@@ -1064,16 +1060,19 @@
 						)
 					)
 					(alternate "ADC1_INP1" bidirectional line)
-					(alternate "I2S1_WS" bidirectional line)
-					(alternate "I2S3_CK" bidirectional line)
+					(alternate "ADC2_INP1" bidirectional line)
+					(alternate "ETH_REF_CLK" bidirectional line)
+					(alternate "ETH_RX_CLK" bidirectional line)
 					(alternate "LPTIM1_IN1" bidirectional line)
-					(alternate "SPI1_NSS" bidirectional line)
-					(alternate "SPI2_RDY" bidirectional line)
-					(alternate "SPI3_SCK" bidirectional line)
-					(alternate "TIM1_CH3" bidirectional line)
+					(alternate "OCTOSPI1_DQS" bidirectional line)
+					(alternate "OCTOSPI1_IO3" bidirectional line)
+					(alternate "SAI2_MCLK_B" bidirectional line)
+					(alternate "TAMP_IN5" bidirectional line)
+					(alternate "TAMP_OUT4" bidirectional line)
+					(alternate "TIM15_CH1N" bidirectional line)
 					(alternate "TIM2_CH2" bidirectional line)
-					(alternate "USART1_RX" bidirectional line)
-					(alternate "USART2_CK" bidirectional line)
+					(alternate "TIM5_CH2" bidirectional line)
+					(alternate "UART4_RX" bidirectional line)
 					(alternate "USART2_RTS" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1094,17 +1093,16 @@
 						)
 					)
 					(alternate "ADC1_INP14" bidirectional line)
-					(alternate "I2S1_CK" bidirectional line)
-					(alternate "I2S3_SDI" bidirectional line)
+					(alternate "ADC2_INP14" bidirectional line)
+					(alternate "ETH_MDIO" bidirectional line)
 					(alternate "LPTIM1_IN2" bidirectional line)
-					(alternate "LPUART1_RX" bidirectional line)
 					(alternate "PWR_WKUP2" bidirectional line)
-					(alternate "SPI1_SCK" bidirectional line)
-					(alternate "SPI3_MISO" bidirectional line)
-					(alternate "TIM1_CH4" bidirectional line)
+					(alternate "SAI2_SCK_B" bidirectional line)
+					(alternate "TAMP_IN4" bidirectional line)
+					(alternate "TAMP_OUT3" bidirectional line)
+					(alternate "TIM15_CH1" bidirectional line)
 					(alternate "TIM2_CH3" bidirectional line)
-					(alternate "TIM3_ETR" bidirectional line)
-					(alternate "USART1_TX" bidirectional line)
+					(alternate "TIM5_CH3" bidirectional line)
 					(alternate "USART2_TX" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1125,18 +1123,16 @@
 						)
 					)
 					(alternate "ADC1_INP15" bidirectional line)
-					(alternate "I2S1_SDI" bidirectional line)
+					(alternate "ADC2_INP15" bidirectional line)
+					(alternate "ETH_COL" bidirectional line)
 					(alternate "I2S2_WS" bidirectional line)
-					(alternate "I2S3_SDO" bidirectional line)
-					(alternate "LPUART1_TX" bidirectional line)
-					(alternate "SPI1_MISO" bidirectional line)
+					(alternate "OCTOSPI1_CLK" bidirectional line)
+					(alternate "SAI1_SD_B" bidirectional line)
 					(alternate "SPI2_NSS" bidirectional line)
-					(alternate "SPI3_MOSI" bidirectional line)
-					(alternate "TIM1_CH1N" bidirectional line)
+					(alternate "TIM15_CH2" bidirectional line)
 					(alternate "TIM2_CH4" bidirectional line)
-					(alternate "USART1_CK" bidirectional line)
+					(alternate "TIM5_CH4" bidirectional line)
 					(alternate "USART2_RX" bidirectional line)
-					(alternate "USART3_RX" bidirectional line)
 				)
 				(pin power_in line
 					(at 0 -43.18 90)
@@ -1196,6 +1192,7 @@
 					(alternate "RTC_TS" bidirectional line)
 					(alternate "TAMP_IN1" bidirectional line)
 					(alternate "TAMP_OUT2" bidirectional line)
+					(alternate "TAMP_OUT3" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 30.48 180)
@@ -1215,21 +1212,18 @@
 						)
 					)
 					(alternate "ADC1_INP18" bidirectional line)
+					(alternate "ADC2_INP18" bidirectional line)
 					(alternate "DAC1_OUT1" bidirectional line)
-					(alternate "I2S1_SDO" bidirectional line)
+					(alternate "DCMI_HSYNC" bidirectional line)
 					(alternate "I2S1_WS" bidirectional line)
-					(alternate "I2S3_SDI" bidirectional line)
 					(alternate "I2S3_WS" bidirectional line)
 					(alternate "LPTIM2_CH1" bidirectional line)
-					(alternate "SPI1_MOSI" bidirectional line)
+					(alternate "PSSI_DE" bidirectional line)
 					(alternate "SPI1_NSS" bidirectional line)
-					(alternate "SPI3_MISO" bidirectional line)
 					(alternate "SPI3_NSS" bidirectional line)
-					(alternate "TIM1_BKIN" bidirectional line)
-					(alternate "TIM1_CH2N" bidirectional line)
-					(alternate "USART1_RTS" bidirectional line)
+					(alternate "SPI6_NSS" bidirectional line)
+					(alternate "TIM5_ETR" bidirectional line)
 					(alternate "USART2_CK" bidirectional line)
-					(alternate "USART3_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 27.94 180)
@@ -1250,26 +1244,17 @@
 					)
 					(alternate "ADC1_INN18" bidirectional line)
 					(alternate "ADC1_INP19" bidirectional line)
-					(alternate "COMP1_INM" bidirectional line)
+					(alternate "ADC2_INN18" bidirectional line)
+					(alternate "ADC2_INP19" bidirectional line)
 					(alternate "DAC1_OUT2" bidirectional line)
+					(alternate "ETH_TX_EN" bidirectional line)
 					(alternate "I2S1_CK" bidirectional line)
-					(alternate "I2S1_MCK" bidirectional line)
-					(alternate "I2S2_CK" bidirectional line)
-					(alternate "I2S3_SDO" bidirectional line)
-					(alternate "LPTIM1_CH1" bidirectional line)
-					(alternate "LPTIM1_ETR" bidirectional line)
-					(alternate "LPTIM2_CH2" bidirectional line)
-					(alternate "LPUART1_RTS" bidirectional line)
-					(alternate "PWR_CSTOP" bidirectional line)
+					(alternate "PSSI_D14" bidirectional line)
 					(alternate "SPI1_SCK" bidirectional line)
-					(alternate "SPI2_SCK" bidirectional line)
-					(alternate "SPI3_MOSI" bidirectional line)
+					(alternate "SPI6_SCK" bidirectional line)
 					(alternate "TIM2_CH1" bidirectional line)
 					(alternate "TIM2_ETR" bidirectional line)
-					(alternate "USART2_CTS" bidirectional line)
-					(alternate "USART2_NSS" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
-					(alternate "USART3_RX" bidirectional line)
+					(alternate "TIM8_CH1N" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 25.4 180)
@@ -1289,10 +1274,18 @@
 						)
 					)
 					(alternate "ADC1_INP3" bidirectional line)
+					(alternate "ADC2_INP3" bidirectional line)
+					(alternate "DCMI_PIXCLK" bidirectional line)
 					(alternate "I2S1_SDI" bidirectional line)
+					(alternate "OCTOSPI1_IO3" bidirectional line)
+					(alternate "PSSI_PDCK" bidirectional line)
 					(alternate "SPI1_MISO" bidirectional line)
+					(alternate "SPI6_MISO" bidirectional line)
+					(alternate "TIM13_CH1" bidirectional line)
 					(alternate "TIM1_BKIN" bidirectional line)
 					(alternate "TIM3_CH1" bidirectional line)
+					(alternate "TIM8_BKIN" bidirectional line)
+					(alternate "USART11_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 22.86 180)
@@ -1313,23 +1306,19 @@
 					)
 					(alternate "ADC1_INN3" bidirectional line)
 					(alternate "ADC1_INP7" bidirectional line)
-					(alternate "AUDIOCLK" bidirectional line)
-					(alternate "I2S1_MCK" bidirectional line)
+					(alternate "ADC2_INN3" bidirectional line)
+					(alternate "ADC2_INP7" bidirectional line)
+					(alternate "ETH_CRS_DV" bidirectional line)
+					(alternate "ETH_RX_DV" bidirectional line)
 					(alternate "I2S1_SDO" bidirectional line)
-					(alternate "I2S2_MCK" bidirectional line)
-					(alternate "I2S2_SDI" bidirectional line)
-					(alternate "I2S3_MCK" bidirectional line)
-					(alternate "LPTIM2_ETR" bidirectional line)
-					(alternate "OPAMP1_VOUT" bidirectional line)
-					(alternate "PWR_CSLEEP" bidirectional line)
+					(alternate "OCTOSPI1_IO2" bidirectional line)
 					(alternate "SPI1_MOSI" bidirectional line)
-					(alternate "SPI2_MISO" bidirectional line)
+					(alternate "SPI6_MOSI" bidirectional line)
+					(alternate "TIM14_CH1" bidirectional line)
 					(alternate "TIM1_CH1N" bidirectional line)
-					(alternate "TIM2_CH3" bidirectional line)
 					(alternate "TIM3_CH2" bidirectional line)
-					(alternate "USART1_RTS" bidirectional line)
-					(alternate "USART3_CK" bidirectional line)
-					(alternate "USART3_RTS" bidirectional line)
+					(alternate "TIM8_CH1N" bidirectional line)
+					(alternate "USART11_RX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 7.62 0)
@@ -1349,10 +1338,11 @@
 						)
 					)
 					(alternate "ADC1_INP4" bidirectional line)
-					(alternate "COMP1_INM" bidirectional line)
+					(alternate "ADC2_INP4" bidirectional line)
+					(alternate "ETH_RXD0" bidirectional line)
 					(alternate "I2S1_MCK" bidirectional line)
 					(alternate "LPTIM2_ETR" bidirectional line)
-					(alternate "SPI1_RDY" bidirectional line)
+					(alternate "SAI1_CK1" bidirectional line)
 					(alternate "TIM2_CH4" bidirectional line)
 					(alternate "USART3_RX" bidirectional line)
 				)
@@ -1375,12 +1365,13 @@
 					)
 					(alternate "ADC1_INN4" bidirectional line)
 					(alternate "ADC1_INP8" bidirectional line)
-					(alternate "COMP1_OUT" bidirectional line)
-					(alternate "I2S1_CK" bidirectional line)
-					(alternate "LPTIM2_CH1" bidirectional line)
-					(alternate "OPAMP1_VINM" bidirectional line)
-					(alternate "OPAMP1_VINM0" bidirectional line)
-					(alternate "SPI1_SCK" bidirectional line)
+					(alternate "ADC2_INN4" bidirectional line)
+					(alternate "ADC2_INP8" bidirectional line)
+					(alternate "ETH_RXD1" bidirectional line)
+					(alternate "OCTOSPI1_DQS" bidirectional line)
+					(alternate "PSSI_D15" bidirectional line)
+					(alternate "SAI1_D3" bidirectional line)
+					(alternate "SAI1_FS_A" bidirectional line)
 					(alternate "TIM1_CH4N" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1402,13 +1393,16 @@
 					)
 					(alternate "ADC1_INN5" bidirectional line)
 					(alternate "ADC1_INP9" bidirectional line)
-					(alternate "COMP1_INP" bidirectional line)
-					(alternate "LPTIM1_IN1" bidirectional line)
-					(alternate "OPAMP1_VINP" bidirectional line)
+					(alternate "ADC2_INN5" bidirectional line)
+					(alternate "ADC2_INP9" bidirectional line)
+					(alternate "ETH_RXD2" bidirectional line)
+					(alternate "LPTIM3_CH1" bidirectional line)
+					(alternate "OCTOSPI1_IO1" bidirectional line)
 					(alternate "TIM1_CH2N" bidirectional line)
-					(alternate "TIM1_ETR" bidirectional line)
 					(alternate "TIM3_CH3" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
+					(alternate "TIM8_CH2N" bidirectional line)
+					(alternate "UART4_CTS" bidirectional line)
+					(alternate "USART11_CK" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -5.08 180)
@@ -1428,18 +1422,13 @@
 						)
 					)
 					(alternate "ADC1_INP5" bidirectional line)
-					(alternate "COMP1_INM" bidirectional line)
-					(alternate "COMP1_OUT" bidirectional line)
-					(alternate "I2S2_SDO" bidirectional line)
-					(alternate "LPTIM1_IN2" bidirectional line)
-					(alternate "LPTIM2_ETR" bidirectional line)
-					(alternate "OPAMP1_VINM" bidirectional line)
-					(alternate "OPAMP1_VINM1" bidirectional line)
-					(alternate "SPI2_MOSI" bidirectional line)
-					(alternate "TIM1_CH1" bidirectional line)
+					(alternate "ADC2_INP5" bidirectional line)
+					(alternate "ETH_RXD3" bidirectional line)
+					(alternate "LPTIM3_CH2" bidirectional line)
+					(alternate "OCTOSPI1_IO0" bidirectional line)
 					(alternate "TIM1_CH3N" bidirectional line)
 					(alternate "TIM3_CH4" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
+					(alternate "TIM8_CH3N" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -7.62 180)
@@ -1458,19 +1447,19 @@
 							)
 						)
 					)
-					(alternate "COMP1_INP" bidirectional line)
-					(alternate "I2S2_CK" bidirectional line)
 					(alternate "I2S3_SDO" bidirectional line)
 					(alternate "LPTIM1_CH1" bidirectional line)
-					(alternate "LPTIM1_CH2" bidirectional line)
+					(alternate "LPTIM5_ETR" bidirectional line)
+					(alternate "OCTOSPI1_CLK" bidirectional line)
+					(alternate "OCTOSPI1_DQS" bidirectional line)
 					(alternate "RCC_LSCO" bidirectional line)
 					(alternate "RTC_OUT2" bidirectional line)
+					(alternate "SAI1_D1" bidirectional line)
+					(alternate "SAI1_SD_A" bidirectional line)
+					(alternate "SDMMC1_CMD" bidirectional line)
 					(alternate "SPI1_RDY" bidirectional line)
-					(alternate "SPI2_SCK" bidirectional line)
 					(alternate "SPI3_MOSI" bidirectional line)
-					(alternate "TIM1_CH2N" bidirectional line)
-					(alternate "TIM2_CH1" bidirectional line)
-					(alternate "USART2_CK" bidirectional line)
+					(alternate "TIM8_CH4N" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -25.4 180)
@@ -1489,19 +1478,14 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_TX" bidirectional line)
-					(alternate "I2C1_SDA" bidirectional line)
+					(alternate "ETH_RX_ER" bidirectional line)
 					(alternate "I2C2_SCL" bidirectional line)
 					(alternate "I2S2_CK" bidirectional line)
-					(alternate "I2S3_WS" bidirectional line)
-					(alternate "I3C1_SDA" bidirectional line)
-					(alternate "I3C2_SCL" bidirectional line)
-					(alternate "LPTIM2_CH2" bidirectional line)
 					(alternate "LPTIM2_IN1" bidirectional line)
+					(alternate "LPTIM3_CH1" bidirectional line)
+					(alternate "OCTOSPI1_NCS" bidirectional line)
 					(alternate "SPI2_SCK" bidirectional line)
-					(alternate "SPI3_NSS" bidirectional line)
 					(alternate "TIM2_CH3" bidirectional line)
-					(alternate "USART3_CK" bidirectional line)
 					(alternate "USART3_TX" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1594,12 +1578,15 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C2_SMBA" bidirectional line)
+					(alternate "ETH_TXD0" bidirectional line)
+					(alternate "FDCAN2_RX" bidirectional line)
+					(alternate "I2C2_SDA" bidirectional line)
 					(alternate "I2S2_WS" bidirectional line)
+					(alternate "OCTOSPI1_NCLK" bidirectional line)
 					(alternate "SPI2_NSS" bidirectional line)
 					(alternate "TIM1_BKIN" bidirectional line)
-					(alternate "USART1_CK" bidirectional line)
+					(alternate "UART5_RX" bidirectional line)
+					(alternate "UCPD1_FRSTX" bidirectional line)
 					(alternate "USART3_CK" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1619,15 +1606,16 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_TX" bidirectional line)
-					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SDA" bidirectional line)
+					(alternate "FDCAN2_TX" bidirectional line)
+					(alternate "I2C2_SMBA" bidirectional line)
 					(alternate "I2S2_CK" bidirectional line)
-					(alternate "I3C2_SDA" bidirectional line)
 					(alternate "LPTIM2_CH1" bidirectional line)
-					(alternate "LPUART1_CTS" bidirectional line)
+					(alternate "LPTIM3_IN1" bidirectional line)
+					(alternate "SDMMC1_D0" bidirectional line)
 					(alternate "SPI2_SCK" bidirectional line)
 					(alternate "TIM1_CH1N" bidirectional line)
+					(alternate "UART5_TX" bidirectional line)
+					(alternate "UCPD1_CC1" bidirectional line)
 					(alternate "USART3_CTS" bidirectional line)
 					(alternate "USART3_NSS" bidirectional line)
 				)
@@ -1649,10 +1637,14 @@
 						)
 					)
 					(alternate "I2S2_SDI" bidirectional line)
-					(alternate "LPTIM1_ETR" bidirectional line)
-					(alternate "LPUART1_RTS" bidirectional line)
+					(alternate "LPTIM3_ETR" bidirectional line)
 					(alternate "SPI2_MISO" bidirectional line)
+					(alternate "TIM12_CH1" bidirectional line)
 					(alternate "TIM1_CH2N" bidirectional line)
+					(alternate "TIM8_CH2N" bidirectional line)
+					(alternate "UART4_DE" bidirectional line)
+					(alternate "UART4_RTS" bidirectional line)
+					(alternate "UCPD1_CC2" bidirectional line)
 					(alternate "USART1_TX" bidirectional line)
 					(alternate "USART3_RTS" bidirectional line)
 				)
@@ -1674,25 +1666,23 @@
 						)
 					)
 					(alternate "ADC1_EXTI15" bidirectional line)
-					(alternate "COMP1_OUT" bidirectional line)
-					(alternate "FDCAN1_TX" bidirectional line)
+					(alternate "ADC2_EXTI15" bidirectional line)
+					(alternate "DCMI_D2" bidirectional line)
+					(alternate "ETH_TXD1" bidirectional line)
 					(alternate "I2S2_SDO" bidirectional line)
-					(alternate "I2S3_MCK" bidirectional line)
-					(alternate "I2S3_SDI" bidirectional line)
-					(alternate "LPTIM1_CH1" bidirectional line)
-					(alternate "LPTIM2_IN2" bidirectional line)
-					(alternate "LPUART1_RX" bidirectional line)
+					(alternate "OCTOSPI1_CLK" bidirectional line)
+					(alternate "PSSI_D2" bidirectional line)
 					(alternate "PWR_PVD_IN" bidirectional line)
 					(alternate "RTC_REFIN" bidirectional line)
 					(alternate "SPI2_MOSI" bidirectional line)
-					(alternate "SPI3_MISO" bidirectional line)
+					(alternate "TIM12_CH2" bidirectional line)
 					(alternate "TIM1_CH3N" bidirectional line)
-					(alternate "TIM3_CH4" bidirectional line)
+					(alternate "TIM8_CH3N" bidirectional line)
+					(alternate "UART4_CTS" bidirectional line)
+					(alternate "UART5_RX" bidirectional line)
+					(alternate "USART11_CTS" bidirectional line)
+					(alternate "USART11_NSS" bidirectional line)
 					(alternate "USART1_RX" bidirectional line)
-					(alternate "USART2_RTS" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
-					(alternate "USART3_CTS" bidirectional line)
-					(alternate "USART3_NSS" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 2.54 0)
@@ -1711,14 +1701,16 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SCL" bidirectional line)
+					(alternate "DCMI_D0" bidirectional line)
 					(alternate "I2S2_MCK" bidirectional line)
-					(alternate "I3C2_SCL" bidirectional line)
-					(alternate "TIM1_CH1" bidirectional line)
+					(alternate "OCTOSPI1_IO5" bidirectional line)
+					(alternate "PSSI_D0" bidirectional line)
+					(alternate "SAI1_SCK_A" bidirectional line)
+					(alternate "SDMMC1_D0DIR" bidirectional line)
+					(alternate "SDMMC1_D6" bidirectional line)
 					(alternate "TIM3_CH1" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
+					(alternate "TIM8_CH1" bidirectional line)
+					(alternate "USART6_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 0 0)
@@ -1737,16 +1729,16 @@
 							)
 						)
 					)
+					(alternate "DCMI_D1" bidirectional line)
 					(alternate "DEBUG_TRGIO" bidirectional line)
-					(alternate "FDCAN1_TX" bidirectional line)
-					(alternate "I2C2_SDA" bidirectional line)
-					(alternate "I2S1_SDO" bidirectional line)
 					(alternate "I2S3_MCK" bidirectional line)
-					(alternate "I3C2_SDA" bidirectional line)
-					(alternate "SPI1_MOSI" bidirectional line)
-					(alternate "TIM1_CH2" bidirectional line)
+					(alternate "OCTOSPI1_IO6" bidirectional line)
+					(alternate "PSSI_D1" bidirectional line)
+					(alternate "SDMMC1_D123DIR" bidirectional line)
+					(alternate "SDMMC1_D7" bidirectional line)
 					(alternate "TIM3_CH2" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
+					(alternate "TIM8_CH2" bidirectional line)
+					(alternate "USART6_RX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 -2.54 0)
@@ -1765,16 +1757,15 @@
 							)
 						)
 					)
+					(alternate "DCMI_D2" bidirectional line)
 					(alternate "DEBUG_TRACED1" bidirectional line)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C1_SCL" bidirectional line)
-					(alternate "I2C2_SMBA" bidirectional line)
-					(alternate "I2S1_WS" bidirectional line)
-					(alternate "I3C1_SCL" bidirectional line)
-					(alternate "SPI1_NSS" bidirectional line)
-					(alternate "TIM1_CH3" bidirectional line)
+					(alternate "PSSI_D2" bidirectional line)
+					(alternate "SDMMC1_D0" bidirectional line)
 					(alternate "TIM3_CH3" bidirectional line)
-					(alternate "USART2_CK" bidirectional line)
+					(alternate "TIM8_CH3" bidirectional line)
+					(alternate "UART5_DE" bidirectional line)
+					(alternate "UART5_RTS" bidirectional line)
+					(alternate "USART6_CK" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 -20.32 0)
@@ -1794,6 +1785,7 @@
 						)
 					)
 					(alternate "ADC1_EXTI15" bidirectional line)
+					(alternate "ADC2_EXTI15" bidirectional line)
 					(alternate "RCC_OSC32_OUT" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1815,16 +1807,16 @@
 					)
 					(alternate "AUDIOCLK" bidirectional line)
 					(alternate "DAC1_EXTI9" bidirectional line)
-					(alternate "FDCAN1_TX" bidirectional line)
-					(alternate "I2C1_SDA" bidirectional line)
-					(alternate "I3C1_SDA" bidirectional line)
+					(alternate "DCMI_D3" bidirectional line)
+					(alternate "I2C3_SDA" bidirectional line)
+					(alternate "OCTOSPI1_IO0" bidirectional line)
+					(alternate "PSSI_D3" bidirectional line)
 					(alternate "RCC_MCO_2" bidirectional line)
-					(alternate "SPI3_RDY" bidirectional line)
-					(alternate "TIM1_CH4" bidirectional line)
+					(alternate "SDMMC1_D1" bidirectional line)
 					(alternate "TIM3_CH4" bidirectional line)
-					(alternate "USART2_CTS" bidirectional line)
-					(alternate "USART2_NSS" bidirectional line)
-					(alternate "USART3_RTS" bidirectional line)
+					(alternate "TIM8_CH4" bidirectional line)
+					(alternate "UART5_CTS" bidirectional line)
+					(alternate "UCPD1_DB2" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 20.32 180)
@@ -1843,23 +1835,15 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2S1_CK" bidirectional line)
-					(alternate "I2S2_SDO" bidirectional line)
-					(alternate "I2S2_WS" bidirectional line)
-					(alternate "LPTIM2_IN1" bidirectional line)
-					(alternate "LPUART1_CTS" bidirectional line)
+					(alternate "DCMI_D3" bidirectional line)
+					(alternate "I2C3_SCL" bidirectional line)
+					(alternate "PSSI_D3" bidirectional line)
 					(alternate "RCC_MCO_1" bidirectional line)
 					(alternate "SPI1_RDY" bidirectional line)
-					(alternate "SPI1_SCK" bidirectional line)
-					(alternate "SPI2_MOSI" bidirectional line)
-					(alternate "SPI2_NSS" bidirectional line)
 					(alternate "TIM1_CH1" bidirectional line)
-					(alternate "TIM1_CH4N" bidirectional line)
-					(alternate "TIM3_CH3" bidirectional line)
+					(alternate "TIM8_BKIN2" bidirectional line)
+					(alternate "UART7_RX" bidirectional line)
 					(alternate "USART1_CK" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
-					(alternate "USART3_TX" bidirectional line)
 					(alternate "USB_SOF" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1880,17 +1864,16 @@
 						)
 					)
 					(alternate "DAC1_EXTI9" bidirectional line)
-					(alternate "DEBUG_TRACED2" bidirectional line)
-					(alternate "I2S1_SDI" bidirectional line)
+					(alternate "DCMI_D0" bidirectional line)
+					(alternate "ETH_TX_ER" bidirectional line)
+					(alternate "I2C3_SMBA" bidirectional line)
 					(alternate "I2S2_CK" bidirectional line)
-					(alternate "I2S3_SDO" bidirectional line)
 					(alternate "LPUART1_TX" bidirectional line)
-					(alternate "SPI1_MISO" bidirectional line)
+					(alternate "PSSI_D0" bidirectional line)
 					(alternate "SPI2_SCK" bidirectional line)
-					(alternate "SPI3_MOSI" bidirectional line)
 					(alternate "TIM1_CH2" bidirectional line)
+					(alternate "UCPD1_DB1" bidirectional line)
 					(alternate "USART1_TX" bidirectional line)
-					(alternate "USART3_CK" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 15.24 180)
@@ -1909,9 +1892,14 @@
 							)
 						)
 					)
+					(alternate "DCMI_D1" bidirectional line)
+					(alternate "FDCAN2_TX" bidirectional line)
 					(alternate "LPTIM2_IN2" bidirectional line)
 					(alternate "LPUART1_RX" bidirectional line)
+					(alternate "PSSI_D1" bidirectional line)
+					(alternate "SDMMC1_D0" bidirectional line)
 					(alternate "TIM1_CH3" bidirectional line)
+					(alternate "UCPD1_FRSTX" bidirectional line)
 					(alternate "USART1_RX" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1932,20 +1920,15 @@
 						)
 					)
 					(alternate "ADC1_EXTI11" bidirectional line)
-					(alternate "DEBUG_TRGIO" bidirectional line)
+					(alternate "ADC2_EXTI11" bidirectional line)
 					(alternate "FDCAN1_RX" bidirectional line)
 					(alternate "I2S2_WS" bidirectional line)
-					(alternate "LPTIM2_CH2" bidirectional line)
 					(alternate "LPUART1_CTS" bidirectional line)
 					(alternate "SPI2_NSS" bidirectional line)
-					(alternate "SPI3_RDY" bidirectional line)
 					(alternate "TIM1_CH4" bidirectional line)
-					(alternate "TIM3_CH2" bidirectional line)
+					(alternate "UART4_RX" bidirectional line)
 					(alternate "USART1_CTS" bidirectional line)
 					(alternate "USART1_NSS" bidirectional line)
-					(alternate "USART1_RX" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
-					(alternate "USART3_RTS" bidirectional line)
 					(alternate "USB_DM" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1965,19 +1948,14 @@
 							)
 						)
 					)
-					(alternate "DEBUG_TRACED3" bidirectional line)
 					(alternate "FDCAN1_TX" bidirectional line)
 					(alternate "I2S2_CK" bidirectional line)
 					(alternate "LPUART1_RTS" bidirectional line)
-					(alternate "SPI2_RDY" bidirectional line)
+					(alternate "SAI2_FS_B" bidirectional line)
 					(alternate "SPI2_SCK" bidirectional line)
 					(alternate "TIM1_ETR" bidirectional line)
-					(alternate "TIM2_CH4" bidirectional line)
-					(alternate "TIM3_CH4" bidirectional line)
+					(alternate "UART4_TX" bidirectional line)
 					(alternate "USART1_RTS" bidirectional line)
-					(alternate "USART1_TX" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
-					(alternate "USART3_RX" bidirectional line)
 					(alternate "USB_DP" bidirectional line)
 				)
 				(pin bidirectional line
@@ -1997,14 +1975,7 @@
 							)
 						)
 					)
-					(alternate "COMP1_OUT" bidirectional line)
 					(alternate "DEBUG_JTMS-SWDIO" bidirectional line)
-					(alternate "LPTIM1_CH1" bidirectional line)
-					(alternate "LPUART1_CTS" bidirectional line)
-					(alternate "TIM1_CH1" bidirectional line)
-					(alternate "TIM1_ETR" bidirectional line)
-					(alternate "USART1_RX" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
 				)
 				(pin passive line
 					(at 0 -43.18 90)
@@ -2060,14 +2031,6 @@
 						)
 					)
 					(alternate "DEBUG_JTCK-SWCLK" bidirectional line)
-					(alternate "LPTIM1_ETR" bidirectional line)
-					(alternate "LPTIM2_CH1" bidirectional line)
-					(alternate "LPUART1_RTS" bidirectional line)
-					(alternate "TIM1_CH2" bidirectional line)
-					(alternate "TIM1_CH4N" bidirectional line)
-					(alternate "TIM3_CH1" bidirectional line)
-					(alternate "USART1_TX" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 30.48 0)
@@ -2106,25 +2069,22 @@
 						)
 					)
 					(alternate "ADC1_EXTI15" bidirectional line)
+					(alternate "ADC2_EXTI15" bidirectional line)
+					(alternate "CEC" bidirectional line)
+					(alternate "DCMI_D11" bidirectional line)
 					(alternate "DEBUG_JTDI" bidirectional line)
 					(alternate "I2S1_WS" bidirectional line)
-					(alternate "I2S2_SDI" bidirectional line)
-					(alternate "I2S3_CK" bidirectional line)
 					(alternate "I2S3_WS" bidirectional line)
-					(alternate "LPTIM1_IN2" bidirectional line)
-					(alternate "LPTIM2_CH1" bidirectional line)
+					(alternate "LPTIM3_IN2" bidirectional line)
+					(alternate "PSSI_D11" bidirectional line)
 					(alternate "SPI1_NSS" bidirectional line)
-					(alternate "SPI2_MISO" bidirectional line)
 					(alternate "SPI3_NSS" bidirectional line)
-					(alternate "SPI3_SCK" bidirectional line)
+					(alternate "SPI6_NSS" bidirectional line)
 					(alternate "TIM2_CH1" bidirectional line)
 					(alternate "TIM2_ETR" bidirectional line)
-					(alternate "USART1_CTS" bidirectional line)
-					(alternate "USART1_NSS" bidirectional line)
-					(alternate "USART2_CK" bidirectional line)
-					(alternate "USART2_RTS" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
-					(alternate "USART3_RX" bidirectional line)
+					(alternate "UART4_DE" bidirectional line)
+					(alternate "UART4_RTS" bidirectional line)
+					(alternate "UART7_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 -7.62 0)
@@ -2143,15 +2103,15 @@
 							)
 						)
 					)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C2_SCL" bidirectional line)
-					(alternate "I2S1_SDI" bidirectional line)
+					(alternate "DCMI_D8" bidirectional line)
+					(alternate "ETH_TXD0" bidirectional line)
 					(alternate "I2S3_CK" bidirectional line)
-					(alternate "I3C2_SCL" bidirectional line)
-					(alternate "SPI1_MISO" bidirectional line)
+					(alternate "LPTIM3_ETR" bidirectional line)
+					(alternate "OCTOSPI1_IO1" bidirectional line)
+					(alternate "PSSI_D8" bidirectional line)
+					(alternate "SDMMC1_D2" bidirectional line)
 					(alternate "SPI3_SCK" bidirectional line)
-					(alternate "TIM1_BKIN2" bidirectional line)
-					(alternate "USART2_RTS" bidirectional line)
+					(alternate "UART4_TX" bidirectional line)
 					(alternate "USART3_TX" bidirectional line)
 				)
 				(pin bidirectional line
@@ -2172,14 +2132,15 @@
 						)
 					)
 					(alternate "ADC1_EXTI11" bidirectional line)
-					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SDA" bidirectional line)
+					(alternate "ADC2_EXTI11" bidirectional line)
+					(alternate "DCMI_D4" bidirectional line)
 					(alternate "I2S3_SDI" bidirectional line)
-					(alternate "I3C2_SDA" bidirectional line)
-					(alternate "SPI1_RDY" bidirectional line)
+					(alternate "LPTIM3_IN1" bidirectional line)
+					(alternate "OCTOSPI1_NCS" bidirectional line)
+					(alternate "PSSI_D4" bidirectional line)
+					(alternate "SDMMC1_D3" bidirectional line)
 					(alternate "SPI3_MISO" bidirectional line)
-					(alternate "TIM1_BKIN2" bidirectional line)
-					(alternate "TIM2_CH2" bidirectional line)
+					(alternate "UART4_RX" bidirectional line)
 					(alternate "USART3_RX" bidirectional line)
 				)
 				(pin bidirectional line
@@ -2199,14 +2160,15 @@
 							)
 						)
 					)
+					(alternate "DCMI_D9" bidirectional line)
 					(alternate "DEBUG_TRACED3" bidirectional line)
-					(alternate "I2C2_SMBA" bidirectional line)
 					(alternate "I2S3_SDO" bidirectional line)
-					(alternate "LPTIM1_CH1" bidirectional line)
-					(alternate "LPTIM2_CH2" bidirectional line)
+					(alternate "PSSI_D9" bidirectional line)
+					(alternate "SDMMC1_CK" bidirectional line)
 					(alternate "SPI3_MOSI" bidirectional line)
-					(alternate "TIM1_CH4" bidirectional line)
-					(alternate "TIM2_CH4" bidirectional line)
+					(alternate "SPI6_SCK" bidirectional line)
+					(alternate "TIM15_CH1" bidirectional line)
+					(alternate "UART5_TX" bidirectional line)
 					(alternate "USART3_CK" bidirectional line)
 				)
 				(pin bidirectional line
@@ -2226,15 +2188,15 @@
 							)
 						)
 					)
+					(alternate "DCMI_D11" bidirectional line)
 					(alternate "DEBUG_TRACED2" bidirectional line)
-					(alternate "I2S3_WS" bidirectional line)
-					(alternate "SPI3_NSS" bidirectional line)
-					(alternate "TIM2_CH3" bidirectional line)
-					(alternate "TIM2_ETR" bidirectional line)
+					(alternate "LPTIM4_ETR" bidirectional line)
+					(alternate "PSSI_D11" bidirectional line)
+					(alternate "PWR_WKUP7" bidirectional line)
+					(alternate "SDMMC1_CMD" bidirectional line)
+					(alternate "TIM15_BKIN" bidirectional line)
 					(alternate "TIM3_ETR" bidirectional line)
-					(alternate "USART2_RTS" bidirectional line)
-					(alternate "USART3_CTS" bidirectional line)
-					(alternate "USART3_NSS" bidirectional line)
+					(alternate "UART5_RX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -10.16 180)
@@ -2255,20 +2217,15 @@
 					)
 					(alternate "CRS_SYNC" bidirectional line)
 					(alternate "DEBUG_JTDO-SWO" bidirectional line)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SCL" bidirectional line)
 					(alternate "I2C2_SDA" bidirectional line)
 					(alternate "I2S1_CK" bidirectional line)
-					(alternate "I2S2_MCK" bidirectional line)
 					(alternate "I2S3_CK" bidirectional line)
-					(alternate "I3C2_SCL" bidirectional line)
-					(alternate "LPTIM1_CH1" bidirectional line)
+					(alternate "LPTIM6_ETR" bidirectional line)
 					(alternate "SPI1_SCK" bidirectional line)
 					(alternate "SPI3_SCK" bidirectional line)
-					(alternate "TIM1_BKIN" bidirectional line)
+					(alternate "SPI6_SCK" bidirectional line)
 					(alternate "TIM2_CH2" bidirectional line)
-					(alternate "USART3_TX" bidirectional line)
+					(alternate "UART7_RX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -12.7 180)
@@ -2287,22 +2244,21 @@
 							)
 						)
 					)
+					(alternate "DCMI_D7" bidirectional line)
 					(alternate "DEBUG_JTRST" bidirectional line)
-					(alternate "FDCAN1_TX" bidirectional line)
-					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SDA" bidirectional line)
 					(alternate "I2S1_SDI" bidirectional line)
 					(alternate "I2S2_WS" bidirectional line)
 					(alternate "I2S3_SDI" bidirectional line)
-					(alternate "I3C2_SDA" bidirectional line)
 					(alternate "LPTIM1_CH2" bidirectional line)
+					(alternate "OCTOSPI1_CLK" bidirectional line)
+					(alternate "PSSI_D7" bidirectional line)
 					(alternate "SPI1_MISO" bidirectional line)
 					(alternate "SPI2_NSS" bidirectional line)
 					(alternate "SPI3_MISO" bidirectional line)
-					(alternate "TIM1_CH2" bidirectional line)
-					(alternate "TIM1_CH4N" bidirectional line)
+					(alternate "SPI6_MISO" bidirectional line)
+					(alternate "TIM16_BKIN" bidirectional line)
 					(alternate "TIM3_CH1" bidirectional line)
-					(alternate "USART2_TX" bidirectional line)
+					(alternate "UART7_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -15.24 180)
@@ -2321,23 +2277,21 @@
 							)
 						)
 					)
-					(alternate "DEBUG_TRACECLK" bidirectional line)
-					(alternate "FDCAN1_RX" bidirectional line)
-					(alternate "I2C1_SDA" bidirectional line)
+					(alternate "DCMI_D10" bidirectional line)
+					(alternate "ETH_PPS_OUT" bidirectional line)
+					(alternate "FDCAN2_RX" bidirectional line)
 					(alternate "I2C1_SMBA" bidirectional line)
-					(alternate "I2C2_SCL" bidirectional line)
+					(alternate "I2C4_SMBA" bidirectional line)
 					(alternate "I2S1_SDO" bidirectional line)
-					(alternate "I2S2_SDI" bidirectional line)
 					(alternate "I2S3_SDO" bidirectional line)
-					(alternate "I3C1_SDA" bidirectional line)
-					(alternate "I3C2_SCL" bidirectional line)
-					(alternate "LPTIM1_IN1" bidirectional line)
+					(alternate "OCTOSPI1_NCLK" bidirectional line)
+					(alternate "PSSI_D10" bidirectional line)
 					(alternate "SPI1_MOSI" bidirectional line)
-					(alternate "SPI2_MISO" bidirectional line)
 					(alternate "SPI3_MOSI" bidirectional line)
-					(alternate "TIM1_CH3" bidirectional line)
+					(alternate "SPI6_MOSI" bidirectional line)
+					(alternate "TIM17_BKIN" bidirectional line)
 					(alternate "TIM3_CH2" bidirectional line)
-					(alternate "USART2_RX" bidirectional line)
+					(alternate "UART5_RX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -17.78 180)
@@ -2356,20 +2310,19 @@
 							)
 						)
 					)
-					(alternate "DEBUG_TRACED0" bidirectional line)
-					(alternate "FDCAN1_TX" bidirectional line)
+					(alternate "CEC" bidirectional line)
+					(alternate "DCMI_D5" bidirectional line)
+					(alternate "FDCAN2_TX" bidirectional line)
 					(alternate "I2C1_SCL" bidirectional line)
-					(alternate "I2S1_MCK" bidirectional line)
+					(alternate "I2C4_SCL" bidirectional line)
 					(alternate "I3C1_SCL" bidirectional line)
 					(alternate "LPUART1_TX" bidirectional line)
-					(alternate "SPI3_RDY" bidirectional line)
-					(alternate "TIM1_CH2" bidirectional line)
-					(alternate "TIM1_CH3N" bidirectional line)
-					(alternate "TIM3_CH3" bidirectional line)
+					(alternate "OCTOSPI1_NCS" bidirectional line)
+					(alternate "PSSI_D5" bidirectional line)
+					(alternate "TIM16_CH1N" bidirectional line)
+					(alternate "TIM4_CH1" bidirectional line)
+					(alternate "UART5_TX" bidirectional line)
 					(alternate "USART1_TX" bidirectional line)
-					(alternate "USART2_CK" bidirectional line)
-					(alternate "USART2_CTS" bidirectional line)
-					(alternate "USART2_NSS" bidirectional line)
 				)
 				(pin bidirectional line
 					(at 22.86 -20.32 180)
@@ -2388,22 +2341,17 @@
 							)
 						)
 					)
-					(alternate "AUDIOCLK" bidirectional line)
-					(alternate "DEBUG_TRACED1" bidirectional line)
+					(alternate "DCMI_VSYNC" bidirectional line)
 					(alternate "FDCAN1_TX" bidirectional line)
 					(alternate "I2C1_SDA" bidirectional line)
-					(alternate "I2C2_SMBA" bidirectional line)
-					(alternate "I2S3_CK" bidirectional line)
-					(alternate "I2S3_MCK" bidirectional line)
+					(alternate "I2C4_SDA" bidirectional line)
 					(alternate "I3C1_SDA" bidirectional line)
 					(alternate "LPUART1_RX" bidirectional line)
+					(alternate "PSSI_RDY" bidirectional line)
 					(alternate "PWR_WKUP5" bidirectional line)
-					(alternate "SPI3_SCK" bidirectional line)
-					(alternate "TIM1_CH1" bidirectional line)
-					(alternate "TIM1_CH2N" bidirectional line)
-					(alternate "TIM3_ETR" bidirectional line)
+					(alternate "TIM17_CH1N" bidirectional line)
+					(alternate "TIM4_CH2" bidirectional line)
 					(alternate "USART1_RX" bidirectional line)
-					(alternate "USART3_TX" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 27.94 0)
@@ -2459,22 +2407,18 @@
 							)
 						)
 					)
-					(alternate "DEBUG_TRACED2" bidirectional line)
+					(alternate "DCMI_D6" bidirectional line)
+					(alternate "ETH_TXD3" bidirectional line)
 					(alternate "FDCAN1_RX" bidirectional line)
 					(alternate "I2C1_SCL" bidirectional line)
-					(alternate "I2C2_SDA" bidirectional line)
-					(alternate "I2C2_SMBA" bidirectional line)
-					(alternate "I2S1_WS" bidirectional line)
-					(alternate "I2S2_MCK" bidirectional line)
+					(alternate "I2C4_SCL" bidirectional line)
 					(alternate "I3C1_SCL" bidirectional line)
-					(alternate "I3C2_SDA" bidirectional line)
-					(alternate "LPTIM1_CH2" bidirectional line)
-					(alternate "LPTIM2_CH1" bidirectional line)
-					(alternate "SPI1_NSS" bidirectional line)
-					(alternate "SPI2_RDY" bidirectional line)
-					(alternate "TIM1_BKIN2" bidirectional line)
-					(alternate "USART1_CK" bidirectional line)
-					(alternate "USART3_RX" bidirectional line)
+					(alternate "PSSI_D6" bidirectional line)
+					(alternate "SDMMC1_CKIN" bidirectional line)
+					(alternate "SDMMC1_D4" bidirectional line)
+					(alternate "TIM16_CH1" bidirectional line)
+					(alternate "TIM4_CH3" bidirectional line)
+					(alternate "UART4_RX" bidirectional line)
 				)
 				(pin power_out line
 					(at -20.32 -27.94 0)
@@ -2566,11 +2510,12 @@
 						)
 					)
 					(alternate "ADC1_INP10" bidirectional line)
-					(alternate "I2S1_CK" bidirectional line)
-					(alternate "LPTIM1_CH2" bidirectional line)
-					(alternate "SPI1_SCK" bidirectional line)
+					(alternate "ADC2_INP10" bidirectional line)
+					(alternate "OCTOSPI1_IO7" bidirectional line)
+					(alternate "SAI1_MCLK_A" bidirectional line)
+					(alternate "SAI2_FS_B" bidirectional line)
 					(alternate "SPI2_RDY" bidirectional line)
-					(alternate "TIM1_ETR" bidirectional line)
+					(alternate "TIM16_BKIN" bidirectional line)
 				)
 				(pin bidirectional line
 					(at -20.32 15.24 0)
@@ -2591,17 +2536,20 @@
 					)
 					(alternate "ADC1_INN10" bidirectional line)
 					(alternate "ADC1_INP11" bidirectional line)
+					(alternate "ADC2_INN10" bidirectional line)
+					(alternate "ADC2_INP11" bidirectional line)
 					(alternate "DEBUG_TRACED0" bidirectional line)
-					(alternate "I2S1_WS" bidirectional line)
+					(alternate "ETH_MDC" bidirectional line)
 					(alternate "I2S2_SDO" bidirectional line)
-					(alternate "LPTIM2_IN1" bidirectional line)
-					(alternate "LPUART1_CTS" bidirectional line)
-					(alternate "PWR_WKUP3" bidirectional line)
-					(alternate "SPI1_NSS" bidirectional line)
+					(alternate "OCTOSPI1_IO4" bidirectional line)
+					(alternate "PWR_WKUP6" bidirectional line)
+					(alternate "SAI1_D1" bidirectional line)
+					(alternate "SAI1_SD_A" bidirectional line)
+					(alternate "SAI2_SD_A" bidirectional line)
 					(alternate "SPI2_MOSI" bidirectional line)
-					(alternate "TIM3_ETR" bidirectional line)
-					(alternate "USART1_CTS" bidirectional line)
-					(alternate "USART1_NSS" bidirectional line)
+					(alternate "TAMP_IN3" bidirectional line)
+					(alternate "TAMP_OUT5" bidirectional line)
+					(alternate "USART11_RTS" bidirectional line)
 				)
 			)
 		)
@@ -3078,6 +3026,12 @@
 		(uuid "1dfa2cbd-5eaa-4e2e-a440-970b2db4404d")
 	)
 	(junction
+		(at 167.64 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2bb86367-ff5a-4902-b7a1-575f244a1cbf")
+	)
+	(junction
 		(at 66.04 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3096,6 +3050,12 @@
 		(uuid "54b94c8c-d01f-4e5a-a65d-a3c58a277b4e")
 	)
 	(junction
+		(at 162.56 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "63cb01ab-fab5-4476-b88e-b3e6fe1910c8")
+	)
+	(junction
 		(at 66.04 110.49)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3106,6 +3066,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "744f2c98-ec95-4361-b665-3f7464ee080c")
+	)
+	(junction
+		(at 165.1 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "af0a6bc1-74e4-436c-a0a8-d787a2a047ee")
 	)
 	(junction
 		(at 281.94 217.17)
@@ -3124,6 +3090,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f48628ec-ba76-4a2d-97cd-758d945404f2")
+	)
+	(junction
+		(at 160.02 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fd20f75f-3f9e-4257-b25c-4d749cabf0c3")
 	)
 	(wire
 		(pts
@@ -3144,6 +3116,16 @@
 			(type default)
 		)
 		(uuid "002b0824-6c44-4997-8ef0-615cbb915bd6")
+	)
+	(wire
+		(pts
+			(xy 165.1 50.8) (xy 165.1 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "014d2675-f2c3-4f29-b203-2a1ceb1cc3b9")
 	)
 	(wire
 		(pts
@@ -3204,6 +3186,16 @@
 			(type default)
 		)
 		(uuid "0b2e277c-1136-45dd-b327-52338a599f45")
+	)
+	(wire
+		(pts
+			(xy 160.02 50.8) (xy 162.56 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b56c7a6-f10b-4ca1-8a8c-a425b84ac54b")
 	)
 	(wire
 		(pts
@@ -3287,7 +3279,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 105.41) (xy 101.6 105.41)
+			(xy 99.06 118.11) (xy 142.24 118.11)
 		)
 		(stroke
 			(width 0)
@@ -3314,6 +3306,16 @@
 			(type default)
 		)
 		(uuid "1a0433d0-d048-4aa4-b4b0-21152d861ff7")
+	)
+	(wire
+		(pts
+			(xy 109.22 102.87) (xy 142.24 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1dd93136-fe11-4853-ab63-d838bdac8c65")
 	)
 	(wire
 		(pts
@@ -3387,16 +3389,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 118.11) (xy 133.35 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "30160e82-b3d7-4600-b841-27e5a38566fb")
-	)
-	(wire
-		(pts
 			(xy 312.42 222.25) (xy 317.5 222.25)
 		)
 		(stroke
@@ -3457,6 +3449,16 @@
 	)
 	(wire
 		(pts
+			(xy 160.02 50.8) (xy 160.02 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39cbcef7-261c-44e0-bb69-0f918b643055")
+	)
+	(wire
+		(pts
 			(xy 165.1 156.21) (xy 162.56 156.21)
 		)
 		(stroke
@@ -3474,6 +3476,16 @@
 			(type default)
 		)
 		(uuid "3ed3bcfb-73a3-425b-b209-29bb11b6985e")
+	)
+	(wire
+		(pts
+			(xy 165.1 50.8) (xy 167.64 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fc1e8e0-ba70-4a05-821f-0c08bece7528")
 	)
 	(wire
 		(pts
@@ -3524,16 +3536,6 @@
 			(type default)
 		)
 		(uuid "4702568d-1724-47ba-ab8f-a06280e2462d")
-	)
-	(wire
-		(pts
-			(xy 130.81 118.11) (xy 130.81 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4790e38f-c352-402c-a632-afea18466b92")
 	)
 	(wire
 		(pts
@@ -3777,13 +3779,13 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 118.11) (xy 133.35 105.41)
+			(xy 167.64 50.8) (xy 170.18 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7f9bc263-82f2-47b0-8096-bd99fab4213f")
+		(uuid "7c4e8f87-ea99-405a-98a8-267f54303f11")
 	)
 	(wire
 		(pts
@@ -3827,16 +3829,6 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 120.65) (xy 142.24 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "878d636d-fe75-4c95-a1d9-899b9a97dfb0")
-	)
-	(wire
-		(pts
 			(xy 68.58 107.95) (xy 142.24 107.95)
 		)
 		(stroke
@@ -3854,6 +3846,16 @@
 			(type default)
 		)
 		(uuid "896c204f-bbf7-48ec-800c-652e94fc0d97")
+	)
+	(wire
+		(pts
+			(xy 170.18 59.69) (xy 170.18 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89fb2a39-a0a5-4cd2-8dd1-6ef0699dfcbe")
 	)
 	(wire
 		(pts
@@ -3947,7 +3949,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 118.11) (xy 130.81 118.11)
+			(xy 99.06 120.65) (xy 142.24 120.65)
 		)
 		(stroke
 			(width 0)
@@ -3984,6 +3986,26 @@
 			(type default)
 		)
 		(uuid "b01c6b72-f885-44db-95f5-2abcfeb56485")
+	)
+	(wire
+		(pts
+			(xy 139.7 50.8) (xy 160.02 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b27bc075-9c4b-42ee-86cb-1b74a55b9566")
+	)
+	(wire
+		(pts
+			(xy 162.56 50.8) (xy 162.56 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7fba0c4-d548-42ee-beb2-1597901edecc")
 	)
 	(wire
 		(pts
@@ -4034,6 +4056,16 @@
 			(type default)
 		)
 		(uuid "c32d8904-714a-4a0a-9e38-9b2b81268c19")
+	)
+	(wire
+		(pts
+			(xy 162.56 50.8) (xy 165.1 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd36ecc6-21f4-4029-b70c-5cc7455254aa")
 	)
 	(wire
 		(pts
@@ -4164,6 +4196,16 @@
 			(type default)
 		)
 		(uuid "ec8a77c2-7d91-4604-8a26-274d0f72b004")
+	)
+	(wire
+		(pts
+			(xy 167.64 50.8) (xy 167.64 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ecf35ab9-5b1a-404c-b5e3-a3b9f886f59c")
 	)
 	(wire
 		(pts
@@ -4599,9 +4641,21 @@
 		)
 		(uuid "0eaaf0ef-53f6-47b2-a67f-367defb167f1")
 	)
+	(hierarchical_label "MOT_SIG_5"
+		(shape input)
+		(at 109.22 102.87 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1b69e1ff-3feb-4e59-9daa-17b634abf642")
+	)
 	(hierarchical_label "MOTOR_CTR_CTN_1"
 		(shape input)
-		(at 101.6 105.41 180)
+		(at 99.06 118.11 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4889,7 +4943,7 @@
 	)
 	(hierarchical_label "RS485_DIR"
 		(shape input)
-		(at 99.06 118.11 180)
+		(at 99.06 120.65 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5140,6 +5194,76 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR0154")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 359.41 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1184a7ef-5a17-401f-9564-b038e83344b3")
+		(property "Reference" "C42"
+			(at 363.22 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10µ"
+			(at 363.22 72.3899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 360.3752 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 359.41 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 359.41 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "43504517-b3b8-4b3d-8ac6-aaf6061fa952")
+		)
+		(pin "2"
+			(uuid "c498be46-0429-4eae-9096-cf87afbc15a7")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "C42")
 					(unit 1)
 				)
 			)
@@ -5483,6 +5607,72 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 359.41 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2a08258a-652e-4665-8aab-817bbc7424ee")
+		(property "Reference" "#PWR065"
+			(at 359.41 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 359.41 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 359.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 359.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 359.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4ff12737-2458-4fbf-a0a4-7970902130e2")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 299.72 233.68 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5608,6 +5798,142 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR0151")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 346.71 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "34530091-9188-4308-a6da-b3c7eb56b3d4")
+		(property "Reference" "C41"
+			(at 350.52 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10µ"
+			(at 350.52 72.3899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 347.6752 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 346.71 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 346.71 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "59e5b1bb-b325-4411-a5ff-ae457bf3fec3")
+		)
+		(pin "2"
+			(uuid "07056023-681b-47fb-af9d-f55b911f4d83")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "C41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 346.71 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3dff7a32-a992-4541-b0dc-b748b41bcbe0")
+		(property "Reference" "#PWR049"
+			(at 346.71 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 346.71 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 346.71 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 346.71 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 346.71 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9be511ab-13eb-4ffd-bf53-66372e3ca27a")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -6015,6 +6341,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 359.41 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "631b2ca0-30c6-46ac-9a70-588e8dfef183")
+		(property "Reference" "#PWR052"
+			(at 359.41 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 359.41 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 359.41 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 359.41 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 359.41 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ed0ad1e3-ccc9-45fe-a0cb-9c50ff9a9c74")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR052")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 91.44 270.51 0)
 		(unit 1)
@@ -6075,6 +6467,72 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR046")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 334.01 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "68af5733-e01b-4ffc-9e1a-22d5d7631ad5")
+		(property "Reference" "#PWR040"
+			(at 334.01 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 334.01 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 334.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "140bf6d4-f17e-46bf-aec7-0dcbd1c10f1a")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -7521,7 +7979,7 @@
 		)
 	)
 	(symbol
-		(lib_id "MCU_ST_STM32H5:STM32H503RBTx")
+		(lib_id "MCU_ST_STM32H5:STM32H573RITx")
 		(at 162.56 105.41 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7539,7 +7997,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "STM32H503RBTx"
+		(property "Value" "STM32H573RITx"
 			(at 167.2941 151.13 0)
 			(effects
 				(font
@@ -7558,7 +8016,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h503rb.pdf"
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h573ri.pdf"
 			(at 162.56 105.41 0)
 			(effects
 				(font
@@ -7567,7 +8025,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 128KB flash, 32KB RAM, 250 MHz, 49 GPIO, LQFP64"
+		(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 2048KB flash, 640KB RAM, 250 MHz, 1.62-3.6V, 49 GPIO, LQFP64"
 			(at 162.56 105.41 0)
 			(effects
 				(font
@@ -7839,6 +8297,72 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 334.01 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "de4e8c45-88b7-4832-b30e-58fb26f75a06")
+		(property "Reference" "#PWR038"
+			(at 334.01 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 334.01 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 334.01 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea180f11-330d-4048-887a-df0d60121bd0")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -8337,6 +8861,142 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 334.01 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef717523-5256-4e55-8fe0-f66ac0f81371")
+		(property "Reference" "C40"
+			(at 337.82 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 337.82 72.3899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 334.9752 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 334.01 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 334.01 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "70a0dcec-53d7-4358-a88e-c7016f434899")
+		)
+		(pin "2"
+			(uuid "8088db10-bcb1-4ab2-9ca8-b3c8df6e210a")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "C40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 346.71 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2f431ec-f114-4a65-9e49-db160739bde2")
+		(property "Reference" "#PWR050"
+			(at 346.71 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 346.71 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 346.71 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 346.71 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 346.71 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bf85dd06-ec4f-46b1-805b-56aed243b576")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 40.64 88.9 0)
 		(unit 1)
@@ -8397,6 +9057,73 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR0197")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 139.7 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f470fa2a-ce43-44d0-856b-a8e440c309a8")
+		(property "Reference" "#PWR037"
+			(at 143.51 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 135.89 50.7999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 139.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 139.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 139.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25dc1834-e6a3-4f19-ba2d-972f3cc098ad")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)

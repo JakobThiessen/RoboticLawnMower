@@ -2285,6 +2285,16 @@
 	)
 	(wire
 		(pts
+			(xy 302.26 232.41) (xy 330.2 232.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c0294ea-14eb-44dd-a285-e360b2ed77cf")
+	)
+	(wire
+		(pts
 			(xy 368.3 223.52) (xy 386.08 223.52)
 		)
 		(stroke
@@ -2632,6 +2642,16 @@
 			(type default)
 		)
 		(uuid "7c5f6d57-8ad1-4f30-8daa-756ef8760cf0")
+	)
+	(wire
+		(pts
+			(xy 182.88 96.52) (xy 200.66 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e037dae-6c1b-45d2-9ca3-386d542eb2ea")
 	)
 	(wire
 		(pts
@@ -3893,6 +3913,17 @@
 		)
 		(uuid "2bbf855e-aa45-4b3d-ba84-f81a9d28ec84")
 	)
+	(label "MOT_SIG_5"
+		(at 303.53 232.41 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2e7e62f7-f8db-4bf1-8678-abaaa477678c")
+	)
 	(label "PWM_CH_[0..15]"
 		(at 237.49 152.4 0)
 		(fields_autoplaced yes)
@@ -4123,6 +4154,17 @@
 			(justify left bottom)
 		)
 		(uuid "b0836802-ca71-444f-a958-a4fa344b55a7")
+	)
+	(label "MOT_SIG_5"
+		(at 191.77 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ba0c5bc8-c900-444d-a678-d6447e257d75")
 	)
 	(label "Motor_M5_EN"
 		(at 298.45 229.87 0)
@@ -7329,6 +7371,16 @@
 				(justify right)
 			)
 			(uuid "de95e3a7-8298-40a2-bc87-17208609f74b")
+		)
+		(pin "MOT_SIG_5" input
+			(at 182.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "92ec4b7e-414c-4588-94e8-1156efb44428")
 		)
 		(instances
 			(project "RoboticLawnMower"

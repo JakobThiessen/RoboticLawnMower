@@ -3146,6 +3146,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "C49")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "C45")
 					(unit 1)
@@ -3154,16 +3158,12 @@
 					(reference "C46")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "C47")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "C48")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "C49")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "C47")
 					(unit 1)
 				)
 			)
@@ -3228,6 +3228,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR064")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR060")
 					(unit 1)
@@ -3236,16 +3240,12 @@
 					(reference "#PWR061")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR062")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR063")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR064")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR062")
 					(unit 1)
 				)
 			)
@@ -3315,8 +3315,8 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "JP5")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "JP7")
 					(unit 1)
 				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
@@ -3331,8 +3331,8 @@
 					(reference "JP6")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "JP7")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "JP5")
 					(unit 1)
 				)
 			)
@@ -3401,6 +3401,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "D5")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "D1")
 					(unit 1)
@@ -3409,16 +3413,12 @@
 					(reference "D2")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "D3")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "D4")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "D5")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -3483,6 +3483,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0192")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0188")
 					(unit 1)
@@ -3491,16 +3495,12 @@
 					(reference "#PWR0189")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0190")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0191")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0192")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0190")
 					(unit 1)
 				)
 			)
@@ -3565,6 +3565,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0176")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0168")
 					(unit 1)
@@ -3573,16 +3577,12 @@
 					(reference "#PWR0170")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0172")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0174")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0176")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0172")
 					(unit 1)
 				)
 			)
@@ -3648,6 +3648,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0167")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0163")
 					(unit 1)
@@ -3656,16 +3660,12 @@
 					(reference "#PWR0164")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0165")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0166")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0167")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0165")
 					(unit 1)
 				)
 			)
@@ -3735,8 +3735,8 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "JP10")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "JP12")
 					(unit 1)
 				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
@@ -3751,8 +3751,8 @@
 					(reference "JP11")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "JP12")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "JP10")
 					(unit 1)
 				)
 			)
@@ -3817,6 +3817,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0177")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0169")
 					(unit 1)
@@ -3825,16 +3829,12 @@
 					(reference "#PWR0171")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0173")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0175")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0177")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0173")
 					(unit 1)
 				)
 			)
@@ -3903,6 +3903,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "C39")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "C35")
 					(unit 1)
@@ -3911,16 +3915,12 @@
 					(reference "C36")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "C37")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "C38")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "C39")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "C37")
 					(unit 1)
 				)
 			)
@@ -3985,6 +3985,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0138")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0114")
 					(unit 1)
@@ -3993,16 +3997,12 @@
 					(reference "#PWR0120")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0126")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0132")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0138")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0126")
 					(unit 1)
 				)
 			)
@@ -4067,6 +4067,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR087")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR067")
 					(unit 1)
@@ -4075,16 +4079,12 @@
 					(reference "#PWR068")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR071")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR086")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR087")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -4150,6 +4150,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0162")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR098")
 					(unit 1)
@@ -4158,16 +4162,12 @@
 					(reference "#PWR099")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0100")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0141")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0162")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0100")
 					(unit 1)
 				)
 			)
@@ -4232,6 +4232,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0105")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0101")
 					(unit 1)
@@ -4240,16 +4244,12 @@
 					(reference "#PWR0102")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0103")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0104")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0105")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0103")
 					(unit 1)
 				)
 			)
@@ -4336,6 +4336,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "U24")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "U20")
 					(unit 1)
@@ -4344,16 +4348,12 @@
 					(reference "U21")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "U22")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "U23")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "U24")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "U22")
 					(unit 1)
 				)
 			)
@@ -4418,6 +4418,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0139")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0115")
 					(unit 1)
@@ -4426,16 +4430,12 @@
 					(reference "#PWR0121")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0127")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0133")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0139")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0127")
 					(unit 1)
 				)
 			)
@@ -4511,6 +4511,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "R5")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "R1")
 					(unit 1)
@@ -4519,16 +4523,12 @@
 					(reference "R2")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "R3")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "R4")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "R5")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -4597,6 +4597,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "C10")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "C2")
 					(unit 1)
@@ -4605,16 +4609,12 @@
 					(reference "C4")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "C6")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "C8")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "C10")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -4679,6 +4679,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0140")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0116")
 					(unit 1)
@@ -4687,16 +4691,12 @@
 					(reference "#PWR0122")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0128")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0134")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0140")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0128")
 					(unit 1)
 				)
 			)
@@ -4761,6 +4761,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR092")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR088")
 					(unit 1)
@@ -4769,16 +4773,12 @@
 					(reference "#PWR089")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR090")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR091")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR092")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR090")
 					(unit 1)
 				)
 			)
@@ -4843,6 +4843,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0110")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0106")
 					(unit 1)
@@ -4851,16 +4855,12 @@
 					(reference "#PWR0107")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0108")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0109")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0110")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0108")
 					(unit 1)
 				)
 			)
@@ -4925,6 +4925,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0137")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "#PWR0113")
 					(unit 1)
@@ -4933,16 +4937,12 @@
 					(reference "#PWR0119")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "#PWR0125")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "#PWR0131")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "#PWR0137")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0125")
 					(unit 1)
 				)
 			)
@@ -5011,6 +5011,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "R18")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "R14")
 					(unit 1)
@@ -5019,16 +5023,12 @@
 					(reference "R15")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "R16")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "R17")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "R18")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -5122,6 +5122,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "U13")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "U1")
 					(unit 1)
@@ -5130,16 +5134,12 @@
 					(reference "U10")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "U11")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "U12")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "U13")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "U11")
 					(unit 1)
 				)
 			)
@@ -5226,6 +5226,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "J5")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "J1")
 					(unit 1)
@@ -5234,16 +5238,12 @@
 					(reference "J2")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "J3")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "J4")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "J5")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "J3")
 					(unit 1)
 				)
 			)
@@ -5313,6 +5313,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "JP17")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "JP13")
 					(unit 1)
@@ -5321,16 +5325,12 @@
 					(reference "JP14")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "JP15")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "JP16")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "JP17")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "JP15")
 					(unit 1)
 				)
 			)
@@ -5399,6 +5399,10 @@
 		)
 		(instances
 			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "C9")
+					(unit 1)
+				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
 					(reference "C1")
 					(unit 1)
@@ -5407,16 +5411,12 @@
 					(reference "C3")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
-					(reference "C5")
-					(unit 1)
-				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
 					(reference "C7")
 					(unit 1)
 				)
-				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
-					(reference "C9")
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "C5")
 					(unit 1)
 				)
 			)
