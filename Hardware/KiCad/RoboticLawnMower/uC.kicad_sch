@@ -2996,10 +2996,22 @@
 		)
 	)
 	(junction
+		(at 135.89 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "050995b3-4a3c-437e-84a3-63fa0706abad")
+	)
+	(junction
 		(at 111.76 125.73)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0eb6e968-9dfc-4916-b4c0-c7d105ec5c22")
+	)
+	(junction
+		(at 167.64 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "112831f7-ad98-40ab-92e6-0b400b0fc892")
 	)
 	(junction
 		(at 242.57 50.8)
@@ -3008,10 +3020,10 @@
 		(uuid "1798be65-1f1e-4b90-ac67-446b96a5c5c5")
 	)
 	(junction
-		(at 167.64 50.8)
+		(at 160.02 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2bb86367-ff5a-4902-b7a1-575f244a1cbf")
+		(uuid "21300831-1da4-481e-9229-c01699a1d0cb")
 	)
 	(junction
 		(at 66.04 92.71)
@@ -3038,16 +3050,16 @@
 		(uuid "54b94c8c-d01f-4e5a-a65d-a3c58a277b4e")
 	)
 	(junction
+		(at 127 161.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "564a84a5-2aa8-4098-a85d-b8a6eac7a730")
+	)
+	(junction
 		(at 45.72 264.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5d596f8f-c8b4-4881-acec-5f5f279bde06")
-	)
-	(junction
-		(at 162.56 50.8)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "63cb01ab-fab5-4476-b88e-b3e6fe1910c8")
 	)
 	(junction
 		(at 66.04 110.49)
@@ -3062,16 +3074,22 @@
 		(uuid "744f2c98-ec95-4361-b665-3f7464ee080c")
 	)
 	(junction
+		(at 162.56 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8fa12374-557e-46d1-b0c2-1edaf65286e0")
+	)
+	(junction
 		(at 45.72 259.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "adbf0a1e-b9fe-4a01-a04f-0c8f5de54c51")
 	)
 	(junction
-		(at 165.1 50.8)
+		(at 157.48 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "af0a6bc1-74e4-436c-a0a8-d787a2a047ee")
+		(uuid "b97767f2-dae0-4047-bffa-fbec91b26308")
 	)
 	(junction
 		(at 281.94 217.17)
@@ -3080,22 +3098,28 @@
 		(uuid "baa4d443-7f4e-4eaf-ac05-621cde38e2f0")
 	)
 	(junction
+		(at 165.1 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bf002ed6-fad5-4f07-98f6-2204d8482f6c")
+	)
+	(junction
 		(at 317.5 193.04)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c1f3b4a2-2133-4e28-8318-a61704c0b60f")
 	)
 	(junction
+		(at 40.64 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ce4c5e8f-fa08-4d34-8369-60ac82dfb313")
+	)
+	(junction
 		(at 245.11 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f48628ec-ba76-4a2d-97cd-758d945404f2")
-	)
-	(junction
-		(at 160.02 50.8)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fd20f75f-3f9e-4257-b25c-4d749cabf0c3")
 	)
 	(wire
 		(pts
@@ -3106,16 +3130,6 @@
 			(type default)
 		)
 		(uuid "002b0824-6c44-4997-8ef0-615cbb915bd6")
-	)
-	(wire
-		(pts
-			(xy 165.1 50.8) (xy 165.1 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "014d2675-f2c3-4f29-b203-2a1ceb1cc3b9")
 	)
 	(wire
 		(pts
@@ -3169,6 +3183,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 161.29) (xy 135.89 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "056be0a4-7634-422a-bc80-b2e432dbdddf")
+	)
+	(wire
+		(pts
 			(xy 264.16 222.25) (xy 287.02 222.25)
 		)
 		(stroke
@@ -3189,7 +3213,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 50.8) (xy 162.56 50.8)
+			(xy 160.02 48.26) (xy 162.56 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3239,6 +3263,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 161.29) (xy 135.89 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11ebfa42-0232-40a2-bdd2-94e0e27f19d3")
+	)
+	(wire
+		(pts
 			(xy 245.11 130.81) (xy 297.18 130.81)
 		)
 		(stroke
@@ -3279,6 +3313,16 @@
 	)
 	(wire
 		(pts
+			(xy 157.48 48.26) (xy 157.48 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1592a76a-8ffc-475e-944d-c058c94d8bda")
+	)
+	(wire
+		(pts
 			(xy 68.58 95.25) (xy 68.58 92.71)
 		)
 		(stroke
@@ -3296,6 +3340,16 @@
 			(type default)
 		)
 		(uuid "1dd93136-fe11-4853-ab63-d838bdac8c65")
+	)
+	(wire
+		(pts
+			(xy 142.24 130.81) (xy 135.89 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24cf9da4-b3af-40e3-a6d2-7759b9021e78")
 	)
 	(wire
 		(pts
@@ -3409,16 +3463,6 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 50.8) (xy 160.02 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "39cbcef7-261c-44e0-bb69-0f918b643055")
-	)
-	(wire
-		(pts
 			(xy 165.1 156.21) (xy 162.56 156.21)
 		)
 		(stroke
@@ -3429,7 +3473,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 50.8) (xy 167.64 50.8)
+			(xy 165.1 48.26) (xy 167.64 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3576,6 +3620,16 @@
 			(type default)
 		)
 		(uuid "60bfe7de-b3de-4df8-963e-15ae68cd1e73")
+	)
+	(wire
+		(pts
+			(xy 135.89 130.81) (xy 135.89 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "618cda33-7163-4604-b70f-b4c84102fc23")
 	)
 	(wire
 		(pts
@@ -3729,6 +3783,26 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 165.1) (xy 114.3 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73823ee5-d1ee-44da-a577-028cdd32382b")
+	)
+	(wire
+		(pts
+			(xy 165.1 48.26) (xy 165.1 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73e7dee8-9841-40ad-a9a1-4951799d7e3b")
+	)
+	(wire
+		(pts
 			(xy 185.42 77.47) (xy 218.44 77.47)
 		)
 		(stroke
@@ -3759,13 +3833,23 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 50.8) (xy 170.18 50.8)
+			(xy 167.64 48.26) (xy 170.18 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "7c4e8f87-ea99-405a-98a8-267f54303f11")
+	)
+	(wire
+		(pts
+			(xy 157.48 58.42) (xy 157.48 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7daff89c-7a3a-4a69-b24a-79680efe3901")
 	)
 	(wire
 		(pts
@@ -3786,6 +3870,16 @@
 			(type default)
 		)
 		(uuid "83bc5745-9a3a-4d21-a7a5-4805ded14052")
+	)
+	(wire
+		(pts
+			(xy 40.64 59.69) (xy 40.64 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "844208df-2a1e-4ae4-9f32-b64c54385110")
 	)
 	(wire
 		(pts
@@ -3819,6 +3913,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 45.72) (xy 40.64 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "879e849d-726b-4a13-a8b6-a6cbca5b217d")
+	)
+	(wire
+		(pts
 			(xy 68.58 107.95) (xy 142.24 107.95)
 		)
 		(stroke
@@ -3839,13 +3943,23 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 59.69) (xy 170.18 50.8)
+			(xy 170.18 59.69) (xy 170.18 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "89fb2a39-a0a5-4cd2-8dd1-6ef0699dfcbe")
+	)
+	(wire
+		(pts
+			(xy 167.64 48.26) (xy 167.64 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8eebf8a2-a796-4d09-a765-4c2d9ce23f64")
 	)
 	(wire
 		(pts
@@ -3879,6 +3993,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 133.35) (xy 142.24 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "996c4092-663b-4ebb-9169-35f8abefafc9")
+	)
+	(wire
+		(pts
 			(xy 185.42 100.33) (xy 218.44 100.33)
 		)
 		(stroke
@@ -3906,6 +4030,16 @@
 			(type default)
 		)
 		(uuid "a67cfeeb-b24b-460d-9bfd-a118f81aa7dd")
+	)
+	(wire
+		(pts
+			(xy 160.02 48.26) (xy 160.02 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7f33990-6280-4962-b0ef-fa3c3451d73a")
 	)
 	(wire
 		(pts
@@ -3969,7 +4103,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 50.8) (xy 160.02 50.8)
+			(xy 139.7 48.26) (xy 157.48 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3989,16 +4123,6 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 50.8) (xy 162.56 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b7fba0c4-d548-42ee-beb2-1597901edecc")
-	)
-	(wire
-		(pts
 			(xy 109.22 90.17) (xy 142.24 90.17)
 		)
 		(stroke
@@ -4009,7 +4133,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 50.8) (xy 165.1 50.8)
+			(xy 162.56 48.26) (xy 165.1 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4036,6 +4160,16 @@
 			(type default)
 		)
 		(uuid "d0a4e4a6-61c3-4712-8dc1-b59f3093b495")
+	)
+	(wire
+		(pts
+			(xy 114.3 161.29) (xy 127 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d18a02ac-8c84-4c07-bf2b-073e33695098")
 	)
 	(wire
 		(pts
@@ -4089,6 +4223,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 161.29) (xy 127 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9d27f73-0690-46a4-a480-627203c0d49f")
+	)
+	(wire
+		(pts
 			(xy 281.94 217.17) (xy 287.02 217.17)
 		)
 		(stroke
@@ -4096,6 +4240,16 @@
 			(type default)
 		)
 		(uuid "dd6c1dd7-7cb4-419d-a3ad-e050bd688fd1")
+	)
+	(wire
+		(pts
+			(xy 162.56 48.26) (xy 162.56 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de0ce6bc-32a2-4c45-a407-0e8acf5d67e1")
 	)
 	(wire
 		(pts
@@ -4139,6 +4293,16 @@
 	)
 	(wire
 		(pts
+			(xy 157.48 48.26) (xy 160.02 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea9f4174-ac4f-412f-9fb3-935777eadf93")
+	)
+	(wire
+		(pts
 			(xy 45.72 259.08) (xy 45.72 256.54)
 		)
 		(stroke
@@ -4156,16 +4320,6 @@
 			(type default)
 		)
 		(uuid "ec8a77c2-7d91-4604-8a26-274d0f72b004")
-	)
-	(wire
-		(pts
-			(xy 167.64 50.8) (xy 167.64 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ecf35ab9-5b1a-404c-b5e3-a3b9f886f59c")
 	)
 	(wire
 		(pts
@@ -5955,6 +6109,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 40.64 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "418d88c1-7ab9-4538-96d2-74992335c659")
+		(property "Reference" "R27"
+			(at 43.18 54.6099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "N.C."
+			(at 43.18 57.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 38.862 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 40.64 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "05f92bdc-d404-440d-81f1-07a06b82afb5")
+		)
+		(pin "2"
+			(uuid "c8a20ba0-b707-421b-83ec-b9f00bf416e9")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 281.94 191.77 0)
 		(unit 1)
@@ -6158,6 +6382,76 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 157.48 54.61 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "49a376ab-320f-4f1f-9a65-8a5c5f5eb8e6")
+		(property "Reference" "R26"
+			(at 154.94 53.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "N.C."
+			(at 154.94 55.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 159.258 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 157.48 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "64f95c02-848a-4cfb-a650-7aba5b6d7885")
+		)
+		(pin "2"
+			(uuid "e3b16556-6f2e-4a07-b90b-25cdd3f8f845")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 242.57 57.15 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6284,6 +6578,72 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 114.3 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5a6b886f-c6a0-401f-83b1-616d844263a5")
+		(property "Reference" "#PWR041"
+			(at 114.3 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 114.3 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 114.3 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.3 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 114.3 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e6ee8e17-ffac-4f90-a42b-d4acea066b6e")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -6681,6 +7041,72 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "#PWR0150")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 127 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77efea6d-9f18-41b9-ab1c-6f2d57851f24")
+		(property "Reference" "#PWR044"
+			(at 127 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 127 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 127 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "51708e0e-c34b-46c0-9d80-91aaa2afcb52")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -7586,6 +8012,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 40.64 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c92f0822-593b-4591-81fc-e9d1db3cf07f")
+		(property "Reference" "#PWR045"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 40.64 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "42ea03b4-1d46-427f-b0c8-951b71f75961")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 40.64 81.28 0)
 		(unit 1)
@@ -7650,6 +8142,76 @@
 			(project "RoboticLawnMower"
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
 					(reference "R62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 127 168.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d3cf8ba1-80f7-44a6-b1ac-b488e59a03fb")
+		(property "Reference" "C43"
+			(at 130.81 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2µ2"
+			(at 130.81 170.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 127.9652 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 127 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 127 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "009e67c1-26cd-4451-973a-1eae5922ac39")
+		)
+		(pin "2"
+			(uuid "ef6ad519-0989-40ee-a2c8-2e0400e4cee2")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "C43")
 					(unit 1)
 				)
 			)
@@ -8473,6 +9035,76 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 114.3 168.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ec66a2c9-d29c-40a4-90be-2b7da270270b")
+		(property "Reference" "C25"
+			(at 118.11 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 118.11 170.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 115.2652 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 114.3 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d69663c6-cc42-4fc4-99c8-c6ef39bff58e")
+		)
+		(pin "2"
+			(uuid "caf6604f-794e-455b-b4a8-51d8ee0d6beb")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/6306c3d8-4421-4900-a194-54ab6eebd899"
+					(reference "C25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 334.01 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8675,7 +9307,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 139.7 50.8 90)
+		(at 139.7 48.26 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8684,7 +9316,7 @@
 		(fields_autoplaced yes)
 		(uuid "f470fa2a-ce43-44d0-856b-a8e440c309a8")
 		(property "Reference" "#PWR037"
-			(at 143.51 50.8 0)
+			(at 143.51 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8693,7 +9325,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 135.89 50.7999 90)
+			(at 135.89 48.2599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8702,7 +9334,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 139.7 50.8 0)
+			(at 139.7 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8711,7 +9343,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 139.7 50.8 0)
+			(at 139.7 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8720,7 +9352,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 139.7 50.8 0)
+			(at 139.7 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)

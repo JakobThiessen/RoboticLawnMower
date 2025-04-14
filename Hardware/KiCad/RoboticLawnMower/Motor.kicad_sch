@@ -1801,6 +1801,301 @@
 				)
 			)
 		)
+		(symbol "Transistor_FET:BSS123"
+			(pin_names hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "BSS123"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30366.pdf"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "N-Channel MOSFET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "BSS123_0_1"
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "BSS123_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_names
@@ -2235,6 +2530,12 @@
 		(uuid "c740c3a3-29d5-4699-b064-7aaaf9101175")
 	)
 	(junction
+		(at 165.1 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dc2ca436-0b81-4c10-889f-98bb04d5f599")
+	)
+	(junction
 		(at 274.32 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2249,6 +2550,16 @@
 			(type default)
 		)
 		(uuid "0583b945-7106-432b-ab44-87b5331cf682")
+	)
+	(wire
+		(pts
+			(xy 165.1 146.05) (xy 165.1 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09162796-7be5-4451-9113-b31fc38840f3")
 	)
 	(wire
 		(pts
@@ -2269,6 +2580,16 @@
 			(type default)
 		)
 		(uuid "0b85d5e9-bc64-4188-9a63-2f3d164dd926")
+	)
+	(wire
+		(pts
+			(xy 172.72 157.48) (xy 186.69 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d106825-0c14-43a5-ad81-902f6d4b2db0")
 	)
 	(wire
 		(pts
@@ -2359,6 +2680,16 @@
 			(type default)
 		)
 		(uuid "21a014a7-a289-4ad1-99fc-3a38de6aa9da")
+	)
+	(wire
+		(pts
+			(xy 186.69 157.48) (xy 186.69 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22daa3a2-bc4a-4d4c-a2e5-5e3e26de15c9")
 	)
 	(wire
 		(pts
@@ -2552,6 +2883,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 146.05) (xy 165.1 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f2ed952-c4ce-44c7-a998-9ea61a8560f0")
+	)
+	(wire
+		(pts
 			(xy 210.82 148.59) (xy 210.82 160.02)
 		)
 		(stroke
@@ -2622,13 +2963,13 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 151.13) (xy 186.69 143.51)
+			(xy 165.1 129.54) (xy 165.1 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a0497a5f-3cc0-40d6-8e44-f0de6c0a78c6")
+		(uuid "a449e160-65e9-4974-8643-c88d7028b17b")
 	)
 	(wire
 		(pts
@@ -2649,16 +2990,6 @@
 			(type default)
 		)
 		(uuid "abed574b-4c7c-4d68-acf6-670cdb5b08b7")
-	)
-	(wire
-		(pts
-			(xy 116.84 142.24) (xy 116.84 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae97c7b8-f341-4181-b875-ce0ca7273a03")
 	)
 	(wire
 		(pts
@@ -2742,6 +3073,16 @@
 	)
 	(wire
 		(pts
+			(xy 165.1 142.24) (xy 165.1 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d775e612-d7ca-484e-9681-ffbc1924d8a2")
+	)
+	(wire
+		(pts
 			(xy 199.39 153.67) (xy 302.26 153.67)
 		)
 		(stroke
@@ -2759,16 +3100,6 @@
 			(type default)
 		)
 		(uuid "e4fc361b-1a58-4f63-9b36-171c284ffece")
-	)
-	(wire
-		(pts
-			(xy 116.84 143.51) (xy 186.69 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e600f399-dfca-4380-8ca0-334fec6833bf")
 	)
 	(wire
 		(pts
@@ -2832,6 +3163,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 142.24) (xy 116.84 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f35a7acd-579e-4b88-881e-661d234e45b2")
+	)
+	(wire
+		(pts
 			(xy 274.32 107.95) (xy 274.32 111.76)
 		)
 		(stroke
@@ -2849,6 +3190,16 @@
 			(type default)
 		)
 		(uuid "f656d027-376e-4fa9-931f-d076622c62c5")
+	)
+	(wire
+		(pts
+			(xy 165.1 165.1) (xy 165.1 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f720712f-aa4c-4a01-a1a6-868d98b29e2d")
 	)
 	(label "SCL"
 		(at 250.19 127 0)
@@ -3252,6 +3603,88 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 165.1 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "11789f9e-31b7-4e84-a5c2-56cd396a9eb5")
+		(property "Reference" "#PWR046"
+			(at 165.1 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 165.1 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f4b196be-b6c2-44bd-b482-337a5e2eaf67")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR095")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
+					(reference "#PWR046")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/47e04ee7-2015-4bd0-a20e-406c6d5cef09"
+					(reference "#PWR066")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
+					(reference "#PWR094")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR093")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Jumper:SolderJumper_3_Open")
 		(at 116.84 138.43 0)
 		(unit 1)
@@ -3501,6 +3934,88 @@
 				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
 					(reference "#PWR0190")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDPWR")
+		(at 165.1 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2ff41c30-7696-4732-acfa-17fd77f7babe")
+		(property "Reference" "#PWR096"
+			(at 165.1 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDPWR"
+			(at 164.973 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ac894512-4eaf-4b91-899c-1e732697f433")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "#PWR0180")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
+					(reference "#PWR096")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/47e04ee7-2015-4bd0-a20e-406c6d5cef09"
+					(reference "#PWR097")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
+					(reference "#PWR0179")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "#PWR0178")
 					(unit 1)
 				)
 			)
@@ -4703,6 +5218,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 165.1 138.43 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c13d4930-28d6-4dc8-966c-bccaa9def0e5")
+		(property "Reference" "R28"
+			(at 167.64 137.1599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k2"
+			(at 167.64 139.6999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 163.322 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 165.1 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1fe11321-f252-4d57-a39a-c78c987a1c85")
+		)
+		(pin "2"
+			(uuid "d83e9cb1-c504-43fb-b9e4-d86bc58967a5")
+		)
+		(instances
+			(project "RoboticLawnMower"
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "R32")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
+					(reference "R28")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/47e04ee7-2015-4bd0-a20e-406c6d5cef09"
+					(reference "R29")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
+					(reference "R31")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GNDPWR")
 		(at 172.72 228.6 0)
 		(unit 1)
@@ -5417,6 +6018,99 @@
 				)
 				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
 					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:BSS123")
+		(at 167.64 157.48 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f387bb5a-6858-4b34-8693-cf39e3c0dc7d")
+		(property "Reference" "Q9"
+			(at 161.29 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BSS123"
+			(at 161.29 158.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 162.56 159.385 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30366.pdf"
+			(at 162.56 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
+			(at 167.64 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0515e734-e330-43fc-8700-2f4a913a3fe1")
+		)
+		(pin "2"
+			(uuid "17e823af-8315-46b8-b360-c4c98aa2de9c")
+		)
+		(pin "3"
+			(uuid "54e12ced-b40a-4319-a195-db19589c3759")
+		)
+		(instances
+			(project ""
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/0a26300e-b861-4272-8af8-e99b2db82548"
+					(reference "Q13")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/39f2b0f3-d323-43fa-8206-419714f3fe7e"
+					(reference "Q9")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/47e04ee7-2015-4bd0-a20e-406c6d5cef09"
+					(reference "Q10")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/ce0069d3-3b25-4196-ac13-cd9fb46e4df2"
+					(reference "Q12")
+					(unit 1)
+				)
+				(path "/5ae2ac0c-d51e-427c-a466-abef5bd43ed0/e11ea681-498e-4438-bf5e-83e5e8a7b0af"
+					(reference "Q11")
 					(unit 1)
 				)
 			)
